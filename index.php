@@ -30,22 +30,20 @@ foreach ($db->query($query) as $row)
 ?>
 	</tr>
 <?php
-function other($prom) {
-	foreach ($prom as $row){
-		print '<td>N/A</td>';
-	}
-}
 function zj($prom,$ZJID) {
 	$response = file("http://zerojudge.tw/UserStatistic?account=".$ZJID);
 	foreach ($prom as $row){
-		$start=strpos($response,"?problemid=".$prom);
-		$end=strpos($response,">".$prom."</a>");
-		$html=substr($response,$start,$end-$start);
-		print '<td>';
-		if(strpos($html,'class="acstyle"')>=0)print "AC";
-		else if(strpos($html,'color: #666666; font-weight: bold;')>=0)print "Tried";
-		else if(strpos($html,'color: #666666;')>=0)print "";
-		else print "ERR!!";
+		if($row['name']=='zj'){
+			$start=strpos($response,"?problemid=".$row['id']);
+			$end=strpos($response,">".$row['id']."</a>");
+			$html=substr($response,$start,$end-$start);
+			print '<td>';
+			if(strpos($html,'class="acstyle"')>=0)print "AC";
+			else if(strpos($html,'color: #666666; font-weight: bold;')>=0)print "Tried";
+			else if(strpos($html,'color: #666666;')>=0)print "";
+			else print "ERR!!";
+		}
+		else print '<td>N/A</td>';
 		print '</td>';
 	}
 }
@@ -57,8 +55,7 @@ foreach ($db->query($query) as $row)
 	print '<td>'.$row['tojid'].'</td>';
 	print '<td>'.$row['uvaid'].'</td>';
 	print '<td style="border-right-width:2px">'.$row['zjacct'].'</td>';
-	if($row2['name']=='zj')zj($problemlist,$row['zjacct']);
-	else other($problemlist);
+	zj($problemlist,$row['zjacct']);
 	print '</tr>';
 }
 ?>
