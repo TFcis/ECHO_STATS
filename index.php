@@ -30,23 +30,34 @@ foreach ($db->query($query) as $row)
 ?>
 	</tr>
 <?php
-function zj($prom,$ZJID) {
-	$response = file_get_contents("http://zerojudge.tw/UserStatistic?account=".$ZJID);
-	foreach ($prom as $row){
-		if($row['name']=='zj'){
-			$start=strpos($response,"?problemid=".$row['id']);
-			$end=strpos($response,">".$row['id']."</a>");
-			$html=substr($response,$start,$end-$start);
-			print '<td>';
-			if(strpos($html,'class="acstyle"'))print "AC";
-			else if(strpos($html,'color: #666666; font-weight: bold;'))print "Tried";
-			else if(strpos($html,'color: #666666'))print "";
-			else print "ERR!!";
-		}
-		else print '<td>N/A</td>';
-		print '</td>';
+function zj($prom,$ZJID){
+	$response=false;
+	$n=1;
+	while($response==false&&$n<=1){
+		$error++;
+		$n++;
+		$response=file_get_contents("http://zerojudge.tw/UserStatistic?account=".$ZJID);
 	}
+	$error--;
+	if($response){
+		foreach ($prom as $row){
+			if($row['name']=='zj'){
+				$start=strpos($response,"?problemid=".$row['id']);
+				$end=strpos($response,">".$row['id']."</a>");
+				$html=substr($response,$start,$end-$start);
+				print '<td>';
+				if(strpos($html,'class="acstyle"'))print "AC";
+				else if(strpos($html,'color: #666666; font-weight: bold;'))print "Tried";
+				else if(strpos($html,'color: #666666'))print "";
+				else print "ERR!!";
+			}
+			else print '<td>N/A</td>';
+			print '</td>';
+		}
+	}
+	else print '<td colspan="'.count($prom).'">Failed to load</td>';
 }
+$error=0;
 $query="SELECT * FROM `".$url."_account`";
 foreach ($db->query($query) as $row)
 {
@@ -60,6 +71,9 @@ foreach ($db->query($query) as $row)
 }
 ?>
 </table>
+<?php
+print $error.' error(s)';
+?>
 	<br>
 <font color="#666666" style="font-size: 12px">
 Develop by xiplus, domen111, John.</font>
