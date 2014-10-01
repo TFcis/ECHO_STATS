@@ -12,12 +12,12 @@ $db=new PDO("mysql:host=localhost;dbname=xiplus_problem;charset=utf8", "xiplus_p
 <body>
 	<center>
 	<h2>題單</h2>
-    <table class=MsoTableGrid border=1 cellpadding=3 style='border-collapse:collapse;border:none'>
-    <tr>
-    <td style="border-bottom-width: 2px; border-right-width: 2px">姓名</td>
-    <td style="border-bottom-width:2px">TOJ id</td>
-    <td style="border-bottom-width:2px">UVA account</td>
-    <td style="border-bottom-width:2px ; border-right-width: 2px">ZJ id</td>
+	<table class=MsoTableGrid border=1 cellpadding=3 style='border-collapse:collapse;border:none'>
+	<tr>
+	<td style="border-bottom-width: 2px; border-right-width: 2px">姓名</td>
+	<td style="border-bottom-width:2px">TOJ id</td>
+	<td style="border-bottom-width:2px">UVA account</td>
+	<td style="border-bottom-width:2px ; border-right-width: 2px">ZJ id</td>
 	<?php
 $query="SELECT * FROM `".$url."_problem` ORDER BY `name`,`id`";
 $n=0;
@@ -29,16 +29,16 @@ foreach ($db->query($query) as $row)
 }
 ?>
 	</tr>
-    <?php
+	<?php
 function zj($prom,$ZJID) {
-  $response = file("http://zerojudge.tw/UserStatistic?account=".$ZJID);
-  $start=strpos($response,"?problemid=".$prom);
-  $end=strpos($response,">".$prom."</a>");
-  $html=substr($response,$start,$end-$start);
-  if(strpos($html,'class="acstyle"')>=0)return "AC";
-  else if(strpos($html,'color: #666666; font-weight: bold;')>=0)return "Tried";
-  else if(strpos($html,'color: #666666;')>=0)return "";
-  else return "ERR!!";
+	$response = file("http://zerojudge.tw/UserStatistic?account=".$ZJID);
+	$start=strpos($response,"?problemid=".$prom);
+	$end=strpos($response,">".$prom."</a>");
+	$html=substr($response,$start,$end-$start);
+	if(strpos($html,'class="acstyle"')>=0)return "AC";
+	else if(strpos($html,'color: #666666; font-weight: bold;')>=0)return "Tried";
+	else if(strpos($html,'color: #666666;')>=0)return "";
+	else return "ERR!!";
 }
 $query="SELECT * FROM `".$url."_account`";
 foreach ($db->query($query) as $row)
