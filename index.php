@@ -38,7 +38,6 @@ function zj($prom,$ZJID) {
 			$end=strpos($response,">".$row['id']."</a>");
 			$html=substr($response,$start,$end-$start);
 			print '<td>';
-			print '<script>'.$html.'</script>';
 			if(strpos($html,'class="acstyle"'))print "AC";
 			else if(strpos($html,'color: #666666; font-weight: bold;'))print "Tried";
 			else if(strpos($html,'color: #666666'))print "";
