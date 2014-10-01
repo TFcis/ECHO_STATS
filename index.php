@@ -32,13 +32,11 @@ foreach ($db->query($query) as $row)
 <?php
 function zj($prom,$ZJID){
 	$response=false;
-	$n=1;
-	while($response==false&&$n<=1){
-		$error++;
-		$n++;
+	$reload=0;
+	while($response==false&&$reload<=3){
+		$reload++;
 		$response=file_get_contents("http://zerojudge.tw/UserStatistic?account=".$ZJID);
 	}
-	$error--;
 	if($response){
 		foreach ($prom as $row){
 			if($row['name']=='zj'){
@@ -56,6 +54,7 @@ function zj($prom,$ZJID){
 		}
 	}
 	else print '<td colspan="'.count($prom).'">Failed to load</td>';
+	return $reload-1;
 }
 $error=0;
 $query="SELECT * FROM `".$url."_account`";
@@ -66,13 +65,13 @@ foreach ($db->query($query) as $row)
 	print '<td>'.$row['tojid'].'</td>';
 	print '<td>'.$row['uvaid'].'</td>';
 	print '<td style="border-right-width:2px"><a href="http://zerojudge.tw/UserStatistic?account='.$row['zjacct'].'" target="_blank">'.$row['zjacct'].'</a></td>';
-	zj($problemlist,$row['zjacct']);
+	$error+=zj($problemlist,$row['zjacct']);
 	print '</tr>';
 }
 ?>
 </table>
 <?php
-print $error.' error(s)';
+print $error.' reload';
 ?>
 	<br>
 <font color="#666666" style="font-size: 12px">
