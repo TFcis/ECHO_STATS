@@ -31,16 +31,17 @@ foreach ($db->query($query) as $row)
 	</tr>
 <?php
 function zj($prom,$ZJID) {
-	$response = file("http://zerojudge.tw/UserStatistic?account=".$ZJID);
+	$response = file_get_contents("http://zerojudge.tw/UserStatistic?account=".$ZJID);
 	foreach ($prom as $row){
 		if($row['name']=='zj'){
 			$start=strpos($response,"?problemid=".$row['id']);
 			$end=strpos($response,">".$row['id']."</a>");
 			$html=substr($response,$start,$end-$start);
 			print '<td>';
-			if(strpos($html,'class="acstyle"')>=0)print "AC";
-			else if(strpos($html,'color: #666666; font-weight: bold;')>=0)print "Tried";
-			else if(strpos($html,'color: #666666;')>=0)print "";
+			print '<script>'.$html.'</script>';
+			if(strpos($html,'class="acstyle"'))print "AC";
+			else if(strpos($html,'color: #666666; font-weight: bold;'))print "Tried";
+			else if(strpos($html,'color: #666666'))print "";
 			else print "ERR!!";
 		}
 		else print '<td>N/A</td>';
@@ -54,7 +55,7 @@ foreach ($db->query($query) as $row)
 	print '<td style="border-right-width:2px">'.$row['name'].'</td>';
 	print '<td>'.$row['tojid'].'</td>';
 	print '<td>'.$row['uvaid'].'</td>';
-	print '<td style="border-right-width:2px">'.$row['zjacct'].'</td>';
+	print '<td style="border-right-width:2px"><a href="http://zerojudge.tw/UserStatistic?account='.$row['zjacct'].'" target="_blank">'.$row['zjacct'].'</a></td>';
 	zj($problemlist,$row['zjacct']);
 	print '</tr>';
 }
