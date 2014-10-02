@@ -1,6 +1,8 @@
 <?php
 ini_set("display_errors", "Off");
 $url=urldecode($_SERVER['QUERY_STRING']);
+if($url!="train"&&$url!="basic"&&$url!="adv")
+	exit('<a href="?train">培訓題單</a> <br/> <a href="?basic">基礎組</a> <br/> <a href="?adv">基礎組</a>');
 $db=new PDO("mysql:host=localhost;dbname=xiplus_problem;charset=utf8", "xiplus_problem", "problemlist");
 ?>
 <!DOCTYPE>
