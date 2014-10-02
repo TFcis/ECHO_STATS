@@ -69,10 +69,10 @@
     } else {
         $last_update_t = file_get_contents('./cache/prev_uptd');
         $dt = (time() - (int)$last_update_t);
-        echo 'LAST UPDATE: '.$last_update_t.'<br>';
-        echo 'TIME INTVRL: '.$dt.'<br>';
+        //echo 'LAST UPDATE: '.$last_update_t.'<br>';
+        echo 'LAST UPDATE: '.$dt.' CYCLES AGO<br>';
         
-        if($dt < 60){
+        if($dt < 512){
             echo 'time interval limit('.$dt.')<br>';   
         } else {
             echo 'update triggered.<br>';
@@ -119,18 +119,24 @@
                 
                 $filename = './cache/'.$TOJid[$i].'.dat';
                 $cache_raw = file_get_contents($filename);
-
-                unset($cache);
-                $cache = explode(',', $cache_raw);
-
-                for($j = 0; $j < $probcount; ++$j){
-                    if ($cache[$j] == 1){
-                        echo '<td class = "AC">AC</td>';
-                    } else if ($cache[$j] == 0) {
-                        echo '<td class = "NA">N/A</td>';
-                    }else if ($cache[$j] == -1) {
-                        echo '<td class = "WA">WA</td>';
+                if(!$cache_raw){
+                    //file probably in use, hold
+                    echo '<td class = "update" colspan = "'.$probcount.'">updating...</td>';
+                } else {
+                    
+                    unset($cache);
+                    $cache = explode(',', $cache_raw);
+    
+                    for($j = 0; $j < $probcount; ++$j){
+                        if ($cache[$j] == 1){
+                            echo '<td class = "AC">AC</td>';
+                        } else if ($cache[$j] == 0) {
+                            echo '<td class = "NA">N/A</td>';
+                        }else if ($cache[$j] == -1) {
+                            echo '<td class = "WA">WA</td>';
+                        }
                     }
+                
                 }
 
                 echo '</tr>';
