@@ -1,0 +1,29 @@
+html, body{
+    font-family: 'Lato', sans;
+    
+    color: #ffffff;
+    background-color: #222222;
+}
+
+table {
+    border-collapse: collapse;
+    border: 1px solid #ffffff;
+}
+
+td {
+    text-align: right;
+    
+    padding: 4px;
+    width: 50px;
+    border: 1px solid #ffffff;
+}
+
+.AC {
+    color: #00cc00;
+}
+.WA {
+    color: #cc0000;
+}
+.NA {
+    color: #666666;
+}
