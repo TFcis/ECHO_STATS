@@ -1,8 +1,5 @@
 <?php
 ini_set("display_errors", "Off");
-$url=urldecode($_SERVER['QUERY_STRING']);
-if($url!="train"&&$url!="basic"&&$url!="adv")
-	exit('<a href="?train">培訓題單</a> <br/> <a href="?basic">基礎組</a> <br/> <a href="?adv">基礎組</a>');
 $db=new PDO("mysql:host=localhost;dbname=xiplus_problem;charset=utf8", "xiplus_problem", "problemlist");
 ?>
 <!DOCTYPE>
@@ -12,6 +9,11 @@ $db=new PDO("mysql:host=localhost;dbname=xiplus_problem;charset=utf8", "xiplus_p
 	<meta charset="UTF-8" name="viewport" content="width=device-width,user-scalable=yes">
 </head>
 <body>
+<?php
+$url=urldecode($_SERVER['QUERY_STRING']);
+if($url!="train"&&$url!="basic"&&$url!="adv")
+	exit('<a href="?train">培訓題單</a> <br/> <a href="?basic">基礎組</a> <br/> <a href="?adv">進階組</a>');
+?>
 	<center>
 	<h2>題單</h2>
 	<table class=MsoTableGrid border=1 cellpadding=3 style='border-collapse:collapse;border:none'>
