@@ -71,7 +71,7 @@
     $status_string = '';
 
     if(file_exists('./cache/work_flag')){
-        $status_string .= '<br>update tasks pending...';
+        $status_string .= '<br>update in progress...';
         
     } else {
         $last_update_t = file_get_contents('./cache/prev_uptd');
@@ -82,7 +82,7 @@
         if($dt < 20){
             $status_string .= 'time interval limit('.$dt.')<br>';   
         } else {
-            $status_string .= '<br>update triggered.<br>';
+            $status_string .= 'update triggered.<br>';
             exec("php proc.php > /dev/null &");
         }
     }
@@ -105,13 +105,14 @@
     <center style = "height: 100%">
     <div id = "container">
     <div id = "banner" style = "position: relative">
-        <div style = "position: absolute; bottom: 4px; right: 4px">
+        <div style = "position: absolute; bottom: 28px; right: 16px">
             <h1>SOLSTATS V 0.1</h1>
             <div style = "color: #444444"><?php echo $status_string; ?></div>
         </div>
     </div>
     
     <div id = "page">
+    <hr>
     <!--UNITS -->
     <?php
         $stats = array(array());
@@ -159,6 +160,14 @@
     ?>
 
     <?php
+    /*
+    $AC = '&#x26AB;';
+    $WA = '&#x26AB;';
+    $NA = '&#x26AB;';
+    */
+    $AC = '&#x25CF;';
+    $WA = '&#x25CF;';
+    $NA = '&#x25CF;';
     $groupnum = 3;
     for($t = 0; $t < $groupnum; ++$t){
         
@@ -185,13 +194,13 @@
                 if($probgroup[$j] == $group[$i]){
                     if ($stats[$i][$j] == 1){
                         //echo '<td class = "AC">'.$stats[$i][$j].'1</td>';
-                        echo '<td class = "AC">AC</td>';
+                        echo '<td class = "AC">'.$AC.'</td>';
                     } else if ($stats[$i][$j] == 0) {
                         //echo '<td class = "NA">'.$stats[$i][$j].'0</td>';
-                        echo '<td class = "NA">N/A</td>';
+                        echo '<td class = "NA">'.$NA.'</td>';
                     } else if ($stats[$i][$j] == -1) {
                         //echo '<td class = "WA">'.$stats[$i][$j].'-</td>';
-                        echo '<td class = "WA">WA</td>';
+                        echo '<td class = "WA">'.$WA.'</td>';
                     }
                 }
                 }

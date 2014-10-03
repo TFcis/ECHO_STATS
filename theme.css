@@ -48,20 +48,22 @@ hr {
     text-align: right;
     
     height: 20%;
-    background-color: #202020;
+    background-color: #1b1b1b;
 }
 
 .AC {
-    font-weight: 900;
+    text-align: right;
     color: #00cc00;
 }
 .WA {
-    font-weight: 900;
+    text-align: right;
     color: #cc0000;
 }
 .NA {
+    text-align: right;
     color: #666666;
 }
 .update {
+    text-align: right;
     color: #888888;
 }
