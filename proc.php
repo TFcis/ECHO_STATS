@@ -58,23 +58,58 @@
         
         while($n = fscanf($namelist, "%s\t%d\t%d\t%s\n")){
             $names[$namecount] = $n[0];
-            $TOJid[$namecount] = $n[1];
-            $UVAid[$namecount] = $n[2];
+            $TOJid[$namecount] = (int)$n[1];
+            $UVAid[$namecount] = (int)$n[2];
             $ZJ_id[$namecount] = $n[3];
-            
+            /*
             $filename = './cache/'.$n[1].'.dat';
             if(!file_exists($file)){
                 //cho 'create file';
                 $file = fopen($filename, 'w');
+                fclose($file);
                 //if($file){echo 'ok';}
             }
-
+            */
             ++$namecount;
         }
         fclose($namelist);
         
     } else {
         //THROW ERROR
+    }
+
+    $TOJstats = [];
+    function getTOJStatus($probs, $uid){
+        global $TOJstats;
+        
+        $data = array(
+                'reqtype' => 'AC',
+                'acct_id' => $uid
+            );
+            
+        $context = array();
+    	$context['http'] = array (
+    		'timeout'   => 60,
+    		'method'    => 'POST',
+    		'content'   => http_build_query($data, '', '&'),
+    	);
+        
+        $response = file_get_contents('http://210.70.137.215/oj/be/api', false, stream_context_create($context));
+        
+        //echo $uid.'TOJ: ';
+
+        $response = substr($response, 8, -2);
+        $AClist = explode(',', $response);
+        foreach($probs as $p){
+            if (in_array($p, $AClist)){
+                //echo '1,';
+                $TOJstats[] = 1;
+            } else {
+                //echo '0,';
+                $TOJstats[] = 0;  
+            }
+        }
+
     }
 
     $UVAstats = [];    
@@ -163,33 +198,13 @@ for ($i = 0; $i < $namecount; ++$i){
     unset($cache);
     $cache[] = explode(',', $cache_raw);
     
-    //echo '<tr>';
-    //echo '<td>'.$names[$i].'</td>';//<td>'.$TOJid[$i].'</td><td>'.$UVAid[$i].'</td><td>'.$ZJ_id[$i].'</td>';
-    
     unset($TOJstats);                
     unset($UVAstats);
     unset($ZJ_stats);
 
+    getTOJstatus($TOJproblist, $TOJid[$i]);
     getUVaStatus($UVAproblist, $UVAid[$i]);
     getZJstatus($ZJ_problist, $ZJ_id[$i]);
-    
-    
-    /*
-    echo 'ZJ: ';
-    foreach($ZJ_stats as $i){
-        echo ' '.$i;
-    }
-    echo '<br>';
-    
-    echo 'UVA: ';
-    foreach($UVAstats as $i){
-        echo ' '.$i;
-    }
-    echo '<br>';
-    */
-    
-    
-    
     
     $TOJp = 0;
     $UVAp = 0;
@@ -201,7 +216,7 @@ for ($i = 0; $i < $namecount; ++$i){
         if($cache[$j] == 1) {
             //AC, do nothing
         } else if($type[$j] == 'TOJ'){
-            $cache[$j] = 0;
+            $cache[$j] = $TOJstats[$TOJp];
             //$res = $TOJstats[$TOJp];
             ++$TOJp;
             
@@ -217,10 +232,11 @@ for ($i = 0; $i < $namecount; ++$i){
             //THROW ERROR
         }
     }
-    $file = fopen($filename, 'w');
+
     $update = implode(',', $cache);
     echo $update.'<br>';
     
+    $file = fopen($filename, 'w');
     fwrite($file, $update);
     fclose($file);
             

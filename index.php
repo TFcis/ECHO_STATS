@@ -72,7 +72,7 @@
         //echo 'LAST UPDATE: '.$last_update_t.'<br>';
         echo 'LAST UPDATE: '.$dt.' CYCLES AGO<br>';
         
-        if($dt < 512){
+        if($dt < 20){
             echo 'time interval limit('.$dt.')<br>';   
         } else {
             echo 'update triggered.<br>';
@@ -94,7 +94,7 @@
     
 </head>
 <body>
-
+    SOLSTATS V 0.1
     <div>
     <!--DATA DISPLY -->
     <div>
@@ -118,27 +118,34 @@
                 echo '<td>'.$names[$i].'</td>';
                 
                 $filename = './cache/'.$TOJid[$i].'.dat';
-                $cache_raw = file_get_contents($filename);
-                if(!$cache_raw){
-                    //file probably in use, hold
-                    echo '<td class = "update" colspan = "'.$probcount.'">updating...</td>';
+                if(!file_exists($filename)){
+                    //no cached data
+                    echo '<td class = "update" colspan = "'.$probcount.'">pending...</td>';
+                    
                 } else {
                     
-                    unset($cache);
-                    $cache = explode(',', $cache_raw);
-    
-                    for($j = 0; $j < $probcount; ++$j){
-                        if ($cache[$j] == 1){
-                            echo '<td class = "AC">AC</td>';
-                        } else if ($cache[$j] == 0) {
-                            echo '<td class = "NA">N/A</td>';
-                        }else if ($cache[$j] == -1) {
-                            echo '<td class = "WA">WA</td>';
+                    $cache_raw = file_get_contents($filename);
+                    if($cache_raw === false){
+                        //file probably in use, hold
+                        echo '<td class = "update" colspan = "'.$probcount.'">!fileReadError</td>';
+                    } else {
+                        
+                        unset($cache);
+                        $cache = explode(',', $cache_raw);
+        
+                        for($j = 0; $j < $probcount; ++$j){
+                            if ($cache[$j] == 1){
+                                echo '<td class = "AC">AC</td>';
+                            } else if ($cache[$j] == 0) {
+                                echo '<td class = "NA">N/A</td>';
+                            }else if ($cache[$j] == -1) {
+                                echo '<td class = "WA">WA</td>';
+                            }
                         }
+                    
                     }
-                
-                }
 
+                }
                 echo '</tr>';
         }
     
