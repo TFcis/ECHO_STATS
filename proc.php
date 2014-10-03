@@ -8,31 +8,39 @@
     $index = [];
     
     $TOJproblist = [];
+    //$TOJgroups = [];
+    
     $UVAproblist = [];
+    //$UVAgroups = [];
+    
     $ZJ_problist = [];
+    //$ZJ_groups = [];
     
     $probcount = 0;
     
     if($problist){
-        while($n = fscanf($problist, "%s\t%s\n")){
+        while($n = fscanf($problist, "%d\t%s\t%s\n")){
             
-            if(!$n[0] == 'ZJ'){
-                $n[1] = (int)$n[1];
+            if(!$n[1] == 'ZJ'){
+                $n[2] = (int)$n[2];
             }
             
-            if($n[0] == 'UVa'){
-                $UVAproblist[] = $n[1];
+            if($n[1] == 'UVa'){
+                //$UVAgroups[] = $n[0];
+                $UVAproblist[] = $n[2];
                 
-            } else if ($n[0] == 'TOJ') {
-                $TOJproblist[] = $n[1];
+            } else if ($n[1] == 'TOJ') {
+                //$TOJgroups[] = $n[0];
+                $TOJproblist[] = $n[2];
                 
-            } else if ($n[0] == 'ZJ') { 
-                $ZJ_problist[] = $n[1];
+            } else if ($n[1] == 'ZJ') {
+                //$ZJ_groups[] = $n[0];
+                $ZJ_problist[] = $n[2];
                 
             }
             
-            $type[$probcount] = $n[0];
-            $index[$probcount] =$n[1];
+            $type[$probcount] = $n[1];
+            $index[$probcount] =$n[2];
 
             ++$probcount;
         
@@ -56,11 +64,12 @@
     
     if($namelist){
         
-        while($n = fscanf($namelist, "%s\t%d\t%d\t%s\n")){
-            $names[$namecount] = $n[0];
-            $TOJid[$namecount] = (int)$n[1];
-            $UVAid[$namecount] = (int)$n[2];
-            $ZJ_id[$namecount] = $n[3];
+        while($n = fscanf($namelist, "%d\t%s\t%d\t%d\t%s\n")){
+            //$group[$namecount] = (int)$n[0];
+            $names[$namecount] = $n[1];
+            $TOJid[$namecount] = (int)$n[2];
+            $UVAid[$namecount] = (int)$n[3];
+            $ZJ_id[$namecount] = $n[4];
             /*
             $filename = './cache/'.$n[1].'.dat';
             if(!file_exists($file)){

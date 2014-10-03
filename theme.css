@@ -1,13 +1,17 @@
 html, body{
+    margin: 0;
+    padding: 0;
+    
+    height: 100%;
     font-family: 'Lato', sans;
     
     color: #ffffff;
-    background-color: #222222;
+    background-color: #111111;
 }
 
 table {
+    margin: 16px;
     border-collapse: collapse;
-    border: 1px solid #ffffff;
 }
 
 td {
@@ -15,13 +19,44 @@ td {
     
     padding: 4px;
     width: 50px;
-    border: 1px solid #ffffff;
+}
+
+h1{
+    margin: 0;
+    padding: 0;
+    
+    font-size: 44px;
+    font-weight: 900;
+}
+
+hr {
+    border: 1px solid #333333;
+}
+
+#container{
+    text-align: left;
+    
+    height: 100%;
+    background-color: #202020;
+    width: 920px;
+    
+    border-left: 8px solid #141414;    
+    border-right: 8px solid #141414;
+}
+
+#banner{
+    text-align: right;
+    
+    height: 20%;
+    background-color: #202020;
 }
 
 .AC {
+    font-weight: 900;
     color: #00cc00;
 }
 .WA {
+    font-weight: 900;
     color: #cc0000;
 }
 .NA {
