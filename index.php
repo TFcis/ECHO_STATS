@@ -83,7 +83,11 @@
 			$status_string .= 'time interval limit('.$dt.')<br>';   
 		} else {
 			$status_string .= 'update triggered.<br>';
-			exec("php proc.php > /dev/null &");
+			if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+				exec("php proc.php");
+			} else {
+				exec("php proc.php > /dev/null &");
+			}
 		}
 	}
 
