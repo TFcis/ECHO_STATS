@@ -145,7 +145,8 @@
 		$subs = explode('],[', $raw_data);
 		
 		for($i = 0; $i < count($subs); ++$i){
-			$subs[$i] = explode(',', $subs[$i])[2];
+			$temp = explode(',', $subs[$i]);
+			$subs[$i] = $temp[2];
 			if ($subs[$i] == '90'){	 //........................AC
 				return 1;
 			}
