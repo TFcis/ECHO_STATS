@@ -4,17 +4,17 @@
 
 	$problist = fopen('./dat/problemlist.dat', 'r');
 	
-	$type = [];
-	$index = [];
+	$type = Array();
+	$index = Array();
 	
-	$TOJproblist = [];
-	//$TOJgroups = [];
+	$TOJproblist = Array();
+	//$TOJgroups = Array();
 	
-	$UVAproblist = [];
-	//$UVAgroups = [];
+	$UVAproblist = Array();
+	//$UVAgroups = Array();
 	
-	$ZJ_problist = [];
-	//$ZJ_groups = [];
+	$ZJ_problist = Array();
+	//$ZJ_groups = Array();
 	
 	$probcount = 0;
 	
@@ -55,10 +55,10 @@
 	//LOAD USER DATA
 	$namelist = fopen('./dat/namelist.dat', 'r');
 	
-	$names = [];
-	$TOJid = [];
-	$UVAid = [];
-	$ZJ_id = [];
+	$names = Array();
+	$TOJid = Array();
+	$UVAid = Array();
+	$ZJ_id = Array();
 	
 	$namecount = 0;
 	
@@ -87,7 +87,7 @@
 		//THROW ERROR
 	}
 
-	$TOJstats = [];
+	$TOJstats = Array();
 	function getTOJStatus($probs, $uid){
 		global $TOJstats;
 		
@@ -121,7 +121,7 @@
 
 	}
 
-	$UVAstats = [];	
+	$UVAstats = Array();	
 	function getUVaStatus($probs, $uid){
 		global $UVAstats;
 		foreach($probs as $p){
@@ -159,7 +159,7 @@
 	}
 	
 	
-	$ZJ_stats = [];
+	$ZJ_stats = Array();
 	
 	function getZJstatus($prom,$ZJID){
 	global $ZJ_stats;
