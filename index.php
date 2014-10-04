@@ -1,72 +1,73 @@
 <!DOCTYPE HTML>
 <?php
 
-    //LOAD PROBLEM LIST DATA
-    $problist = fopen('./dat/problemlist.dat', 'r');
-    
-    $type = [];
-    $index = [];
+	//LOAD PROBLEM LIST DATA
+	$problist = fopen('./dat/problemlist.dat', 'r');
+	
+	$type = Array();
+	$index = Array();
 
-    $probgroup = [];
+	$probgroup = Array();
 
-    $probcount = 0;
-    
-    if($problist){
-        while($n = fscanf($problist, "%d\t%s\t%s\n")){
-            
-            if(!$n[1] == 'ZJ'){
-                $n[2] = (int)$n[2];
-            }
-            
-            $probgroup[$probcount] = $n[0];
-            $type[$probcount] = $n[1];
-            $index[$probcount] = $n[2];
+	$probcount = 0;
+	
+	if($problist){
+		while($n = fscanf($problist, "%d\t%s\t%s\n")){
+			
+			if(!$n[1] == 'ZJ'){
+				$n[2] = (int)$n[2];
+			}
+			
+			$probgroup[$probcount] = $n[0];
+			$type[$probcount] = $n[1];
+			$index[$probcount] = $n[2];
 
-            ++$probcount;
-        
-        }
-        fclose($problist);
-    } else {
-        //THROW ERROR
-    }
+			++$probcount;
+		
+		}
+		fclose($problist);
+	} else {
+		//THROW ERROR
+	}
 
 
 
-    //LOAD USER DATA
-    $namelist = fopen('./dat/namelist.dat', 'r');
-    
-    $names = [];
-    $TOJid = [];
-    $UVAid = [];
-    $ZJ_id = [];
-    
-    $group = [];
-    
-    $namecount = 0;
-    
-    if($namelist){
-        
-        while($n = fscanf($namelist, "%d\t%s\t%d\t%d\t%s\n")){
-            $group[$namecount] = (int)$n[0];
-            $names[$namecount] = $n[1];
-            $TOJid[$namecount] = (int)$n[2];
-            $UVAid[$namecount] = (int)$n[3];
-            $ZJ_id[$namecount] = $n[4];
-            /*
-            $filename = './cache/'.$n[1].'.dat';
-            if(!file_exists($file)){
-                //cho 'create file';
-                $file = fopen($filename, 'w');
-                //if($file){echo 'ok';}
-            }
-            */
-            ++$namecount;
-        }
-        fclose($namelist);
-        
-    } else {
-        //THROW ERROR
-    }
+	//LOAD USER DATA
+	$namelist = fopen('./dat/namelist.dat', 'r');
+	
+	$names = Array();
+	$TOJid = Array();
+	$UVAid = Array();
+	$ZJ_id = Array();
+	
+	$group = Array();
+	
+	$namecount = 0;
+	
+	if($namelist){
+		
+		while($n = fscanf($namelist, "%d\t%s\t%d\t%d\t%s\n")){
+			$group[$namecount] = (int)$n[0];
+			$names[$namecount] = $n[1];
+			$TOJid[$namecount] = (int)$n[2];
+			$UVAid[$namecount] = (int)$n[3];
+			$ZJ_id[$namecount] = $n[4];
+			/*
+			$filename = './cache/'.$n[1].'.dat';
+			if(!file_exists($filename)){
+				//echo 'create file';
+				$file = fopen($filename, 'w');
+				fclose($file);
+				//if($file){echo 'ok';}
+			}
+			*/
+			++$namecount;
+		}
+		fclose($namelist);
+		
+	} else {
+		//THROW ERROR
+	}
 
     $status_string = '';
     $halt_flag = false;
@@ -86,7 +87,6 @@
         } else {
             $status_string .= 'update triggered.<br>';
             //exec("php proc.php > /dev/null &");
-            //file_get_contents('proc.php');
         }
     }
 
@@ -122,125 +122,125 @@
     </script>
 </head>
 <body>
-    <!--DATA DISPLY -->
-    <center style = "height: 100%">
-    <div id = "container">
-    <div id = "banner" style = "position: relative">
-        <div style = "position: absolute; bottom: 28px; right: 16px">
-            <h1>SOLSTATS V 0.1</h1>
-            <div style = "color: #444444"><?php echo $status_string; ?></div>
-        </div>
-    </div>
-    
-    <div id = "page">
-    <hr>
-    <!--UNITS -->
-    <?php
-        $stats = array(array());
-        for ($i = 0; $i < $namecount; ++$i){
-        
-                //echo '<tr><td>'.$names[$i].'</td>';
-                
-                $filename = './cache/'.$TOJid[$i].'.dat';
-                if(!file_exists($filename)){
-                    //no cached data
-                    $stats[$i][0] = 999;
-                    //echo '<td class = "update" colspan = "'.$probcount.'">pending...</td>';
-                    
-                } else {
-                    
-                    $cache_raw = file_get_contents($filename);
-                    if($cache_raw === false){
-                        //file probably in use, hold
-                        $stats[$i][0] = 999;
-                        //echo '<td class = "update" colspan = "'.$probcount.'">!fileReadError</td>';
-                    } else {
-                        
-                        unset($cache);
-                        $cache = explode(',', $cache_raw);
-        
-                        for($j = 0; $j < $probcount; ++$j){
-                            if ($cache[$j] == 1){
-                                $stats[$i][] = 1;
-                                //echo '<td class = "AC">AC</td>';
-                            } else if ($cache[$j] == 0) {
-                                $stats[$i][] = 0;
-                                //echo '<td class = "NA">N/A</td>';
-                            }else if ($cache[$j] == -1) {
-                                $stats[$i][] = -1;
-                                //echo '<td class = "WA">WA</td>';
-                            }
-                        }
-                    
-                    }
+	<!--DATA DISPLY -->
+	<center style = "height: 100%">
+	<div id = "container">
+	<div id = "banner" style = "position: relative">
+		<div style = "position: absolute; bottom: 28px; right: 16px">
+			<h1>SOLSTATS V 0.1</h1>
+			<div style = "color: #444444"><?php echo $status_string; ?></div>
+		</div>
+	</div>
+	
+	<div id = "page">
+	<hr>
+	<!--UNITS -->
+	<?php
+		$stats = array(array());
+		for ($i = 0; $i < $namecount; ++$i){
+		
+				//echo '<tr><td>'.$names[$i].'</td>';
+				
+				$filename = './cache/'.$TOJid[$i].'.dat';
+				if(!file_exists($filename)){
+					//no cached data
+					$stats[$i][0] = 999;
+					//echo '<td class = "update" colspan = "'.$probcount.'">pending...</td>';
+					
+				} else {
+					
+					$cache_raw = file_get_contents($filename);
+					if($cache_raw === false){
+						//file probably in use, hold
+						$stats[$i][0] = 999;
+						//echo '<td class = "update" colspan = "'.$probcount.'">!fileReadError</td>';
+					} else {
+						
+						unset($cache);
+						$cache = explode(',', $cache_raw);
+		
+						for($j = 0; $j < $probcount; ++$j){
+							if ($cache[$j] == 1){
+								$stats[$i][] = 1;
+								//echo '<td class = "AC">AC</td>';
+							} else if ($cache[$j] == 0) {
+								$stats[$i][] = 0;
+								//echo '<td class = "NA">N/A</td>';
+							}else if ($cache[$j] == -1) {
+								$stats[$i][] = -1;
+								//echo '<td class = "WA">WA</td>';
+							}
+						}
+					
+					}
 
-                }
-                //echo '</tr>';
-        }
-    
-    ?>
+				}
+				//echo '</tr>';
+		}
+	
+	?>
 
-    <?php
-    /*
-    $AC = '&#x26AB;';
-    $WA = '&#x26AB;';
-    $NA = '&#x26AB;';
-    */
-    $AC = '&#x25CF;';
-    $WA = '&#x25CF;';
-    $NA = '&#x25CF;';
-    $groupnum = 3;
-    for($t = 0; $t < $groupnum; ++$t){
-        
-        echo '<table><tr><td>NAME</td>';
-        
-        for($i = 0; $i < $probcount; ++$i){
-            if($probgroup[$i] == $t){ echo '<td>'.$type[$i].' '.$index[$i].'</td>'; }
-        }
-            
-        echo '</tr>';
-        
-        
-        for ($i = 0; $i < $namecount; ++$i){
-        if($group[$i] == $t){        
-            echo '<tr><td>'.$names[$i].'</td>';
-            
-            if($stats[$i][0] == 999){
-                
-                echo '<td class = "update">pending...</td>';
-            
-            } else {
-                
-                for($j = 0; $j < $probcount; ++$j){
-                if($probgroup[$j] == $group[$i]){
-                    if ($stats[$i][$j] == 1){
-                        //echo '<td class = "AC">'.$stats[$i][$j].'1</td>';
-                        echo '<td class = "AC">'.$AC.'</td>';
-                    } else if ($stats[$i][$j] == 0) {
-                        //echo '<td class = "NA">'.$stats[$i][$j].'0</td>';
-                        echo '<td class = "NA">'.$NA.'</td>';
-                    } else if ($stats[$i][$j] == -1) {
-                        //echo '<td class = "WA">'.$stats[$i][$j].'-</td>';
-                        echo '<td class = "WA">'.$WA.'</td>';
-                    }
-                }
-                }
-            
-            }
-                        
-            echo '</tr>';
-            
-        }
-        }
-        
-        echo '</table><hr>';
-    
-    } ?>
-    
-    <!--END UNITS -->
-    </div>
+	<?php
+	/*
+	$AC = '&#x26AB;';
+	$WA = '&#x26AB;';
+	$NA = '&#x26AB;';
+	*/
+	$AC = '&#x25CF;';
+	$WA = '&#x25CF;';
+	$NA = '&#x25CF;';
+	$groupnum = 3;
+	for($t = 0; $t < $groupnum; ++$t){
+		
+		echo '<table><tr><td>NAME</td>';
+		
+		for($i = 0; $i < $probcount; ++$i){
+			if($probgroup[$i] == $t){ echo '<td>'.$type[$i].' '.$index[$i].'</td>'; }
+		}
+			
+		echo '</tr>';
+		
+		
+		for ($i = 0; $i < $namecount; ++$i){
+		if($group[$i] == $t){		
+			echo '<tr><td>'.$names[$i].'</td>';
+			
+			if($stats[$i][0] == 999){
+				
+				echo '<td class = "update">pending...</td>';
+			
+			} else {
+				
+				for($j = 0; $j < $probcount; ++$j){
+				if($probgroup[$j] == $group[$i]){
+					if ($stats[$i][$j] == 1){
+						//echo '<td class = "AC">'.$stats[$i][$j].'1</td>';
+						echo '<td class = "AC">'.$AC.'</td>';
+					} else if ($stats[$i][$j] == 0) {
+						//echo '<td class = "NA">'.$stats[$i][$j].'0</td>';
+						echo '<td class = "NA">'.$NA.'</td>';
+					} else if ($stats[$i][$j] == -1) {
+						//echo '<td class = "WA">'.$stats[$i][$j].'-</td>';
+						echo '<td class = "WA">'.$WA.'</td>';
+					}
+				}
+				}
+			
+			}
+						
+			echo '</tr>';
+			
+		}
+		}
+		
+		echo '</table><hr>';
+	
+	} ?>
+	
+	<!--END UNITS -->
+	</div>
 
-    </div>
-    </center>
+	</div>
+	</center>
 </body>
 </html>
