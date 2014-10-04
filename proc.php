@@ -70,15 +70,13 @@
 			$TOJid[$namecount] = (int)$n[2];
 			$UVAid[$namecount] = (int)$n[3];
 			$ZJ_id[$namecount] = $n[4];
-			/*
-			$filename = './cache/'.$n[1].'.dat';
-			if(!file_exists($file)){
-				//cho 'create file';
+			$filename = './cache/'.$n[2].'.dat';
+			if(!file_exists($filename)){
+				echo 'create file<br/>';
 				$file = fopen($filename, 'w');
 				fclose($file);
 				//if($file){echo 'ok';}
 			}
-			*/
 			++$namecount;
 		}
 		fclose($namelist);
