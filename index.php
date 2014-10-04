@@ -4,10 +4,10 @@
     //LOAD PROBLEM LIST DATA
     $problist = fopen('./dat/problemlist.dat', 'r');
     
-    $type = [];
-    $index = [];
+    $type = Array();
+    $index = Array();
 
-    $probgroup = [];
+    $probgroup = Array();
 
     $probcount = 0;
     
@@ -35,12 +35,12 @@
     //LOAD USER DATA
     $namelist = fopen('./dat/namelist.dat', 'r');
     
-    $names = [];
-    $TOJid = [];
-    $UVAid = [];
-    $ZJ_id = [];
+    $names = Array();
+    $TOJid = Array();
+    $UVAid = Array();
+    $ZJ_id = Array();
     
-    $group = [];
+    $group = Array();
     
     $namecount = 0;
     
