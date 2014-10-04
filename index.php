@@ -105,21 +105,9 @@
     <link href = 'theme.css' rel = 'stylesheet' type = 'text/css' />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>
-        var halt_flag = <?php if($halt_flag) echo 'true'; else echo 'false'; ?>;
-        if(!halt_flag){
-        
-            $.ajax({
-            type: "GET",
-            url: 'proc.php',
-            data: {},
-            success: function (json) {
-                //process the json here.
-            }
-            });
-            
-        } else {
-            //console.log('halt');
-        }
+		<?php if(!$halt_flag) {?>
+			$.get('proc.php');
+		<?php } ?>
     </script>
 	
 </head>
