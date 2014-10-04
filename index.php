@@ -73,6 +73,7 @@
 
 	if(file_exists('./cache/work_flag')){
 		$status_string .= '<br>update in progress...';
+        $halt_flag = 1;
 		
 	} else {
 		if(!file_exists('./cache/prev_uptd'))
@@ -83,14 +84,11 @@
 		$status_string .= 'LAST UPDATE: '.$dt.' CYCLES AGO<br>';
 		
 		if($dt < 20){
-			$status_string .= 'time interval limit('.$dt.')<br>';   
+			$status_string .= 'time interval limit('.$dt.')<br>';
+            $halt_flag = 1;
 		} else {
 			$status_string .= 'update triggered.<br>';
-			if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-				exec("php proc.php");
-			} else {
-				exec("php proc.php > /dev/null &");
-			}
+			
 		}
 	}
 
@@ -101,10 +99,28 @@
 	<meta charset = 'utf-8' />
 	<title>SolStats fileIO ver.</title>
 	
-	<!-- Google Fonts: Lato -->
-	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
-	<!-- Theme -->
-	<link href = 'theme.css' rel = 'stylesheet' type = 'text/css' />
+    <!-- Google Fonts: Lato -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+    <!-- Theme -->
+    <link href = 'theme.css' rel = 'stylesheet' type = 'text/css' />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        var halt_flag = <?php if($halt_flag) echo 'true'; else echo 'false'; ?>;
+        if(!halt_flag){
+        
+            $.ajax({
+            type: "GET",
+            url: 'proc.php',
+            data: {},
+            success: function (json) {
+                //process the json here.
+            }
+            });
+            
+        } else {
+            //console.log('halt');
+        }
+    </script>
 	
 </head>
 <body>
