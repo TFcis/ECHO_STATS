@@ -54,9 +54,10 @@
 			$ZJ_id[$namecount] = $n[4];
 			/*
 			$filename = './cache/'.$n[1].'.dat';
-			if(!file_exists($file)){
-				//cho 'create file';
+			if(!file_exists($filename)){
+				//echo 'create file';
 				$file = fopen($filename, 'w');
+				fclose($file);
 				//if($file){echo 'ok';}
 			}
 			*/
@@ -74,6 +75,8 @@
 		$status_string .= '<br>update in progress...';
 		
 	} else {
+		if(!file_exists('./cache/prev_uptd'))
+			fclose(fopen('./cache/prev_uptd', 'w'));
 		$last_update_t = file_get_contents('./cache/prev_uptd');
 		$dt = (time() - (int)$last_update_t);
 		//echo 'LAST UPDATE: '.$last_update_t.'<br>';
