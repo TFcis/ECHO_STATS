@@ -70,13 +70,6 @@
 			$TOJid[$namecount] = (int)$n[2];
 			$UVAid[$namecount] = (int)$n[3];
 			$ZJ_id[$namecount] = $n[4];
-			$filename = './cache/'.$n[2].'.dat';
-			if(!file_exists($filename)){
-				echo 'create file<br/>';
-				$file = fopen($filename, 'w');
-				fclose($file);
-				//if($file){echo 'ok';}
-			}
 			++$namecount;
 		}
 		fclose($namelist);
@@ -201,7 +194,10 @@ for ($i = 0; $i < $namecount; ++$i){
 	echo '<br>LOG FOR '.$names[$i].'<br>';
 	$filename = './cache/'.$TOJid[$i].'.dat';
 	
-	$cache_raw = file_get_contents($filename);
+	if(file_exists($filename))
+		$cache_raw = file_get_contents($filename);
+	else
+		$cache_raw = '';
 	
 	unset($cache);
 	$cache[] = explode(',', $cache_raw);
