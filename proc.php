@@ -1,193 +1,88 @@
 <?php
-	//prevent overlapping processing tasks
-	$flag = fopen('./cache/work_flag', 'w');
+//prevent overlapping processing tasks
+$flag = fopen('./cache/work_flag', 'w');
 
-	$problist = fopen('./dat/problemlist.dat', 'r');
-	
-	$type = Array();
-	$index = Array();
-	
-	$TOJproblist = Array();
-	//$TOJgroups = Array();
-	
-	$UVAproblist = Array();
-	//$UVAgroups = Array();
-	
-	$ZJ_problist = Array();
-	//$ZJ_groups = Array();
-	
-	$probcount = 0;
-	
-	if($problist){
-		while($n = fscanf($problist, "%d\t%s\t%s\n")){
-			
-			if(!$n[1] == 'ZJ'){
-				$n[2] = (int)$n[2];
-			}
-			
-			if($n[1] == 'UVa'){
-				//$UVAgroups[] = $n[0];
-				$UVAproblist[] = $n[2];
-				
-			} else if ($n[1] == 'TOJ') {
-				//$TOJgroups[] = $n[0];
-				$TOJproblist[] = $n[2];
-				
-			} else if ($n[1] == 'ZJ') {
-				//$ZJ_groups[] = $n[0];
-				$ZJ_problist[] = $n[2];
-				
-			}
-			
-			$type[$probcount] = $n[1];
-			$index[$probcount] =$n[2];
+$problist = fopen('./dat/problemlist.dat', 'r');
 
-			++$probcount;
+$type = Array();
+$index = Array();
+
+$TOJproblist = Array();
+//$TOJgroups = Array();
+
+$UVAproblist = Array();
+//$UVAgroups = Array();
+
+$ZJ_problist = Array();
+//$ZJ_groups = Array();
+
+$probcount = 0;
+
+if($problist){
+	while($n = fscanf($problist, "%d\t%s\t%s\n")){
 		
+		if(!$n[1] == 'ZJ'){
+			$n[2] = (int)$n[2];
 		}
-		fclose($problist);
-	} else {
-		//THROW ERROR
-	}
-
-
-
-	//LOAD USER DATA
-	$namelist = fopen('./dat/namelist.dat', 'r');
-	
-	$names = Array();
-	$TOJid = Array();
-	$UVAid = Array();
-	$ZJ_id = Array();
-	
-	$namecount = 0;
-	
-	if($namelist){
 		
-		while($n = fscanf($namelist, "%d\t%s\t%d\t%d\t%s\n")){
-			//$group[$namecount] = (int)$n[0];
-			$names[$namecount] = $n[1];
-			$TOJid[$namecount] = (int)$n[2];
-			$UVAid[$namecount] = (int)$n[3];
-			$ZJ_id[$namecount] = $n[4];
-			++$namecount;
-		}
-		fclose($namelist);
-		
-	} else {
-		//THROW ERROR
-	}
-
-	$TOJstats = Array();
-	function getTOJStatus($probs, $uid){
-		global $TOJstats;
-		
-		$data = array(
-				'reqtype' => 'AC',
-				'acct_id' => $uid
-			);
+		if($n[1] == 'UVa'){
+			//$UVAgroups[] = $n[0];
+			$UVAproblist[] = $n[2];
 			
-		$context = array();
-		$context['http'] = array (
-			'timeout'   => 60,
-			'method'	=> 'POST',
-			'content'   => http_build_query($data, '', '&'),
-		);
-		
-		$response = file_get_contents('http://210.70.137.215/oj/be/api', false, stream_context_create($context));
-		
-		//echo $uid.'TOJ: ';
-
-		$response = substr($response, 8, -2);
-		$AClist = explode(',', $response);
-		foreach($probs as $p){
-			if (in_array($p, $AClist)){
-				//echo '1,';
-				$TOJstats[] = 1;
-			} else {
-				//echo '0,';
-				$TOJstats[] = 0;  
-			}
-		}
-
-	}
-
-	$UVAstats = Array();	
-	function getUVaStatus($probs, $uid){
-		global $UVAstats;
-		foreach($probs as $p){
-			$UVAstats[] = fetchprobUVa($p, $uid);
-		}
-	}
-	
-	function fetchprobUVa($pid, $uid){
-
-		$raw_data = file_get_contents('http://uhunt.felix-halim.net/api/subs-nums/'.$uid.'/'.$pid.'/0');
-		$raw_data = substr($raw_data, strpos($raw_data, '"subs":') + 9, -6);
-		
-		//echo $raw_data;
-		
-		$res = 0;
-		
-		if($raw_data == ''){			//........................N/A
-			return 0;
-		} else {
-		
-		$subs = explode('],[', $raw_data);
-		
-		for($i = 0; $i < count($subs); ++$i){
-			$temp = explode(',', $subs[$i]);
-			$subs[$i] = $temp[2];
-			if ($subs[$i] == '90'){	 //........................AC
-				return 1;
-			}
+		} else if ($n[1] == 'TOJ') {
+			//$TOJgroups[] = $n[0];
+			$TOJproblist[] = $n[2];
+			
+		} else if ($n[1] == 'ZJ') {
+			//$ZJ_groups[] = $n[0];
+			$ZJ_problist[] = $n[2];
 			
 		}
 		
-		return -1;                      //........................WA, etc.
-		
-		}
-		
+		$type[$probcount] = $n[1];
+		$index[$probcount] =$n[2];
+
+		++$probcount;
+	
 	}
-	
-	
-	$ZJ_stats = Array();
-	
-	function getZJstatus($prom,$ZJID){
-	global $ZJ_stats;
-		/*
-		$response=false;
-		$reloadtimes=0;
-		while($response==false&&$reloadtimes<=3){
-			$reloadtimes++;
-			$response=file_get_contents("http://zerojudge.tw/UserStatistic?account=".$ZJID);
-		}
-		*/
-		$response=file_get_contents("http://zerojudge.tw/UserStatistic?account=".$ZJID);
-		if($response){
-			foreach ($prom as $q){
-					$start=strpos($response,"?problemid=".$q);
-					$end=strpos($response,">".$q."</a>");
-					$html=substr($response,$start,$end-$start);
-					//print '<td>';
-					
-					if(strpos($html,'class="acstyle"')){
-						$ZJ_stats[] = 1;
-					} else if(strpos($html,'color: #666666; font-weight: bold;')){
-						$ZJ_stats[] = -1;
-					} else if(strpos($html,'color: #666666')) {
-						$ZJ_stats[] = 0;
-					} else {
-						//THROW ERROR
-					}
-			}
+	fclose($problist);
+} else {
+	//THROW ERROR
+}
 
-		} else {
-			//THROW ERROR
-		}
+
+
+//LOAD USER DATA
+$namelist = fopen('./dat/namelist.dat', 'r');
+
+$names = Array();
+$TOJid = Array();
+$UVAid = Array();
+$ZJ_id = Array();
+
+$namecount = 0;
+
+if($namelist){
+	
+	while($n = fscanf($namelist, "%d\t%s\t%d\t%d\t%s\n")){
+		//$group[$namecount] = (int)$n[0];
+		$names[$namecount] = $n[1];
+		$TOJid[$namecount] = (int)$n[2];
+		$UVAid[$namecount] = (int)$n[3];
+		$ZJ_id[$namecount] = $n[4];
+		++$namecount;
 	}
+	fclose($namelist);
+	
+} else {
+	//THROW ERROR
+}
 
 
+include 'fetchAPI.php';
+$TOJstats = Array();
+$UVAstats = Array();
+$ZJ_stats = Array();
 
 
 for ($i = 0; $i < $namecount; ++$i){
@@ -206,9 +101,9 @@ for ($i = 0; $i < $namecount; ++$i){
 	unset($UVAstats);
 	unset($ZJ_stats);
 
-	getTOJstatus($TOJproblist, $TOJid[$i]);
-	getUVaStatus($UVAproblist, $UVAid[$i]);
-	getZJstatus($ZJ_problist, $ZJ_id[$i]);
+	$TOJstats = getTOJstatus($TOJproblist, $TOJid[$i]);
+	$UVAstats = getUVaStatus($UVAproblist, $UVAid[$i]);
+	$ZJ_stats = getZJstatus($ZJ_problist, $ZJ_id[$i]);
 	
 	$TOJp = 0;
 	$UVAp = 0;
