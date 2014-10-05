@@ -74,11 +74,7 @@ function fetchprobUVa($pid, $uid){
 function getUVaStatus($probs, $uid){
 	$UVAstats = Array();
 	
-	$probs_csv = '';
-	foreach($probs as $p){
-		$probs_csv .= $p.',';
-	}
-	$probs_csv = substr($probs_csv, 0, strlen($probs_csv)-1);
+	$probs_csv = implode(',', $probs);
 	
 	$data = file_get_contents("http://uhunt.felix-halim.net/api/subs-nums/$uid/$probs_csv/0");
 	$data = json_decode($data, true);
