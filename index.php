@@ -1,11 +1,7 @@
 <!DOCTYPE HTML>
 <?php
 		//turn of error reporting (for the sake of user-end satisfaction?)
-		error_reporting(0); 
-		ini_set('display_errors', 0);
-
-
-        $raw_names = file_get_contents('./config/names.dat');
+		$raw_names = @file_get_contents('./config/names.dat');
 
         $name_data = explode(PHP_EOL, $raw_names);
         $name_map = array();
@@ -26,7 +22,7 @@
         
         
         //load task data
-        $raw_probs = file_get_contents('./config/probs.dat');
+        $raw_probs = @file_get_contents('./config/probs.dat');
 		
         $prob_data = explode(PHP_EOL, $raw_probs);
         
@@ -44,7 +40,7 @@
         $stats_data = array();
         foreach($name_data as $name){
         	$filename = './cache/'.$name['TOJid'].'.dat';
-        	$raw_stats = file_get_contents($filename);
+        	$raw_stats = @file_get_contents($filename);
 			if(!$raw_stats){
 				//pending...
 				$stats_data[$name['TOJid']] = -1;
@@ -57,7 +53,7 @@
 
 
 		//load group data
-		$raw_groups = file_get_contents('./config/groups.dat');
+		$raw_groups = @file_get_contents('./config/groups.dat');
 		if(substr($raw_groups, -1) == ';') $raw_groups = substr($raw_groups, 0, -1);
 		$groups = explode(';'.PHP_EOL, $raw_groups);
 		
@@ -79,7 +75,7 @@
 
 			$prev_updt = 0;
 			if(file_exists('./cache/prev_updt')){
-				$prev_updt = file_get_contents('./cache/prev_updt');
+				$prev_updt = @file_get_contents('./cache/prev_updt');
 			}
 			
 			$dt = time() - $prev_updt;
