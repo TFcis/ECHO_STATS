@@ -2,12 +2,12 @@
 <html>
 <head>
     <meta charset = 'utf-8'>
-    <link href='http://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet' type='text/css'>
     <link href = 'theme.css' rel = 'stylesheet' type = 'text/css'>
 <head>
 <body style = "padding-left: 16px;">
 	<pre style = "margin: 0;">
     <?php
+    	
     	echo '<br>: STATS PROCESSOR OPERATION LOG<br><br>';
     	
     	echo '...setting up update environment & flags...<br>';
@@ -26,13 +26,21 @@
   			exit();
   		}
   		
-  		echo '...erecting working flag...<br>';
-  		//create working flag
+
+  		if(file_exists('./cache/work_flag')){
+  			echo '...other update tasks pending. Abort.<br><br>';
+  			exit();
+  		}
+  		
   		$work_flag = fopen('./cache/work_flag', 'w');
+  		if(!$work_flag){
+  			echo 'FATAL ERROR: failed to create flag file. Check existence of ./config and grant write permission.<br><br>';
+  			exit();
+  		}
   		
-  		echo '...done!<br><br>';
-  		
-  		
+		echo '...done!<br><br>';
+
+
         echo '...initializing config files...<br>';
         //initialize files: problemlist
         if(!file_exists('./config/probs.dat')){
@@ -183,9 +191,7 @@
         echo '<br>';
         */
         echo '...done!<br><br>';
-        //echo '<br>';
 
-        
         
         
         //loop through namelist and update caches
@@ -274,14 +280,31 @@
 
         }
 		echo '...update complete!<br><br>';
+
+		echo '...logging update time & details...<br>';
         
+        $prev_updt = fopen('./cache/prev_updt', 'w');
+  		if(!$prev_updt){
+  			echo 'NOTICE: failed to record update time. Next page request will trigger an update regardless of the interval limit.<br>';
+  			exit();
+  			
+  		} else {
+  			fwrite($prev_updt, time());
+  			
+  		}
+  		echo '...done!<br><br>';
+  		
+  		
+  		echo '...cleaning up...<br>';
+  		
+  		fclose($prev_updt);
         
-        $tlog = fopen('./cache/prev_uptd', 'w');
-		fwrite($tlog, time());
-		fclose($tlog);
-		
-		fclose($work_flag);
+        fclose($work_flag);
         unlink('./cache/work_flag');
+    
+    	echo '...done!<br><br>';
+    	
+    	echo '<br>: END STATS PROCESSOR OPERATION LOG<br><br>';
     
     ?>
     </pre>

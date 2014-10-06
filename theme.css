@@ -15,12 +15,13 @@ html, body{
 
 #title{
 	height: 20%;
-	border-bottom: #444444;
+	border-bottom: 2px solid #333333;
 }
 
 #content{
 	padding: 0 40px;
 	color: #cccccc;
+	background-color: #0e0e0e;
 }
 
 h1 {

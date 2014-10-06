@@ -66,8 +66,7 @@
 		if($response === false) return false;
 		//echo $uid.'TOJ: ';
 	
-		$response = substr($response, 8, -2);
-		$AClist = explode(', ', $response);
+		$AClist = json_decode($response)->{"ac"};
 		foreach($probs as $p){
 			if (in_array($p, $AClist)){
 				$TOJstats .= 9;
