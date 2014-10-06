@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <?php
 		//turn of error reporting (for the sake of user-end satisfaction?)
-		error_reporting(0);
+		error_reporting(0); 
 		ini_set('display_errors', 0);
 
 
@@ -114,17 +114,27 @@
 </head>
 <body>
 	<div id = "title" style = "position: relative">
-		<div style = "position: absolute; bottom: 36px; left: 128px; text-align: right">
-		<h1><span style = "color: #999999">ECHO</span> STATS <span style = "color: #999999">;</h1>
+	<center>
+		<!--<div style = "position: absolute; bottom: 0; left: 128px; text-align: right">-->
+		<div style = "margin: 40px 0 0 0">
 		
-		<span style = "color: #666666;">
-		<?php
-		echo $status_string;
-		?>
-		</span>
+			<h1><span style = "color: #999999">ECHO</span> STATS <span style = "color: #999999">;</h1>
+			
+			<div style = "color: #666666;"><br>
+			<?php
+			echo $status_string;
+			?>
+			<br></div>
+			
+			<div style = "color: #999999; font-weight: 700">
+			| LOGIN | CREDITS | BUG |
+			</div>
 		
 		</div>
+	</center>
 	</div>
+	
+	
 	
 	<div id = "content">
 		<?php
@@ -133,9 +143,10 @@
 			
 			<br>
 			<h2><?php echo $group['index'].' : '.$group['label']; ?></h2>
+			<div class = 'table-wrapper'>
 			<table>
 			<?php
-				echo '<tr><td>NAME</td>';
+				echo '<tr><td class = "name_tag"></td>';
 				foreach($group['probs'] as $p){
 					echo '<td>'.$prob_data[$p]['judge'].' '.$prob_data[$p]['index'].'</td>';
 				}
@@ -143,7 +154,7 @@
 				
 				
 				foreach($group['names'] as $n){
-					echo '<tr><td>'.$name_data[$name_map[$n]]['name'].'</td>';	
+					echo '<tr><td class = "name_tag">'.$name_data[$name_map[$n]]['name'].'</td>';	
 					if ($stats_data[$n] == -1){
 						echo '<td class = "pend">pending...</td>';
 					} else {
@@ -168,12 +179,12 @@
 				
 			?>
 			</table>
+			</div>
 			<br>
 			<hr>
 		<?php
 			}
 		?>
 	</div>
-
 </body>
 </html>

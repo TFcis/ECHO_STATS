@@ -46,6 +46,14 @@ hr {
 	border: 1px solid #333333;
 }
 
+.table-wrapper {
+	width: 600px; 
+    /*overflow-x: scroll;*/
+    overflow-y: visible;
+    margin-left: 60px;
+
+}
+
 table {
 	border-collapse: collapse;
 }
@@ -53,8 +61,18 @@ table {
 td {
 	padding: 4px;
 	text-align: right;
-	width: 50px;
+	width: 40px;
 	/*border: 1px solid #333333;*/
+}
+
+.name_tag{
+	color: #ffffff;
+	font-weight: 700;
+	width: 80px;
+	
+	position: absolute; 
+    left: 0;
+    top: auto;
 }
 
 .AC {
