@@ -123,10 +123,11 @@
 			<br></div>
 			
 			<div style = "color: #999999; font-weight: 700; font-size: 18px">
-			<span class = "icon"><a href = 'http://google.com'>i</a></span> ⋅ 
-			<span class = "icon"><a href = 'http://google.com'>f</a></span> ⋅ 
-			<span class = "icon"><a href = 'http://google.com'>g</a></span> ⋅ 
-			<span class = "icon"><a href = 'http://google.com'>b</a></span>
+			<span class = "icon"><a href = 'http://google.com'>&#xe82c;</a></span> ⋅ <!-- FUNCTIONS -->
+			<span class = "icon"><a href = 'http://google.com'>&#xe823;</a></span> ⋅ <!-- CREDITS -->
+			<span class = "icon"><a href = 'http://google.com'>&#xe808;</a></span> ⋅ <!-- BOARD -->
+			<span class = "icon"><a href = 'http://google.com'>&#xe843;</a></span> ⋅ <!-- DEVELOP -->
+			<span class = "icon"><a href = 'http://google.com'>&#xe82e;</a></span>	<!-- BUG REPORTS -->
 			</div>
 		
 		</div>

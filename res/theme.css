@@ -80,17 +80,19 @@ hr {
 
 /*
 @font-face {
-  font-family: 'dev-icons';
-  src: url('./dev-icons.eot');
-  src: url('./dev-icons.eot?#iefix') format('embedded-opentype'),
-       url('dev-icons.woff') format('woff'),
-       url('dev-icons.ttf')  format('truetype'),
+  font-family: 'compact-icons';
+  src: url('./compact-icons.eot');
+  src: url('./compact-icons.eot?#iefix') format('embedded-opentype'),
+       url('compact-icons.woff') format('woff'),
+       url('compact-icons.ttf')  format('truetype'),
+       url('compact-icons.svg#svgFontName') format('svg');
 }
 
 .icon {
-	font-family: 'dev-icons';
+	font-family: 'compact-icons';
 }
 */
+
 
 /*............................................. TABLES ........*/
 
