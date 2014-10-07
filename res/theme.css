@@ -16,6 +16,7 @@ html, body{
 a:link {
     color: #999999;
     text-decoration: none;
+    transition: 0.2s;
 }
 
 a:visited {
@@ -33,7 +34,7 @@ a:active {
 /*............................................. TITLE PAGE ........*/
 
 #title{
-	height: 20%;
+	/*height: 20%;*/
 	border-bottom: 2px solid #333333;
 }
 
@@ -78,20 +79,21 @@ hr {
 
 /*............................................. ICONS ........*/
 
-/*
+
 @font-face {
   font-family: 'compact-icons';
-  src: url('./compact-icons.eot');
-  src: url('./compact-icons.eot?#iefix') format('embedded-opentype'),
-       url('compact-icons.woff') format('woff'),
-       url('compact-icons.ttf')  format('truetype'),
-       url('compact-icons.svg#svgFontName') format('svg');
+  src: url('./compact-icons/compact-icons.eot');
+  src: url('./compact-icons/compact-icons.eot?#iefix') format('embedded-opentype'),
+       url('./compact-icons/compact-icons.woff') format('woff'),
+       url('./compact-icons/compact-icons.ttf')  format('truetype'),
+       url('./compact-icons/compact-iconss.svg#svgFontName') format('svg');
 }
 
 .icon {
+	display: inline-block;
 	font-family: 'compact-icons';
 }
-*/
+
 
 
 /*............................................. TABLES ........*/
@@ -108,7 +110,7 @@ td {
 }
 
 .name_tag{
-	color: #ffffff;
+	color: #cccccc;
 	font-weight: 700;
 	width: 80px;
 	

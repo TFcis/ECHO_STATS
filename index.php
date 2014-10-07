@@ -111,8 +111,7 @@
 <body>
 	<div id = "title" style = "position: relative">
 	<center>
-		<!--<div style = "position: absolute; bottom: 0; left: 128px; text-align: right">-->
-		<div style = "margin: 40px 0 0 0">
+		<div style = "margin: 40px 0 16px 0">
 		
 			<h1><span style = "color: #999999">ECHO</span> STATS <span style = "color: #999999">;</h1>
 			
@@ -122,14 +121,16 @@
 			?>
 			<br></div>
 			
-			<div style = "color: #999999; font-weight: 700; font-size: 18px">
-			<span class = "icon"><a href = 'http://google.com'>&#xe82c;</a></span> ⋅ <!-- FUNCTIONS -->
-			<span class = "icon"><a href = 'http://google.com'>&#xe823;</a></span> ⋅ <!-- CREDITS -->
-			<span class = "icon"><a href = 'http://google.com'>&#xe808;</a></span> ⋅ <!-- BOARD -->
-			<span class = "icon"><a href = 'http://google.com'>&#xe843;</a></span> ⋅ <!-- DEVELOP -->
-			<span class = "icon"><a href = 'http://google.com'>&#xe82e;</a></span>	<!-- BUG REPORTS -->
+			<br>
+			
+			<div style = "color: #999999; font-size: 18px">
+				<div class = "icon"><a href = 'http://google.com'>&#xe82c;</a></div> ⋅ <!-- FUNCTIONS -->
+				<div class = "icon"><a href = 'http://google.com'>&#xe823;</a></div> ⋅ <!-- CREDITS -->
+				<div class = "icon"><a href = 'http://google.com'>&#xe808;</a></div> ⋅ <!-- BOARD -->
+				<div class = "icon"><a href = 'http://google.com'>&#xe843;</a></div> ⋅ <!-- DEVELOP -->
+				<div class = "icon"><a href = 'http://google.com'>&#xe82e;</a></div>	<!-- BUG REPORTS -->
 			</div>
-		
+			
 		</div>
 	</center>
 	</div>
