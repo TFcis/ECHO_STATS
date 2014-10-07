@@ -13,6 +13,25 @@ html, body{
     
 }
 
+a:link {
+    color: #999999;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #999999;
+}
+
+a:hover {
+    color: #ffffff;
+}
+
+a:active {
+    color: #999999;
+}
+
+/*............................................. TITLE PAGE ........*/
+
 #title{
 	height: 20%;
 	border-bottom: 2px solid #333333;
@@ -23,6 +42,9 @@ html, body{
 	color: #cccccc;
 	background-color: #0e0e0e;
 }
+
+
+/*............................................. HEADERS ........*/
 
 h1 {
 	padding: 0;
@@ -53,6 +75,24 @@ hr {
     margin-left: 60px;
 
 }
+
+/*............................................. ICONS ........*/
+
+/*
+@font-face {
+  font-family: 'dev-icons';
+  src: url('./dev-icons.eot');
+  src: url('./dev-icons.eot?#iefix') format('embedded-opentype'),
+       url('dev-icons.woff') format('woff'),
+       url('dev-icons.ttf')  format('truetype'),
+}
+
+.icon {
+	font-family: 'dev-icons';
+}
+*/
+
+/*............................................. TABLES ........*/
 
 table {
 	border-collapse: collapse;

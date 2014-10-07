@@ -98,7 +98,7 @@
 <head>
     <meta charset = 'utf-8'>
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet' type='text/css'>
-	<link href = 'theme.css' rel = 'stylesheet' type = 'text/css'>
+	<link href = './res/theme.css' rel = 'stylesheet' type = 'text/css'>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	
@@ -122,8 +122,11 @@
 			?>
 			<br></div>
 			
-			<div style = "color: #999999; font-weight: 700">
-			| LOGIN | CREDITS | BUG |
+			<div style = "color: #999999; font-weight: 700; font-size: 18px">
+			<span class = "icon"><a href = 'http://google.com'>i</a></span> ⋅ 
+			<span class = "icon"><a href = 'http://google.com'>f</a></span> ⋅ 
+			<span class = "icon"><a href = 'http://google.com'>g</a></span> ⋅ 
+			<span class = "icon"><a href = 'http://google.com'>b</a></span>
 			</div>
 		
 		</div>

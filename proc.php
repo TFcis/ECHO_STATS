@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset = 'utf-8'>
-    <link href = 'theme.css' rel = 'stylesheet' type = 'text/css'>
+    <link href = './res/theme.css' rel = 'stylesheet' type = 'text/css'>
 <head>
 <body style = "padding-left: 16px;">
 	<pre style = "margin: 0;">
@@ -150,7 +150,7 @@
 
         echo '...starting update...<br>';
         
-		require_once('fetch.php');
+		require_once('./func/fetch.php');
 
 
 		//Organize problemsets
