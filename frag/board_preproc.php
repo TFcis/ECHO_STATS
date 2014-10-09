@@ -12,10 +12,11 @@
 			'name'	=>	$tmp_name[0],
 			'TOJid'	=>	$tmp_name[1],
 			'UVAid'	=>	$tmp_name[2],
-			'ZJid'	=>	$tmp_name[3]
+			'ZJid'	=>	$tmp_name[3],
+			'stats' =>  -1,
 		);
 		
-		$name_map[$tmp_name[1]] = $i;
+		$name_map[$tmp_name[1]] = $i;   //TOJ to index
     }
 
     
@@ -36,16 +37,18 @@
 
 
     //load stats from cache
-    $stats_data = array();
-    foreach($name_data as $name){
-    	$filename = '../cache/'.$name['TOJid'].'.dat';
+    //$stats_data = array();
+    //foreach($name_data as $name){
+    for($i = 0; $i < count($name_data); ++$i){
+    	$filename = '../cache/'.$name_data[$i]['TOJid'].'.dat';
     	$raw_stats = @file_get_contents($filename);
 		if(!$raw_stats){
 			//pending...
-			$stats_data[$name['TOJid']] = -1;
+			//$stats_data[$name['TOJid']] = -1;
 		} else {
 			$file = fopen($filename, 'r');
-			$stats_data[$name['TOJid']] = $raw_stats;
+			//$stats_data[$name['TOJid']] = $raw_stats;
+			$name_data[$i]['stats'] = $raw_stats;
 		}
 		
     }
