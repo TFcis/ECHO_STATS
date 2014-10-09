@@ -10,7 +10,7 @@
         }    
     </script>
 
-
+<div style = "width: 100%">
     <?php
         //preprocess board.
         require_once('board_preproc.php');
@@ -25,18 +25,31 @@
             <br>
         </div>
 
+        <br>
+
+        <div>BOARDS:</div>
         <div style =  "text-align: right">
         <?php
             foreach($groups as $group){
         ?>
         
-            <hr style = "margin: 8px 0">
-            <a id = "<?php echo $group['index']?>" style = "font-weight: 700;" onclick = "showTable(<?php echo $group['index'] ?>)">
+            <hr>
+            <a id = "<?php echo $group['index']?>" onclick = "showTable(<?php echo $group['index'] ?>)">
             <?php echo $group['label']; ?>
             </a>
             
         <?php } ?>
         </div>
+        
+        <br>
+        <br>
+        
+        <div>TOOLS:</div>
+        <div style =  "text-align: right">
+            <hr>
+            <a>force update</a>
+        </div>
+        
     </div>
     
     <!-- BOARDS -->
@@ -46,7 +59,7 @@
     	foreach($groups as $group){
     ?>
 
-        <div id = "table-<?php echo $group['index']?>" style = "display: none; position: relative; margin-left: 40px">
+        <div id = "table-<?php echo $group['index']?>" style = "display: none; position: relative; margin-left: 80px">
     
         	<br>
         	<h2><?php echo $group['index'].' : '.$group['label']; ?></h2>
@@ -95,3 +108,5 @@
     	}
     ?>
     </div>
+    
+</div>

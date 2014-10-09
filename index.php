@@ -18,9 +18,14 @@
 		    //$('#content').load('frag/board.php', function(){/*complete*/});
 
             CONT = document.getElementById('content');
-		    
-		    $('#nav-board').click(function(){       loadTemplate('frag/board.php');     });
-		    $('#nav-credits').click(function(){     loadTemplate('frag/credits.php');   });
+
+            loadTemplate('frag/board.php');
+            
+		    $('#nav-konfigurator').click(function(){    loadTemplate('frag/konfigurator.php');  });
+		    $('#nav-credits').click(function(){         loadTemplate('frag/credits.php');       });
+		    $('#nav-board').click(function(){           loadTemplate('frag/board.php');         });
+		    $('#nav-develop').click(function(){         loadTemplate('frag/develop.php');         });
+			$('#nav-bug').click(function(){           loadTemplate('frag/bug.php');         });
 		});
 		
 		function loadTemplate(path){
@@ -44,7 +49,7 @@
 			
 			<div style = "color: #999999">
 
-				<a id = "nav-functions" title = "KONFIGURATOR" class = "icon">
+				<a id = "nav-konfigurator" title = "KONFIGURATOR" class = "icon">
 				<span>&#xe82c;</span>
 				</a> ⋅ <!-- FUNCTIONS -->
 				
