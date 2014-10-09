@@ -12,16 +12,27 @@
 		var halt = <?php echo ($halt ? 'true' : 'false'); ?> ;
 		if(!halt){ $.get('proc.php'); }
 		
+		var CONT;
+		
 		$(document).ready(function(){
-		    $('#content').load('frag/board.php', function(){/*complete*/});
+		    //$('#content').load('frag/board.php', function(){/*complete*/});
+
+            CONT = document.getElementById('content');
+		    
+		    $('#nav-board').click(function(){       loadTemplate('frag/board.php');     });
+		    $('#nav-credits').click(function(){     loadTemplate('frag/credits.php');   });
 		});
+		
+		function loadTemplate(path){
+	    	$(CONT).load(path);
+		}
 	</script>
 	
 </head>
 <body>
-	<div id = "title" style = "position: relative">
+	<div id = "title" style = "position: relative; padding: 40px 0 16px 0">
 	<center>
-		<div style = "margin: 40px 0 16px 0">
+		<div style = "">
 		
 			<h1><span style = "color: #999999">ECHO</span> STATS <span style = "color: #999999">;</h1>
 			
@@ -31,12 +42,28 @@
 			
 			<br>
 			
-			<div style = "color: #999999; font-size: 18px">
-				<div id = "nav-functions" class = "icon"><a href = 'http://google.com'>&#xe82c;</a></div> ⋅ <!-- FUNCTIONS -->
-				<div id = "nav-credits" class = "icon"><a href = 'http://google.com'>&#xe823;</a></div> ⋅   <!-- CREDITS -->
-				<div id = "nav-board" class = "icon"><a href = 'http://google.com'>&#xe808;</a></div> ⋅     <!-- BOARD -->
-				<div id = "nav-develop" class = "icon"><a href = 'http://google.com'>&#xe843;</a></div> ⋅   <!-- DEVELOP -->
-				<div id = "nav-bug" class = "icon"><a href = 'http://google.com'>&#xe82e;</a></div>         <!-- BUG REPORTS -->
+			<div style = "color: #999999">
+
+				<a id = "nav-functions" title = "KONFIGURATOR" class = "icon">
+				<span>&#xe82c;</span>
+				</a> ⋅ <!-- FUNCTIONS -->
+				
+				<a id = "nav-credits" title = "CREDITS" class = "icon">
+				<span>&#xe823;</span>
+				</a> ⋅ <!-- CREDITS -->
+				
+				<a id = "nav-board" title = "STATS" class = "icon">
+				<span>&#xe808;</span>
+				</a> ⋅ <!-- BOARD -->
+				
+				<a id = "nav-develop" title = "DEVELOP" class = "icon">
+				<span>&#xe843;</span>
+				</a> ⋅ <!-- DEVELOP -->
+				
+				<a id = "nav-bug" title = "BUG REPORTS" class = "icon">
+				<span>&#xe82e;</span>
+				</a>  <!-- BUG REPORTS -->
+			
 			</div>
 			
 		</div>
