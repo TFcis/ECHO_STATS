@@ -35,25 +35,47 @@
     		}
     		echo '</tr>';
     		
-    		//track correct answer counts and save them
+    		
+    		//................SORT
+    		
     		$rank = array();
-    		foreach($group['names'] as $n){
-    		    $summation = 0;
-    		    foreach($group['probs'] as $p){
-    		        if($name_data[$name_map[$n]]['stats'][$p] == '9') ++$summation;
-    		    }
-    		    $rank[$n] = $summation;
-    		    //echo $n.' '.$rank[$n].';';
-    		}
-    		//echo '<br>';
+            $sort_rule = 'rank';
+            
+            if($sort_rule == 'none'){
+                
+        		//sort: no sorting
+        		$i = 0;
+        		foreach($group['names'] as $n){
+        		    ++$i;
+        		    $rank[$n] = $i;
+        		}
+        		
+            } else if ($sort_rule == 'name'){
+                
+        		//sort: sort by name
+        		foreach($group['names'] as $n){
+        		    $rank[$n] = $name_data[$name_map[$n]]['name'];
+        		}
     		
-    		arsort($rank);
+        		asort($rank);                
+                
+            } else if ($sort_rule == 'rank'){
+                
+        		//sort: sort by rank
+        		foreach($group['names'] as $n){
+        		    $summation = 0;
+        		    foreach($group['probs'] as $p){
+        		        if($name_data[$name_map[$n]]['stats'][$p] == '9') ++$summation;
+        		    }
+        		    $rank[$n] = $summation;
+        		}
     		
-    		/*
-    		foreach($rank as $n => $s){
-    		    echo $n.' '.$s.';';
-    		}
-    		*/
+        		arsort($rank);
+        		
+            }
+    		//................END SORT
+    		
+    		
     		
     		//foreach($group['names'] as $n){
     		foreach($rank as $n => $s){
