@@ -99,18 +99,18 @@ strong {
 
 
 @font-face {
-  font-family: 'compact-icons';
-  src: url('./compact-icons/compact-icons.eot');
-  src: url('./compact-icons/compact-icons.eot?#iefix') format('embedded-opentype'),
-       url('./compact-icons/compact-icons.woff') format('woff'),
-       url('./compact-icons/compact-icons.ttf')  format('truetype'),
-       url('./compact-icons/compact-iconss.svg#svgFontName') format('svg');
+  font-family: 'dev-icons';
+  src: url('./dev-icons/dev-icons.eot');
+  src: url('./dev-icons/dev-icons.eot?#iefix') format('embedded-opentype'),
+       url('./dev-icons/dev-icons.woff') format('woff'),
+       url('./dev-icons/dev-icons.ttf')  format('truetype'),
+       url('./dev-icons/dev-icons.svg#svgFontName') format('svg');
 }
 
 .icon {
     font-size: 18px;
 	display: inline-block;
-	font-family: 'compact-icons';
+	font-family: 'dev-icons';
 }
 
 .icon-tag {
