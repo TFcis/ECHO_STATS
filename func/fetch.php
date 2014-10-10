@@ -66,7 +66,7 @@
 		if($response === false) return false;
 		//echo $uid.'TOJ: ';
 	
-		$AClist = json_decode($response)->{"ac"};
+		$AClist = json_decode($response)->ac;
 		foreach($probs as $p){
 			if (in_array($p, $AClist)){
 				$TOJstats .= 9;
@@ -96,8 +96,8 @@
 		
 		foreach ($prom as $q){
 			$start=strpos($response,"?problemid=".$q);
-			$end=strpos($response,">".$q."</a>");
-			$html=substr($response,$start,$end-$start);
+			$end  =strpos($response,">".$q."</a>");
+			$html =substr($response,$start,$end-$start);
 			//print '<td>';
 			
 			if(strpos($html,'class="acstyle"')){
