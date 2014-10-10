@@ -2,12 +2,10 @@
     var current_Table = 0;
 
 
-    $(document).ready(function(){
-        loadPage();
-    });
+    $(document).ready(function(){ loadPage(0); });
 
-    function loadPage(){
-        $('#frame').load('frag/board_content.php', function(){
+    function loadPage(force_update){
+        $('#frame').load('frag/board_content.php', {forceupdate: force_update}, function(){
             showTable(0);
         });
     }
@@ -50,7 +48,8 @@
         <div>TOOLS:</div>
         <div style =  "text-align: right">
             <hr>
-            <a onclick = "loadPage()">force update</a>
+            <div><a onclick = "loadPage(0)">refresh</a></div>
+            <div><a onclick = "loadPage(1)">force update</a></div>
         </div>
         
     </div>

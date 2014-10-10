@@ -1,6 +1,23 @@
 <?php
     //preproc: fetch data from files
     require_once('board_preproc.php');
+    if($_POST['forceupdate']){
+        $status_string = 'force update request sent.';
+    }
+?>
+
+<script>
+	var halt = <?php echo ($halt ? 'true' : 'false'); ?> ;
+	var forceupdate = <?php echo ($_POST['forceupdate'] ? 'true' : 'false'); ?> ;
+	if(forceupdate) halt = false;
+	
+	//console.log(halt);	
+	
+	if(!halt){ $.get('proc.php'); }
+</script>
+
+
+<?php
 	foreach($groups as $group){
 ?>
         <div id = "table-<?php echo $group['index']?>" style = "display: none; position: relative; margin-left: 80px">

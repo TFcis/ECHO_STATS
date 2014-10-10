@@ -73,7 +73,7 @@
 
     //check for update triggers etc.
     $status_string = '';
-	$interval_limit = 40;
+	$interval_limit = 4000;
 	
 
 		$prev_updt = 0;
@@ -84,19 +84,17 @@
 		$dt = time() - $prev_updt;
 		$status_string .= "Last update: $dt cycles ago.<br>";
 		
-		if($dt < $interval_limit){
-			$status_string .= "time interval limit($dt)<br>";
-		} else {
-			if (file_exists('../cache/work_flag')){
+		
+		if (file_exists('../cache/work_flag')){
 				$halt = true;
 				$status_string .= 'update tasks pending...<br>';
-			} else {
-				$status_string .= 'update triggered.<br>';
-			}
+		} else {
+    		if($dt < $interval_limit){
+    		    $halt = true;
+    			//$status_string .= "time interval limit($dt)<br>";
+    		} else {
+    			//$status_string .= 'update triggered.<br>';
+    		}
 		}
-		
 ?>
-<script>
-	var halt = <?php echo ($halt ? 'true' : 'false'); ?> ;
-	if(!halt){ $.get('proc.php'); }
-</script>
+
