@@ -1,1 +1,1 @@
-PLACEHOLDER
+<?php echo EYEYEYEYE; ?>

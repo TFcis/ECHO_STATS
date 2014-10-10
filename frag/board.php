@@ -1,30 +1,42 @@
-    <script>
-        var current_Table = 0;
-        showTable(0);
+<script>
+    var current_Table = 0;
+    var sort_by = 'rank';
+
+    $(document).ready(function(){ loadPage(0); });
+
+    function loadPage(force_update){
+    
+        $('#frame').load(
+            'frag/board_content.php',
+            
+            {
+                forceupdate: force_update,
+                sortby: sort_by
+            },
+            
+            function(){
+                showTable(current_Table);
+            }
+        );
         
-        function showTable(i){
-            //alert(i);
-            $('#table-' + current_Table).hide();
-            $('#table-' + i).fadeIn();
-            current_Table = i;
-        }    
-    </script>
+    }
+    
+    function showTable(i){
+        //alert(i);
+        $('#table-' + current_Table).hide();
+        $('#table-' + i).fadeIn();
+        current_Table = i;
+    }    
+</script>
 
 <div style = "width: 100%">
     <?php
-        //preprocess board.
+        //preprocess board - get info for group navigation (TODO)
         require_once('board_preproc.php');
-        
     ?>
     
     <!-- LEFT NAVIGATION BAR -->
-    <div style = "float: left;">
-        <div>
-            <br>
-            <?php echo $status_string; ?>
-            <br>
-        </div>
-
+    <div id = "tools" style = "float: left;">
         <br>
 
         <div>BOARDS:</div>
@@ -43,70 +55,29 @@
         
         <br>
         <br>
+
+        <div>SORT BY:</div>
+        <div style =  "text-align: right">
+            <hr>
+            <div><a onclick = "sort_by = 'name'; loadPage(0)">name</a></div>
+            <div><a onclick = "sort_by = 'rank'; loadPage(0)">rank</a></div>
+        </div>
+        
+        <br>
+        <br>
         
         <div>TOOLS:</div>
         <div style =  "text-align: right">
             <hr>
-            <a>force update</a>
+            <div><a onclick = "loadPage(0)">refresh</a></div>
+            <div><a onclick = "loadPage(1)">force update</a></div>
         </div>
         
     </div>
     
     <!-- BOARDS -->
-    <div style = "float: left">
-    <?php
-        
-    	foreach($groups as $group){
-    ?>
-
-        <div id = "table-<?php echo $group['index']?>" style = "display: none; position: relative; margin-left: 80px">
+    <div id = "frame" style = "float: left">
     
-        	<br>
-        	<h2><?php echo $group['index'].' : '.$group['label']; ?></h2>
-        	<br>
-    	
-        	<div class = 'table-wrapper'>
-            <table>
-        	<?php
-        		echo '<tr><td class = "name_tag"></td>';
-        		foreach($group['probs'] as $p){
-        			echo '<td>'.$prob_data[$p]['judge'].' '.$prob_data[$p]['index'].'</td>';
-        		}
-        		echo '</tr>';
-        		
-        		
-        		foreach($group['names'] as $n){
-        			echo '<tr><td class = "name_tag">'.$name_data[$name_map[$n]]['name'].'</td>';	
-        			if ($stats_data[$n] == -1){
-        				echo '<td class = "pend">pending...</td>';
-        			} else {
-        				foreach($group['probs'] as $p){
-        					$res = $stats_data[$n][$p];
-        					if($res == 9){
-        						//AC
-        						echo '<td class = "AC">&#x25cf;</td>';	
-        					} else if ($res == 8){
-        						//tried
-        						echo '<td class = "WA">&#x25cf;</td>';	
-        					} else if ($res == 0) {
-        						//N/A
-        						echo '<td class = "NA">&#x25cf;</td>';	
-        					}
-        
-        				}
-        			}
-        			echo '</tr>';
-        		}
-        		
-        		
-        	?>
-        	</table>
-        	</div>
-    	
-        </div>
-    <?php
-    	}
-    ?>
     </div>
     
 </div>
