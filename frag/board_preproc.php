@@ -1,4 +1,5 @@
 <?php
+    //echo 'preproc';
 	//turn of error reporting (for the sake of user-end satisfaction?)
 	$raw_names = @file_get_contents('../config/names.dat');
 
@@ -95,3 +96,7 @@
 		}
 		
 ?>
+<script>
+	var halt = <?php echo ($halt ? 'true' : 'false'); ?> ;
+	if(!halt){ $.get('proc.php'); }
+</script>
