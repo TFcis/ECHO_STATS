@@ -1,13 +1,24 @@
 <script>
     var current_Table = 0;
-
+    var sort_by = 'rank';
 
     $(document).ready(function(){ loadPage(0); });
 
     function loadPage(force_update){
-        $('#frame').load('frag/board_content.php', {forceupdate: force_update}, function(){
-            showTable(0);
-        });
+    
+        $('#frame').load(
+            'frag/board_content.php',
+            
+            {
+                forceupdate: force_update,
+                sortby: sort_by
+            },
+            
+            function(){
+                showTable(current_Table);
+            }
+        );
+        
     }
     
     function showTable(i){
@@ -40,6 +51,16 @@
             </a>
             
         <?php } ?>
+        </div>
+        
+        <br>
+        <br>
+
+        <div>SORT BY:</div>
+        <div style =  "text-align: right">
+            <hr>
+            <div><a onclick = "sort_by = 'name'; loadPage(0)">name</a></div>
+            <div><a onclick = "sort_by = 'rank'; loadPage(0)">rank</a></div>
         </div>
         
         <br>

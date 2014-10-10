@@ -4,6 +4,9 @@
     if($_POST['forceupdate']){
         $status_string = 'force update request sent.';
     }
+    
+    $sort_rule = $_POST['sortby'];
+    //echo 'SORT: '.$sort_rule;
 ?>
 
 <script>
@@ -39,7 +42,7 @@
     		//................SORT
     		
     		$rank = array();
-            $sort_rule = 'rank';
+            //$sort_rule = 'rank';
             
             if($sort_rule == 'none'){
                 
