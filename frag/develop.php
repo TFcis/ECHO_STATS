@@ -17,6 +17,7 @@
                 and the rest floating aimlessly through the air.<br><br>
                 
                 <div style = "text-align: right">
+                <!--<a title = "homepage" href = "" class = 'icon' style = "margin: 0 4px">&#xe817;</a>-->
                 <!--<a title = "facebook" href = "" class = 'icon' style = "margin: 0 4px">&#xe845;</a>-->
                 <a title = "twitter" href = "http://twitter.com/_JohnLallo" class = 'icon' style = "margin: 0 4px">&#xe844;</a> 
                 <a title = "nuff97@gmail.com" href = "" class = 'icon' style = "margin: 0 4px">&#xe850;</a>
@@ -29,21 +30,23 @@
         
         <p><div class = 'infobox'>
             <div class = 'usericon'>
-            <!--http://i.imgur.com/65Jpp1S.gif-->
-            <img src = 'http://i.imgur.com/UG8XYwM.jpg'></img>
+            <!--http://i.imgur.com/UG8XYwM.jpg-->
+            <img src = 'http://i.imgur.com/65Jpp1S.gif'></img>
             </div>
             <div style = 'width: 280px; font-size: 15px; display: inline-block; margin-left: 8px'>
                 <strong>Domen Su</strong><br>
                 Develops without writing production code by
                 breaking everything he touches in order to force
                 the fixing of bugs.<br><br>
-                Domen is curretly the 17<sub>th</sub> führer of TFcis and
+                Domen is curretly the 16<sub>th</sub> führer of TFcis and
                 manages <a href = "https://tfcis.org">tfcis.org</a>.<br><br>
                 
                 <div style = "text-align: right">
+                <a title = "homepage" href = "http://sites.google.com/site/domenprg/" class = 'icon' style = "margin: 0 4px">&#xe817;</a>
                 <!--<a title = "facebook" href = "" class = 'icon' style = "margin: 0 4px">&#xe845;</a>-->
                 <!--<a title = "twitter" href = "" class = 'icon' style = "margin: 0 4px">&#xe844;</a>-->
-                <a title = "domen111@gmail.com" href = "" class = 'icon' style = "margin: 0 4px">&#xe850;</a>
+                <a title = "domen111@tfcis.org" href = "" class = 'icon' style = "margin: 0 4px">&#xe850;</a>
+                <a title = "domen.public@gmail.com" href = "" class = 'icon' style = "margin: 0 4px">&#xe850;</a>
                 <!--<a title = "tumblr" href = "" class = 'icon' style = "margin: 0 4px">&#xe843;</a> -->
                 <a title = "github"href = "http://github.com/domen111" class = 'icon' style = "margin: 0 4px">&#xe809;</a>
                 </div>
@@ -61,6 +64,7 @@
                 <br>
                 
                 <div style = "text-align: right">
+                <!--<a title = "homepage" href = "" class = 'icon' style = "margin: 0 4px">&#xe817;</a>-->
                 <!--<a title = "facebook" href = "" class = 'icon' style = "margin: 0 4px">&#xe845;</a>-->
                 <!--<a title = "twitter" href = "" class = 'icon' style = "margin: 0 4px">&#xe844;</a> -->
                 <a title = "" href = "" class = 'icon' style = "margin: 0 4px">&#xe850;</a>
@@ -82,6 +86,7 @@
                 the <a href = "https://github.com/TFcis/SkyOnlinejudge">Sky Online Judge</a>.<br><br>
                 
                 <div style = "text-align: right">
+                <!--<a title = "homepage" href = "" class = 'icon' style = "margin: 0 4px">&#xe817;</a>-->
                 <!--<a title = "facebook" href = "" class = 'icon' style = "margin: 0 4px">&#xe845;</a>-->
                 <!--<a title = "twitter" href = "" class = 'icon' style = "margin: 0 4px">&#xe844;</a>-->
                 <!--<a title = "" href = "" class = 'icon' style = "margin: 0 4px">&#xe850;</a>-->
