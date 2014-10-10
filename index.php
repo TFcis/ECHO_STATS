@@ -45,25 +45,25 @@
 			<br>
 			
 			<div style = "color: #999999">
-
-				<a id = "nav-konfigurator" title = "KONFIGURATOR" class = "icon">
-				<span>&#xe82c;</span>
-				</a> ⋅ <!-- FUNCTIONS -->
-				
-				<a id = "nav-credits" title = "CREDITS" class = "icon">
-				<span>&#xe823;</span>
-				</a> ⋅ <!-- CREDITS -->
-				
+			
 				<a id = "nav-board" title = "STATS" class = "icon">
-				<span>&#xe808;</span>
+				<span>&#xe800;</span>
 				</a> ⋅ <!-- BOARD -->
 				
+				<a id = "nav-konfigurator" title = "KONFIGURATOR" class = "icon">
+				<span>&#xe84d;</span>
+				</a> ⋅ <!-- FUNCTIONS -->
+				
+				<!--<a id = "nav-credits" title = "CREDITS" class = "icon">
+				<span>&#xe805;</span>
+				</a> ⋅  CREDITS -->
+				
 				<a id = "nav-develop" title = "DEVELOP" class = "icon">
-				<span>&#xe843;</span>
+				<span>&#xe813;</span>
 				</a> ⋅ <!-- DEVELOP -->
 				
 				<a id = "nav-bug" title = "BUG REPORTS" class = "icon">
-				<span>&#xe82e;</span>
+				<span>&#xe80e;</span>
 				</a>  <!-- BUG REPORTS -->
 			
 			</div>

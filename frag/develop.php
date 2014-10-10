@@ -13,8 +13,17 @@
             <div style = 'width: 280px; font-size: 15px; display: inline-block; margin-left: 8px'>
                 <strong>John Lallo</strong><br>
                 Produces most of the bugs found in the system.<br><br>
-                Said to be an avocado that spends most of its time writing code
-                and the rest floating aimlessly through the air.
+                Said to be an avocado that spends most of its time coding
+                and the rest floating aimlessly through the air.<br><br>
+                
+                <div style = "text-align: right">
+                <!--<a title = "facebook" href = "" class = 'icon' style = "margin: 0 4px">&#xe845;</a>-->
+                <a title = "twitter" href = "http://twitter.com/_JohnLallo" class = 'icon' style = "margin: 0 4px">&#xe844;</a> 
+                <a title = "nuff97@gmail.com" href = "" class = 'icon' style = "margin: 0 4px">&#xe850;</a>
+                <a title = "tumblr" href = "http://nuffthemighty.tumblr.com" class = 'icon' style = "margin: 0 4px">&#xe843;</a> 
+                <a title = "github"href = "http://github.com/john-lallo" class = 'icon' style = "margin: 0 4px">&#xe809;</a>
+                </div>
+                
             </div>
         </div></p>
         
@@ -29,7 +38,16 @@
                 breaking everything he touches in order to force
                 the fixing of bugs.<br><br>
                 Domen is curretly the 17<sub>th</sub> führer of TFcis and
-                manages <a href = "https://tfcis.org">tfcis.org</a>.
+                manages <a href = "https://tfcis.org">tfcis.org</a>.<br><br>
+                
+                <div style = "text-align: right">
+                <!--<a title = "facebook" href = "" class = 'icon' style = "margin: 0 4px">&#xe845;</a>-->
+                <!--<a title = "twitter" href = "" class = 'icon' style = "margin: 0 4px">&#xe844;</a>-->
+                <a title = "domen111@gmail.com" href = "" class = 'icon' style = "margin: 0 4px">&#xe850;</a>
+                <!--<a title = "tumblr" href = "" class = 'icon' style = "margin: 0 4px">&#xe843;</a> -->
+                <a title = "github"href = "http://github.com/domen111" class = 'icon' style = "margin: 0 4px">&#xe809;</a>
+                </div>
+                
             </div>
         </div></p>
         
@@ -41,6 +59,15 @@
             <div style = 'width: 280px; font-size: 15px; display: inline-block; margin-left: 8px'>
                 <strong>Xi-plus</strong>
                 <br>
+                
+                <div style = "text-align: right">
+                <!--<a title = "facebook" href = "" class = 'icon' style = "margin: 0 4px">&#xe845;</a>-->
+                <!--<a title = "twitter" href = "" class = 'icon' style = "margin: 0 4px">&#xe844;</a> -->
+                <a title = "" href = "" class = 'icon' style = "margin: 0 4px">&#xe850;</a>
+                <!--<a title = "tumblr" href = "" class = 'icon' style = "margin: 0 4px">&#xe843;</a>-->
+                <a title = "github"href = "http://github.com/xi-plus" class = 'icon' style = "margin: 0 4px">&#xe809;</a>
+                </div>
+                
             </div>
         </div></p>
     
@@ -52,7 +79,16 @@
                 <strong>LFsWang</strong><br>
                 Supervises the progress of the project.<br><br>
                 He is currently working on a much more ambitious project,
-                the <a href = "https://github.com/TFcis/SkyOnlinejudge">Sky Online Judge</a>.
+                the <a href = "https://github.com/TFcis/SkyOnlinejudge">Sky Online Judge</a>.<br><br>
+                
+                <div style = "text-align: right">
+                <!--<a title = "facebook" href = "" class = 'icon' style = "margin: 0 4px">&#xe845;</a>-->
+                <!--<a title = "twitter" href = "" class = 'icon' style = "margin: 0 4px">&#xe844;</a>-->
+                <!--<a title = "" href = "" class = 'icon' style = "margin: 0 4px">&#xe850;</a>-->
+                <!--<a title = "tumblr" href = "http://nuffthemighty.tumblr.com" class = 'icon' style = "margin: 0 4px">&#xe843;</a> -->
+                <a title = "github"href = "http://github.com/john-lallo" class = 'icon' style = "margin: 0 4px">&#xe809;</a>
+                </div>
+                
             </div>
         </div></p>
     
@@ -72,7 +108,7 @@
         <p>
         The source code of the entire project (including website & backend),
         as well as instructions to setting up the system on your own machine,
-        can be found on the <a href = "https://github.com/TFcis/stats-dev"> GitHub <span class = 'icon'>&#xe843;</span> repo</a>.
+        can be found on the <a href = "https://github.com/TFcis/stats-dev"> GitHub <span class = 'icon'>&#xe813;</span> repo</a>.
         </p>
 
         <p>Development versions of the site are also hosted at various locations:</p>
