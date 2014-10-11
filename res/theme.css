@@ -1,5 +1,7 @@
 html, body{
 	
+	position: absolute;
+	
 	padding: 0;
 	margin: 0;
 	
@@ -7,34 +9,42 @@ html, body{
     height: 100%;
     
     color: #ffffff;
-    background-color: #000000;
+    /*background-color: #000000;*/
+
+	background-color: #0e0e0e;
 
     font-family: 'Lato', sans;
     
 }
 
+a {
+    font-weight: 700;
+    transition: color 0.2s;
+}
+
 a:link {
-    color: #999999;
+    color: #777777;
     text-decoration: none;
-    transition: 0.2s;
 }
 
 a:visited {
-    color: #999999;
+    color: #777777;
 }
 
 a:hover {
+    cursor: pointer;
     color: #ffffff;
 }
 
 a:active {
-    color: #999999;
+    color: #777777;
 }
 
 /*............................................. TITLE PAGE ........*/
 
 #title{
 	/*height: 20%;*/
+	background-color: #000000;
 	border-bottom: 2px solid #333333;
 }
 
@@ -42,6 +52,8 @@ a:active {
 	padding: 0 40px;
 	color: #cccccc;
 	background-color: #0e0e0e;
+	
+	transition: 0.2s;
 }
 
 
@@ -66,7 +78,13 @@ h2 {
 }
 
 hr {
+    margin: 8px 0;
 	border: 1px solid #333333;
+}
+
+strong {
+    font-weight: 900;
+    color: #ffffff;
 }
 
 .table-wrapper {
@@ -81,22 +99,28 @@ hr {
 
 
 @font-face {
-  font-family: 'compact-icons';
-  src: url('./compact-icons/compact-icons.eot');
-  src: url('./compact-icons/compact-icons.eot?#iefix') format('embedded-opentype'),
-       url('./compact-icons/compact-icons.woff') format('woff'),
-       url('./compact-icons/compact-icons.ttf')  format('truetype'),
-       url('./compact-icons/compact-iconss.svg#svgFontName') format('svg');
+  font-family: 'dev-icons';
+  src: url('./dev-icons/dev-icons.eot');
+  src: url('./dev-icons/dev-icons.eot?#iefix') format('embedded-opentype'),
+       url('./dev-icons/dev-icons.woff') format('woff'),
+       url('./dev-icons/dev-icons.ttf')  format('truetype'),
+       url('./dev-icons/dev-icons.svg#svgFontName') format('svg');
 }
 
 .icon {
+    font-size: 18px;
 	display: inline-block;
-	font-family: 'compact-icons';
+	font-family: 'dev-icons';
 }
 
+.icon-tag {
+    font-size: 17px;
+    font-weight: 900;
+	display: inline-block;
+    font-family: 'Lato', sans;
+}
 
-
-/*............................................. TABLES ........*/
+/*............................................. TABLES & FORMS ........*/
 
 table {
 	border-collapse: collapse;
@@ -115,7 +139,7 @@ td {
 	width: 80px;
 	
 	position: absolute; 
-    left: 0;
+    left: -20px;
     top: auto;
 }
 
@@ -134,3 +158,31 @@ td {
 .pend {
 	color: #666666;
 }
+
+/*............................................. INFO BLOKS ........*/
+
+.infobox {
+    padding: 12px;
+    background-color: #0b0b0b;
+}
+
+.subtext {
+    font-size: 11px;
+    text-align: right;
+}
+
+.usericon {
+    vertical-align: top;    
+    background-color: #ffffff;
+    
+    overflow: hidden;
+    display: inline-block;
+    
+    width: 100px;
+    height: 100px;
+}
+
+.usericon img {
+    width: 100%;
+    height: 100%;
+} 

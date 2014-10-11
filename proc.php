@@ -207,7 +207,7 @@
 			echo '...fetching data from: UVa Online Judge...';
 			$returned['UVa'] = getUVAstats($sortedProbset['UVa'], $name['UVAid']);
 			if($returned['UVa'] === false){
-				echo 'ERROR: Invalid query or request timed out. Updates for UVa prblemset aborted for '.$name['name'].'.<br><br>';
+				echo '<br>ERROR: Invalid query or request timed out. Updates for UVa prblemset aborted for '.$name['name'].'.<br><br>';
 			} else {
 				//echo $UVAreturn;
 				echo '...done!<br>';
@@ -216,7 +216,7 @@
 			echo '...fetching data from: TNFSH Online Judge...';
 			$returned['TOJ'] = getTOJstats($sortedProbset['TOJ'], $name['TOJid']);
 			if($returned['TOJ'] === false){
-				echo 'ERROR: Invalid query or request timed out. Updates for TOJ prblemset aborted for '.$name['name'].'.<br><br>';
+				echo '<br>ERROR: Invalid query or request timed out. Updates for TOJ prblemset aborted for '.$name['name'].'.<br><br>';
 			} else {
 				//echo $TOJreturn;
 				echo '...done!<br>';
@@ -225,7 +225,7 @@
 			echo '...fetching data from: ZeroJudge...';
 			$returned['ZJ'] = getZJstats($sortedProbset['ZJ'], $name['ZJid']);
 			if($returned['ZJ'] === false){
-				echo 'ERROR: Invalid query or request timed out. Updates for ZJ prblemset aborted for '.$name['name'].'.<br><br>';
+				echo '<br>ERROR: Invalid query or request timed out. Updates for ZJ prblemset aborted for '.$name['name'].'.<br><br>';
 			} else {
 				echo $ZJreturn;
 				echo '...done!<br>';
