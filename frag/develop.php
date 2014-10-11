@@ -39,7 +39,7 @@
             <img src = 'http://i.imgur.com/csdGpLa.jpg'></img>
             </div>
             <div style = 'width: 280px; font-size: 15px; display: inline-block; margin-left: 8px'>
-                <strong>Xi-plus</strong>
+                <strong>Xiplus</strong>
                 <br>
             </div>
         </div></p>
