@@ -43,7 +43,7 @@
                 
                 <div style = "text-align: right">
                 <a title = "homepage" href = "http://sites.google.com/site/domenprg/" class = 'icon' style = "margin: 0 4px">&#xe817;</a>
-                <!--<a title = "facebook" href = "" class = 'icon' style = "margin: 0 4px">&#xe845;</a>-->
+                <a title = "facebook" href = "https://www.facebook.com/DomenSu111" class = 'icon' style = "margin: 0 4px">&#xe845;</a>
                 <!--<a title = "twitter" href = "" class = 'icon' style = "margin: 0 4px">&#xe844;</a>-->
                 <a title = "domen111@tfcis.org" href = "" class = 'icon' style = "margin: 0 4px">&#xe850;</a>
                 <a title = "domen.public@gmail.com" href = "" class = 'icon' style = "margin: 0 4px">&#xe850;</a>
@@ -60,14 +60,14 @@
             <img src = 'http://i.imgur.com/csdGpLa.jpg'></img>
             </div>
             <div style = 'width: 280px; font-size: 15px; display: inline-block; margin-left: 8px'>
-                <strong>Xi-plus</strong>
+                <strong>Xiplus</strong>
                 <br>
                 
                 <div style = "text-align: right">
                 <!--<a title = "homepage" href = "" class = 'icon' style = "margin: 0 4px">&#xe817;</a>-->
-                <!--<a title = "facebook" href = "" class = 'icon' style = "margin: 0 4px">&#xe845;</a>-->
+                <a title = "facebook" href = "http://www.facebook.com/profile.php?id=100005870494945" class = 'icon' style = "margin: 0 4px">&#xe845;</a>
                 <!--<a title = "twitter" href = "" class = 'icon' style = "margin: 0 4px">&#xe844;</a> -->
-                <a title = "" href = "" class = 'icon' style = "margin: 0 4px">&#xe850;</a>
+                <!--<a title = "" href = "" class = 'icon' style = "margin: 0 4px">&#xe850;</a>-->
                 <!--<a title = "tumblr" href = "" class = 'icon' style = "margin: 0 4px">&#xe843;</a>-->
                 <a title = "github"href = "http://github.com/xi-plus" class = 'icon' style = "margin: 0 4px">&#xe809;</a>
                 </div>
