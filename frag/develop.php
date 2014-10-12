@@ -62,7 +62,10 @@
             <div style = 'width: 280px; font-size: 15px; display: inline-block; margin-left: 8px'>
                 <strong>Xiplus</strong>
                 <br>
-                
+                Is obsessed with various APIs and has produced many useful code snippets,
+                including one that alerts you via facebook when it's lunchtime.<br><br>
+                If seen with wireless keyboard at one end of the computer lab and his laptop at the other
+                he's probably just trying to find out across how far a distance would bluetooth still work.
                 <div style = "text-align: right">
                 <!--<a title = "homepage" href = "" class = 'icon' style = "margin: 0 4px">&#xe817;</a>-->
                 <a title = "facebook" href = "http://www.facebook.com/profile.php?id=100005870494945" class = 'icon' style = "margin: 0 4px">&#xe845;</a>
@@ -87,7 +90,7 @@
                 
                 <div style = "text-align: right">
                 <!--<a title = "homepage" href = "" class = 'icon' style = "margin: 0 4px">&#xe817;</a>-->
-                <!--<a title = "facebook" href = "" class = 'icon' style = "margin: 0 4px">&#xe845;</a>-->
+                <a title = "facebook" href = "https://www.facebook.com/lfswang" class = 'icon' style = "margin: 0 4px">&#xe845;</a>
                 <!--<a title = "twitter" href = "" class = 'icon' style = "margin: 0 4px">&#xe844;</a>-->
                 <!--<a title = "" href = "" class = 'icon' style = "margin: 0 4px">&#xe850;</a>-->
                 <!--<a title = "tumblr" href = "http://nuffthemighty.tumblr.com" class = 'icon' style = "margin: 0 4px">&#xe843;</a> -->
