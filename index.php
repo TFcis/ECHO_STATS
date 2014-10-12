@@ -15,18 +15,22 @@
 		    //$('#content').load('frag/board.php', function(){/*complete*/});
 
             CONT = document.getElementById('content');
+			
+			var curTemplate = location.hash.slice(1);
+			if(curTemplate=="")	{ curTemplate = "board"; }
 
-            loadTemplate('frag/board.php');
+            loadTemplate(curTemplate);
             
-		    $('#nav-konfigurator').click(function(){    loadTemplate('frag/konfigurator.php');  });
-		    $('#nav-credits').click(function(){         loadTemplate('frag/credits.php');       });
-		    $('#nav-board').click(function(){           loadTemplate('frag/board.php');         });
-		    $('#nav-develop').click(function(){         loadTemplate('frag/develop.php');       });
-			$('#nav-bug').click(function(){             loadTemplate('frag/bug.php');           });
+		    $('#nav-konfigurator').click(function(){    loadTemplate('konfigurator');  });
+		    $('#nav-credits').click(function(){         loadTemplate('credits');       });
+		    $('#nav-board').click(function(){           loadTemplate('board');         });
+		    $('#nav-develop').click(function(){         loadTemplate('develop');       });
+			$('#nav-bug').click(function(){             loadTemplate('bug');           });
 		});
 		
-		function loadTemplate(path){
-	    	$(CONT).load(path);
+		function loadTemplate(template){
+			location.hash = template;
+	    	$(CONT).load("frag/"+template+".php");
 		}
 	</script>
 	
