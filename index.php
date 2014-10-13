@@ -3,6 +3,7 @@
 <html>
 <head>
     <meta charset = 'utf-8'>
+	<title>EchoStats</title>
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet' type='text/css'>
 	<link href = './res/theme.css' rel = 'stylesheet' type = 'text/css'>
 
