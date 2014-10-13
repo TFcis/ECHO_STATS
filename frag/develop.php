@@ -19,10 +19,10 @@
                 <div style = "text-align: right">
                 <!--<a title = "homepage" href = "" class = 'icon' style = "margin: 0 4px">&#xe817;</a>-->
                 <!--<a title = "facebook" href = "" class = 'icon' style = "margin: 0 4px">&#xe845;</a>-->
-                <a title = "twitter" href = "http://twitter.com/_JohnLallo" class = 'icon' style = "margin: 0 4px">&#xe844;</a> 
-                <a title = "nuff97@gmail.com" href = "" class = 'icon' style = "margin: 0 4px">&#xe850;</a>
-                <a title = "tumblr" href = "http://nuffthemighty.tumblr.com" class = 'icon' style = "margin: 0 4px">&#xe843;</a> 
-                <a title = "github"href = "http://github.com/john-lallo" class = 'icon' style = "margin: 0 4px">&#xe809;</a>
+                <a title = "twitter" href = "http://twitter.com/_JohnLallo" class = 'icon' style = "margin: 0 4px" target="new">&#xe844;</a> 
+                <a title = "nuff97@gmail.com" href = "mailto:nuff97@gmail.com" class = 'icon' style = "margin: 0 4px" target="new">&#xe850;</a>
+                <a title = "tumblr" href = "http://nuffthemighty.tumblr.com" class = 'icon' style = "margin: 0 4px" target="new">&#xe843;</a> 
+                <a title = "github"href = "http://github.com/john-lallo" class = 'icon' style = "margin: 0 4px" target="new">&#xe809;</a>
                 </div>
                 
             </div>
@@ -38,17 +38,17 @@
                 Develops without writing production code by
                 breaking everything he touches in order to force
                 the fixing of bugs.<br><br>
-                Domen is curretly the 16<sub>th</sub> führer of TFcis and
+                Domen is curretly the 16<sub>th</sub> leader of TFcis Club and
                 manages <a href = "https://tfcis.org">tfcis.org</a>.<br><br>
                 
                 <div style = "text-align: right">
-                <a title = "homepage" href = "http://sites.google.com/site/domenprg/" class = 'icon' style = "margin: 0 4px">&#xe817;</a>
-                <a title = "facebook" href = "https://www.facebook.com/DomenSu111" class = 'icon' style = "margin: 0 4px">&#xe845;</a>
+                <a title = "homepage" href = "http://sites.google.com/site/domenprg/" class = 'icon' style = "margin: 0 4px" target="new">&#xe817;</a>
+                <a title = "facebook" href = "https://www.facebook.com/DomenSu111" class = 'icon' style = "margin: 0 4px" target="new">&#xe845;</a>
                 <!--<a title = "twitter" href = "" class = 'icon' style = "margin: 0 4px">&#xe844;</a>-->
-                <a title = "domen111@tfcis.org" href = "" class = 'icon' style = "margin: 0 4px">&#xe850;</a>
-                <a title = "domen.public@gmail.com" href = "" class = 'icon' style = "margin: 0 4px">&#xe850;</a>
+                <a title = "domen111@tfcis.org" href = "mailto:domen111@tfcis.org" class = 'icon' style = "margin: 0 4px" target="new">&#xe850;</a>
+                <a title = "domen.public@gmail.com" href = "mailto:domen.public@gmail.com" class = 'icon' style = "margin: 0 4px" target="new">&#xe850;</a>
                 <!--<a title = "tumblr" href = "" class = 'icon' style = "margin: 0 4px">&#xe843;</a> -->
-                <a title = "github"href = "http://github.com/domen111" class = 'icon' style = "margin: 0 4px">&#xe809;</a>
+                <a title = "github"href = "http://github.com/domen111" class = 'icon' style = "margin: 0 4px" target="new">&#xe809;</a>
                 </div>
                 
             </div>
@@ -68,11 +68,11 @@
                 he's probably just trying to find out across how far a distance would bluetooth still work.
                 <div style = "text-align: right">
                 <!--<a title = "homepage" href = "" class = 'icon' style = "margin: 0 4px">&#xe817;</a>-->
-                <a title = "facebook" href = "http://www.facebook.com/profile.php?id=100005870494945" class = 'icon' style = "margin: 0 4px">&#xe845;</a>
+                <a title = "facebook" href = "http://www.facebook.com/profile.php?id=100005870494945" class = 'icon' style = "margin: 0 4px" target="new">&#xe845;</a>
                 <!--<a title = "twitter" href = "" class = 'icon' style = "margin: 0 4px">&#xe844;</a> -->
                 <!--<a title = "" href = "" class = 'icon' style = "margin: 0 4px">&#xe850;</a>-->
                 <!--<a title = "tumblr" href = "" class = 'icon' style = "margin: 0 4px">&#xe843;</a>-->
-                <a title = "github"href = "http://github.com/xi-plus" class = 'icon' style = "margin: 0 4px">&#xe809;</a>
+                <a title = "github"href = "http://github.com/xi-plus" class = 'icon' style = "margin: 0 4px" target="new">&#xe809;</a>
                 </div>
                 
             </div>
@@ -94,7 +94,7 @@
                 <!--<a title = "twitter" href = "" class = 'icon' style = "margin: 0 4px">&#xe844;</a>-->
                 <!--<a title = "" href = "" class = 'icon' style = "margin: 0 4px">&#xe850;</a>-->
                 <!--<a title = "tumblr" href = "http://nuffthemighty.tumblr.com" class = 'icon' style = "margin: 0 4px">&#xe843;</a> -->
-                <a title = "github"href = "http://github.com/john-lallo" class = 'icon' style = "margin: 0 4px">&#xe809;</a>
+                <a title = "github"href = "http://github.com/LFsWang" class = 'icon' style = "margin: 0 4px" target="new">&#xe809;</a>
                 </div>
                 
             </div>

@@ -3,6 +3,7 @@
 <html>
 <head>
     <meta charset = 'utf-8'>
+	<title>EchoStats</title>
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet' type='text/css'>
 	<link href = './res/theme.css' rel = 'stylesheet' type = 'text/css'>
 
@@ -15,18 +16,23 @@
 		    //$('#content').load('frag/board.php', function(){/*complete*/});
 
             CONT = document.getElementById('content');
+			
+			var curTemplate = location.hash.slice(1);
+			if(curTemplate=="")	{ curTemplate = "board"; }
 
-            loadTemplate('frag/board.php');
+            loadTemplate(curTemplate);
             
-		    $('#nav-konfigurator').click(function(){    loadTemplate('frag/konfigurator.php');  });
-		    $('#nav-credits').click(function(){         loadTemplate('frag/credits.php');       });
-		    $('#nav-board').click(function(){           loadTemplate('frag/board.php');         });
-		    $('#nav-develop').click(function(){         loadTemplate('frag/develop.php');       });
-			$('#nav-bug').click(function(){             loadTemplate('frag/bug.php');           });
+		    $('#nav-konfigurator').click(function(){    loadTemplate('konfigurator');  });
+		    $('#nav-credits').click(function(){         loadTemplate('credits');       });
+		    $('#nav-board').click(function(){           loadTemplate('board');         });
+		    $('#nav-develop').click(function(){         loadTemplate('develop');       });
+			$('#nav-bug').click(function(){             loadTemplate('bug');           });
 		});
 		
-		function loadTemplate(path){
-	    	$(CONT).load(path);
+		function loadTemplate(template){
+			$("title").text(template+" - EchoStats");
+			location.hash = template;
+	    	$(CONT).load("frag/"+template+".php");
 		}
 	</script>
 	
