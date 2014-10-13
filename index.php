@@ -30,6 +30,7 @@
 		});
 		
 		function loadTemplate(template){
+			$("title").text(template+" - EchoStats");
 			location.hash = template;
 	    	$(CONT).load("frag/"+template+".php");
 		}
