@@ -38,7 +38,7 @@
                 Develops without writing production code by
                 breaking everything he touches in order to force
                 the fixing of bugs.<br><br>
-                Domen is curretly the 16<sub>th</sub> führer of TFcis and
+                Domen is curretly the 16<sub>th</sub> leader of TFcis Club and
                 manages <a href = "https://tfcis.org">tfcis.org</a>.<br><br>
                 
                 <div style = "text-align: right">
