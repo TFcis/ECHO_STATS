@@ -91,7 +91,7 @@
                 <!--<a title = "twitter" href = "" class = 'icon' style = "margin: 0 4px">&#xe844;</a>-->
                 <!--<a title = "" href = "" class = 'icon' style = "margin: 0 4px">&#xe850;</a>-->
                 <!--<a title = "tumblr" href = "http://nuffthemighty.tumblr.com" class = 'icon' style = "margin: 0 4px">&#xe843;</a> -->
-                <a title = "github"href = "http://github.com/john-lallo" class = 'icon' style = "margin: 0 4px">&#xe809;</a>
+                <a title = "github"href = "http://github.com/LFsWang" class = 'icon' style = "margin: 0 4px">&#xe809;</a>
                 </div>
                 
             </div>
