@@ -64,7 +64,7 @@
                 <strong>Xiplus</strong>
                 <br>
                 Is obsessed with various APIs and has produced many useful code snippets,
-                including one that alerts you via facebook when it's lunchtime.<br><br>
+                including one that alerts you via Facebook to order your lunch.<br><br>
                 If seen with wireless keyboard at one end of the computer lab and his laptop at the other
                 he's probably just trying to find out across how far a distance would bluetooth still work.
                 <div style = "text-align: right">
