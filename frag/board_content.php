@@ -1,6 +1,7 @@
 <?php
     //preproc: fetch data from files
     require_once('board_preproc.php');
+    require_once('../func/prob_link.php');
     if($_POST['forceupdate']){
         $status_string = 'force update request sent.';
     }
@@ -34,7 +35,7 @@
     	<?php
     		echo '<tr><td class = "name_tag"></td>';
     		foreach($group['probs'] as $p){
-    			echo '<td>'.$prob_data[$p]['judge'].' '.$prob_data[$p]['index'].'</td>';
+    			echo '<td>'.getProbLink($prob_data[$p]['judge'],$prob_data[$p]['index']).'</td>';
     		}
     		echo '</tr>';
     		
