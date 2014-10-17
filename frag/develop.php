@@ -36,11 +36,9 @@
             </div>
             <div style = 'width: 280px; font-size: 15px; display: inline-block; margin-left: 8px'>
                 <strong>Domen Su</strong><br>
-                Develops without writing production code by
-                breaking everything he touches in order to force
-                the fixing of bugs.<br><br>
+                Find a lot of bugs in this projuct and feel tired of fixing those bugs.<br><br>
                 Domen is curretly the 16<sub>th</sub> leader of TFcis Club and
-                manages <a href = "http://tfcis.org" target="_blank">tfcis.org</a>.<br><br>
+                manages <a href = "http://www.tfcis.org" target="_blank">tfcis.org</a>.<br><br>
                 
                 <div style = "text-align: right">
                 <a title = "homepage" href = "http://sites.google.com/site/domenprg/" class = 'icon' style = "margin: 0 4px" target="_blank">&#xe817;</a>
@@ -110,7 +108,7 @@
         <p>
         <strong>EchoStats</strong> is an open-source project
         initiated and maintained by the merry folk at the 
-        <a href = "http://tfcis.org" target="_blank">TNFSH Computer & Information Science club</a>,
+        <a href = "http://www.tfcis.org" target="_blank">TNFSH Computer & Information Science club</a>,
         years 104<sub>th</sub> & 105<sub>th</sub>.
         </p>
         
