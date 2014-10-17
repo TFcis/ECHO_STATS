@@ -24,7 +24,7 @@
 <?php
 	foreach($groups as $group){
 ?>
-        <div id = "table-<?php echo $group['index']?>" style = "display: none; position: relative; margin-left: 80px">
+        <div id = "table-<?=(int)$group['index']?>" style = "display: none; position: relative; margin-left: 80px">
         
     	<br>
     	<h2><?php echo $group['index'].' : '.$group['label']; ?></h2>
