@@ -17,16 +17,10 @@
 
             CONT = document.getElementById('content');
 			
-			var curTemplate = location.hash.slice(1);
-			if(curTemplate=="")	{ curTemplate = "board"; }
-
-            loadTemplate(curTemplate);
-            
-		    $('#nav-konfigurator').click(function(){    loadTemplate('konfigurator');  });
-		    $('#nav-credits').click(function(){         loadTemplate('credits');       });
-		    $('#nav-board').click(function(){           loadTemplate('board');         });
-		    $('#nav-develop').click(function(){         loadTemplate('develop');       });
-			$('#nav-bug').click(function(){             loadTemplate('bug');           });
+			if(location.hash=="")
+			    location.hash = "board";
+			else
+			    loadTemplate(location.hash.slice(1));
 		});
 		
 		function loadTemplate(template){
@@ -34,6 +28,10 @@
 			location.hash = template;
 	    	$(CONT).load("frag/"+template+".php");
 		}
+		
+        $(window).on('hashchange',function(){ 
+            loadTemplate(location.hash.slice(1));
+        });
 	</script>
 	
 </head>
@@ -52,11 +50,11 @@
 			
 			<div style = "color: #999999">
 			
-				<a id = "nav-board" title = "STATS" class = "icon">
+				<a id = "nav-board" title = "STATS" class = "icon" href="#board">
 				<span>&#xe800;</span>
 				</a> ⋅ <!-- BOARD -->
 				
-				<a id = "nav-konfigurator" title = "KONFIGURATOR" class = "icon">
+				<a id = "nav-konfigurator" title = "KONFIGURATOR" class = "icon" href="#konfigurator">
 				<span>&#xe84d;</span>
 				</a> ⋅ <!-- FUNCTIONS -->
 				
@@ -64,11 +62,11 @@
 				<span>&#xe805;</span>
 				</a> ⋅  CREDITS -->
 				
-				<a id = "nav-develop" title = "DEVELOP" class = "icon">
+				<a id = "nav-develop" title = "DEVELOP" class = "icon" href="#develop">
 				<span>&#xe813;</span>
 				</a> ⋅ <!-- DEVELOP -->
 				
-				<a id = "nav-bug" title = "BUG REPORTS" class = "icon">
+				<a id = "nav-bug" title = "BUG REPORTS" class = "icon" href="#bug">
 				<span>&#xe80e;</span>
 				</a>  <!-- BUG REPORTS -->
 			
