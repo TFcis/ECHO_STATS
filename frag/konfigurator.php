@@ -3,6 +3,7 @@
 
 <script>
 $(window).resize(windowSizeChange);
+$("#content").height(10);
 windowSizeChange();
 function windowSizeChange(){
 	$("#content").height( $(window).height() - $("#content").position().top - 10 );
