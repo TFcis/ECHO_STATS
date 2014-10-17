@@ -24,7 +24,6 @@
 <?php
 	foreach($groups as $group){
 ?>
-<pre><?php print_r($rank); ?></pre>
         <div id = "table-<?=(int)$group['index']?>" style = "display: none; position: relative; margin-left: 80px">
         
     	<br>
