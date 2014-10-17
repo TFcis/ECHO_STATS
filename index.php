@@ -32,10 +32,7 @@
 		function loadTemplate(template){
 			$("title").text(template+" - EchoStats");
 			location.hash = template;
-	    	$(CONT).load("frag/"+template+".php"<?php
-			if(isset($_POST["pwd"]))
-				echo ",{pwd:'$_POST[pwd]'}";
-			?>);
+	    	$(CONT).load("frag/"+template+".php");
 		}
 	</script>
 	
