@@ -2,10 +2,8 @@
 </iframe>
 
 <script>
-window.onload = function() {
-	$(window).resize(windowSizeChange);
-	windowSizeChange();
-}
+$(window).resize(windowSizeChange);
+windowSizeChange();
 function windowSizeChange(){
 	$("#content").height( $(window).height() - $("#content").position().top - 10 );
 }
