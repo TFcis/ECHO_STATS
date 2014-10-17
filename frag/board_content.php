@@ -24,6 +24,7 @@
 <?php
 	foreach($groups as $group){
 ?>
+<pre><?php print_r($rank); ?></pre>
         <div id = "table-<?=(int)$group['index']?>" style = "display: none; position: relative; margin-left: 80px">
         
     	<br>
@@ -58,7 +59,7 @@
                 
         		//sort: sort by name
         		foreach($group['names'] as $n){
-        		    $rank[$n] = $name_data[$name_map[$n]]['name'];
+        		    $rank[$n] = $name_data[$name_map[(int)$n]]['name'];
         		}
     		
         		asort($rank);                
@@ -69,7 +70,7 @@
         		foreach($group['names'] as $n){
         		    $summation = 0;
         		    foreach($group['probs'] as $p){
-        		        if($name_data[$name_map[$n]]['stats'][$p] == '9') ++$summation;
+        		        if($name_data[$name_map[(int)$n]]['stats'][$p] == '9') ++$summation;
         		    }
         		    $rank[$n] = $summation;
         		}
@@ -83,6 +84,7 @@
     		
     		//foreach($group['names'] as $n){
     		foreach($rank as $n => $s){
+    		    $n = (int)$n;
     		    //echo $n.' '.$s.';';
     			echo '<tr><td class = "name_tag">'/*.$name_map[$n]*/.$name_data[$name_map[$n]]['name'].$name_data[$name_map[$n]]['rank'].'</td>';	
     			if ($name_data[$name_map[$n]]['stats'] == -1){

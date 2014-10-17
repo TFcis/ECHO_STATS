@@ -82,6 +82,7 @@
 	
     //fetch API for ZJ
 	function getZJstats($prom,$ZJID){
+	    echo "((".$ZJID."))";
 		$ZJ_stats = '';
 		/*
 		$response=false;
