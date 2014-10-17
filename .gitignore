@@ -1,3 +1,4 @@
 /cache/*.dat
 /cache/prev_updt
 /cache/work_flag
+/config/*.dat
