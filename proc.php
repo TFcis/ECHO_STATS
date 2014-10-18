@@ -26,12 +26,6 @@
   			exit();
   		}
   		
-
-  		if(file_exists('./cache/work_flag')){
-  			echo '...other update tasks pending. Abort.<br><br>';
-  			exit();
-  		}
-  		
   		$work_flag = fopen('./cache/work_flag', 'w');
   		if(!$work_flag){
   			echo 'FATAL ERROR: failed to create flag file. Check existence of ./config and grant write permission.<br><br>';
