@@ -2,6 +2,8 @@
     //echo 'preproc';
 	//turn of error reporting (for the sake of user-end satisfaction?)
 	$raw_names = @file_get_contents('../config/names.dat');
+	$raw_names = str_replace(array("\r\n","\r","\n"),PHP_EOL,$raw_names);
+	
 
     $name_data = explode(PHP_EOL, $raw_names);
     $name_map = array();
@@ -24,6 +26,7 @@
     
     //load task data
     $raw_probs = @file_get_contents('../config/probs.dat');
+    $raw_probs = str_replace(array("\r\n","\r","\n"),PHP_EOL,$raw_probs);
 	
     $prob_data = explode(PHP_EOL, $raw_probs);
     
@@ -43,6 +46,7 @@
     for($i = 0; $i < count($name_data); ++$i){
     	$filename = '../cache/'.$name_data[$i]['TOJid'].'.dat';
     	$raw_stats = @file_get_contents($filename);
+    	$raw_stats = str_replace(array("\r\n","\r","\n"),PHP_EOL,$raw_stats);
 		if(!$raw_stats){
 			//pending...
 			//$stats_data[$name['TOJid']] = -1;
@@ -57,6 +61,8 @@
 
 	//load group data
 	$raw_groups = @file_get_contents('../config/groups.dat');
+	$raw_groups = str_replace(array("\r\n","\r","\n"),PHP_EOL,$raw_groups);
+	
 	if(substr($raw_groups, -1) == ';') $raw_groups = substr($raw_groups, 0, -1);
 	$groups = explode(';'.PHP_EOL, $raw_groups);
 	
