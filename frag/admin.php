@@ -51,7 +51,7 @@ foreach($files as $file){
 ?>
 <?=$file?>:<br/>
 <textarea class="config" name="<?=$file?>">
-<?=file_get_contents("../config/$file.dat")?>
+<?=@file_get_contents("../config/$file.dat")?>
 </textarea><br/>
 <?php } ?>
 <input type="hidden" name="pwd" value="<?=$_POST["pwd"]?>">
