@@ -62,7 +62,6 @@
 	//load group data
 	$raw_groups = @file_get_contents('../config/groups.dat');
 	$raw_groups = str_replace(array("\r\n","\r","\n"),PHP_EOL,$raw_groups);
-	
 	if(substr($raw_groups, -1) == ';') $raw_groups = substr($raw_groups, 0, -1);
 	$groups = explode(';'.PHP_EOL, $raw_groups);
 	
