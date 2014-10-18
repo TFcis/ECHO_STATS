@@ -93,6 +93,7 @@
 		*/
 		$response=file_get_contents("http://zerojudge.tw/UserStatistic?account=".$ZJID);
 		if(!$response) return false;
+		if(!(strrpos($response,"DataException")===false)) return false;
 		
 		foreach ($prom as $q){
 			$start=strpos($response,"?problemid=".$q);
