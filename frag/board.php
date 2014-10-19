@@ -59,8 +59,8 @@
         <div>SORT BY:</div>
         <div style =  "text-align: right">
             <hr>
+			<div><a onclick = "sort_by = 'rank'; loadPage(0)">rank</a></div>
             <div><a onclick = "sort_by = 'name'; loadPage(0)">name</a></div>
-            <div><a onclick = "sort_by = 'rank'; loadPage(0)">rank</a></div>
         </div>
         
         <br>

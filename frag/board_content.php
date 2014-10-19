@@ -89,8 +89,8 @@
     		foreach($rank as $n => $s){
     		    $n = (int)$n;
     		    //echo $n.' '.$s.';';
-    			echo '<tr><td class = "name_tag">'.$name_data[$name_map[$n]]['name'].'</td>';	
-    			echo '<td class = "sol_tag">'.' ('.$sol[$n].'/'.round($sol[$n]/count($group['probs'])*100,1).'%)</td>';	
+    			echo '<tr><td class = "name_tag">'.$name_data[$name_map[$n]]['name'].'</td>';
+    			echo '<td class = "sol_tag">'.' ('.$sol[$n].'/'.round($sol[$n]/count($group['probs'])*100,0).'%)</td>';	
     			if ($name_data[$name_map[$n]]['stats'] == -1){
     				echo '<td class = "pend">pending...</td>';
     			} else {
