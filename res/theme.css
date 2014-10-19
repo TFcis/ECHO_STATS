@@ -138,8 +138,14 @@ td {
 	font-weight: 700;
 	width: 80px;
 	
-	position: absolute; 
+	position: absolute;
     left: -20px;
+    top: auto;
+}
+
+.sol_tag{
+	color: #cccccc;
+	font-weight: 300;
     top: auto;
 }
 

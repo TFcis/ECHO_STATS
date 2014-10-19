@@ -33,7 +33,7 @@
     	<div class = 'table-wrapper'>
         <table>
     	<?php
-    		echo '<tr><td class = "name_tag"></td>';
+    		echo '<tr><td class = "name_tag"></td><td class = "sol_tag"></td>';
     		foreach($group['probs'] as $p){
     			echo '<td>'.getProbLink($prob_data[$p]['judge'],$prob_data[$p]['index']).'</td>';
     		}
@@ -41,6 +41,16 @@
     		
     		
     		//................SORT
+    		
+    		//Calculate AC count
+    		$sol = array();
+    		foreach($group['names'] as $n){
+    		    $summation = 0;
+    		    foreach($group['probs'] as $p){
+    		        if($name_data[$name_map[(int)$n]]['stats'][$p] == '9') ++$summation;
+    		    }
+    		    $sol[$n] = $summation;
+    		}
     		
     		$rank = array();
             //$sort_rule = 'rank';
@@ -66,13 +76,7 @@
             } else if ($sort_rule == 'rank'){
                 
         		//sort: sort by rank
-        		foreach($group['names'] as $n){
-        		    $summation = 0;
-        		    foreach($group['probs'] as $p){
-        		        if($name_data[$name_map[(int)$n]]['stats'][$p] == '9') ++$summation;
-        		    }
-        		    $rank[$n] = $summation;
-        		}
+        		$rank = $sol;
     		
         		arsort($rank);
         		
@@ -85,7 +89,8 @@
     		foreach($rank as $n => $s){
     		    $n = (int)$n;
     		    //echo $n.' '.$s.';';
-    			echo '<tr><td class = "name_tag">'/*.$name_map[$n]*/.$name_data[$name_map[$n]]['name'].$name_data[$name_map[$n]]['rank'].'</td>';	
+    			echo '<tr><td class = "name_tag">'.$name_data[$name_map[$n]]['name'].'</td>';	
+    			echo '<td class = "sol_tag">'.' ('.$sol[$n].'/'.round($sol[$n]/count($group['probs'])*100,1).'%)</td>';	
     			if ($name_data[$name_map[$n]]['stats'] == -1){
     				echo '<td class = "pend">pending...</td>';
     			} else {
