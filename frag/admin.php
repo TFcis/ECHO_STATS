@@ -31,7 +31,14 @@ function echoAdminPage(){  ?>
 $files = array("groups","names","probs");
 if(isset($_POST[$files[0]])){
 	foreach($files as $file)
-		if(!@file_put_contents("../config/$file.dat",$_POST[$file]))
+		$content = $_POST[$file];
+		if($file == "probs"){
+			$ojs = array("TOJ","ZJ","UVa");
+			foreach($ojs as $oj)
+				$content = preg_replace("/$oj/i", $oj, $content);
+			$content = str_replace(" ", "\t", $content);
+		}
+		if(!@file_put_contents("../config/$file.dat",$content))
 			echo "Failed to write file: $file. Please check file permission.<br/>";
 	echo "done<br/>";
 }
