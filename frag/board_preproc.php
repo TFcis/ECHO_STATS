@@ -87,7 +87,7 @@
 		}
 		
 		$dt = time() - $prev_updt;
-		$status_string .= "Last update: $dt cycles ago.<br>";
+		$status_string .= "Last update: ".($dt/60)." minutes ".($dt%60)." seconds ago.<br>";
 		
 		
 		if (file_exists('../cache/work_flag')){
