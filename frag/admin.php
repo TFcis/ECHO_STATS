@@ -38,7 +38,7 @@ if(isset($_POST[$files[0]])){
 				$content = preg_replace("/$oj/i", $oj, $content);
 			$content = str_replace(" ", "\t", $content);
 		}
-		if(!@file_put_contents("../config/$file.dat",$content))
+		if(@file_put_contents("../config/$file.dat",$content) === false)
 			echo "Failed to write file: $file. Please check file permission.<br/>";
 	}
 	echo "done<br/>";
