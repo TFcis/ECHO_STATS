@@ -30,7 +30,7 @@ function echoAdminPage(){  ?>
 <?php
 $files = array("groups","names","probs");
 if(isset($_POST[$files[0]])){
-	foreach($files as $file)
+	foreach($files as $file){
 		$content = $_POST[$file];
 		if($file == "probs"){
 			$ojs = array("TOJ","ZJ","UVa");
@@ -40,6 +40,7 @@ if(isset($_POST[$files[0]])){
 		}
 		if(!@file_put_contents("../config/$file.dat",$content))
 			echo "Failed to write file: $file. Please check file permission.<br/>";
+	}
 	echo "done<br/>";
 }
 ?>
