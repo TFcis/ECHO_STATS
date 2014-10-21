@@ -87,9 +87,17 @@
 		}
 		
 		$dt = time() - $prev_updt;
-		$status_string .= "Last update: "
-		if(floor($dt/60)>0)$status_string .=floor($dt/60)." minute".(floor($dt/60)>1?"s","")." ";
-		if($dt%60>0)$status_string .=($dt%60)." second".($dt%60>1?"s","")." ";
+		$status_string .= "Last update: ";
+		if(floor($dt/60)>0){
+			$status_string .=floor($dt/60)." minute";
+			if(floor($dt/60)>1)$status_string .="s";
+			$status_string .=" ";
+		}
+		if($dt%60>0){
+			$status_string .=($dt%60)." second";
+			if($dt%60>0)$status_string .="s";
+			$status_string .=" ";
+		}
 		$status_string .="ago.<br>";
 		
 		
