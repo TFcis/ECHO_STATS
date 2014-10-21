@@ -87,7 +87,10 @@
 		}
 		
 		$dt = time() - $prev_updt;
-		$status_string .= "Last update: ".floor($dt/60)." minutes ".($dt%60)." seconds ago.<br>";
+		$status_string .= "Last update: "
+		if(floor($dt/60)>0)$status_string .=floor($dt/60)." minute".(floor($dt/60)>1?"s","")." ";
+		if($dt%60>0)$status_string .=($dt%60)." second".($dt%60>1?"s","")." ";
+		$status_string .="ago.<br>";
 		
 		
 		if (file_exists('../cache/work_flag')){
