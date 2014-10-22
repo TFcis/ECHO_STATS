@@ -93,14 +93,14 @@
 			if(floor($dt/86400)>1)$status_string .="s";
 			$status_string .=" ";
 		}
-		if(floor($dt/3600)>0){
+		if(floor($dt%86400/3600)>0){
 			$status_string .=floor($dt%86400/3600)." hour";
-			if(floor($dt/3600)>1)$status_string .="s";
+			if(floor($dt%86400/3600)>1)$status_string .="s";
 			$status_string .=" ";
 		}
-		if(floor($dt/60)>0){
+		if(floor($dt%3600/60)>0){
 			$status_string .=floor($dt%3600/60)." minute";
-			if(floor($dt/60)>1)$status_string .="s";
+			if(floor($dt%3600/60)>1)$status_string .="s";
 			$status_string .=" ";
 		}
 		if($dt%60>0){
