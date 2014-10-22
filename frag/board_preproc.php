@@ -88,8 +88,18 @@
 		
 		$dt = time() - $prev_updt;
 		$status_string .= "Last update: ";
+		if(floor($dt/86400)>0){
+			$status_string .=floor($dt/86400)." day";
+			if(floor($dt/86400)>1)$status_string .="s";
+			$status_string .=" ";
+		}
+		if(floor($dt/3600)>0){
+			$status_string .=floor($dt%86400/3600)." hour";
+			if(floor($dt/3600)>1)$status_string .="s";
+			$status_string .=" ";
+		}
 		if(floor($dt/60)>0){
-			$status_string .=floor($dt/60)." minute";
+			$status_string .=floor($dt%3600/60)." minute";
 			if(floor($dt/60)>1)$status_string .="s";
 			$status_string .=" ";
 		}
