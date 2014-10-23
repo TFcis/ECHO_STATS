@@ -36,7 +36,7 @@
             </div>
             <div style = 'width: 280px; font-size: 15px; display: inline-block; margin-left: 8px'>
                 <strong>Domen Su</strong><br>
-                Finds a lot of bugs in this projuct and feels tired of fixing those bugs.<br><br>
+                Finds a lot of bugs in this project and feels tired of fixing those bugs.<br><br>
                 Domen is curretly the 16<sub>th</sub> leader of TFcis Club and
                 manages <a href = "http://www.tfcis.org" target="_blank">tfcis.org</a>.<br><br>
                 
