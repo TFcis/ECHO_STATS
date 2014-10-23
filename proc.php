@@ -93,7 +93,8 @@
 					'name'	=>	$tmp_name[0],
 					'TOJid'	=>	$tmp_name[1],
 					'UVAid'	=>	$tmp_name[2],
-					'ZJid'	=>	$tmp_name[3]
+					'ZJid'	=>	$tmp_name[3],
+					'GJid'	=>	$tmp_name[4]
 				);
             }
             //unset($tmp_name);
@@ -154,6 +155,7 @@
         $sortedProbset['TOJ'] = array();
         $sortedProbset['UVa'] = array();
         $sortedProbset['ZJ'] = array();
+		$sortedProbset['GJ'] = array();
         
 		echo '...organizing problemset...<br>';
         foreach($prob_data as $p){
@@ -198,6 +200,7 @@
 			$returned['UVa'] = 0;
 			$returned['TOJ'] = 0;
 			$returned['ZJ'] = 0;
+			$returned['GJ'] = 0;
 			
 			//fetch data
 			echo '...fetching data from: UVa Online Judge...';
@@ -228,11 +231,22 @@
 			}
 			echo '...data fetching complete!<br>';
 			
+			echo '...fetching data from: Green Judge...';
+			$returned['GJ'] = getGJstats($sortedProbset['GJ'], $name['GJid']);
+			if($returned['GJ'] === false){
+				echo '<br>ERROR: Invalid query or request timed out. Updates for GJ prblemset aborted for '.$name['name'].'.<br><br>';
+			} else {
+				echo $GJreturn;
+				echo '...done!<br>';
+			}
+			echo '...data fetching complete!<br>';
+			
 			echo '...organizing returned data...<br>';
 			$tmp_prog = array();
 			$tmp_prog['UVa'] = 0;
 			$tmp_prog['TOJ'] = 0;
 			$tmp_prog['ZJ'] = 0;
+			$tmp_prog['GJ'] = 0;
 			
 			$finalstats = '';
 			foreach($prob_data as $p){

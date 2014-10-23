@@ -114,4 +114,42 @@
 
 		return $ZJ_stats;
 	}
+	
+	
+	
+	//fetch API for TCGSJ
+	function getGJstats($prom,$GJID){
+		$TCGSJ_stats = '';
+		/*
+		$response=false;
+		$reloadtimes=0;
+		while($response==false&&$reloadtimes<=3){
+			$reloadtimes++;
+			$response=file_get_contents("http://www.tcgs.tc.edu.tw:1218/ShowUserStatistic?account=".$GJID);
+		}
+		*/
+		$response=file_get_contents("http://www.tcgs.tc.edu.tw:1218/ShowUserStatistic?account=".$GJID);
+		if(!$response) return false;
+		if(!(strrpos($response,"DataException")===false)) return false;
+		
+		foreach ($prom as $q){
+			$start=strpos($response,"?problemid=".$q);
+			$end  =strpos($response,">".$q."</a>");
+			$html =substr($response,$start,$end-$start);
+			//print '<td>';
+			
+			if(strpos($html,'id="acstyle"')){
+				$GJ_stats .= 9;
+			} else if(strpos($html,'color: #666666; font-weight: bold;')){
+				$GJ_stats .= 8;
+			} else if(strpos($html,'color:#666666')) {
+				$GJ_stats .= 0;
+			} else {
+				//THROW ERROR
+			}
+		}
+
+		return $GJ_stats;
+	}
+	
 ?>

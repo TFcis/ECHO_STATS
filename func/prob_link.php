@@ -6,6 +6,8 @@ function getProbLink($judge,$probid){
         $url = getZJUrl($probid);
     else if($judge=="TOJ")
         $url = getTOJUrl($probid);
+	else if($judge=="GJ")
+        $url = getGJUrl($probid);
     return "<a href='$url' target='_blank'>$judge<br/>$probid</a>";
 }
 function getUVaUrl($probid){
@@ -16,4 +18,7 @@ function getZJUrl($probid){
 }
 function getTOJUrl($probid){
     return "http://toj.tfcis.org/oj/pro/$probid/";
+}
+function getGJUrl($probid){
+    return "http://www.tcgs.tc.edu.tw:1218/ShowProblem?problemid=$probid";
 }

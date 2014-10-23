@@ -10,7 +10,7 @@
 	$url2 = explode("&",$url);
 	$pl = explode(",",$url2[1]);
     //fetch API for TCGSJ
-	function getZJstats($prom,$TCGSJID){
+	function getGJstats($prom,$TCGSJID){
 		$TCGSJ_stats = '';
 		/*
 		$response=false;
