@@ -54,7 +54,7 @@ if(isset($_POST[$files[0]])){
 	foreach($files as $file){
 	    $content = "";
 	    $dataUrl = $url.$file.".dat";
-        if(($content = @file_get_contents("http://www.tfcis.org/MY_STATS/config/groups.dat")) === false)
+        if(($content = @file_get_contents($dataUrl)) === false)
             echo "Unable to fetch data from: ".$dataUrl."<br/>";
         else if(@file_put_contents("../config/$file.dat",$content) === false)
 			echo "Failed to write file: $file. Please check file permission.<br/>";
