@@ -60,6 +60,13 @@ if(isset($_POST[$files[0]])){
 			echo "Failed to write file: $file. Please check file permission.<br/>";
 	}
 	echo "done ".time()."<br/>";
+}else if(isset($_POST["deleteCache"])){
+    echo "Delete Cache:<br/>";
+    foreach (glob("../cache/*.dat") as $filename) {
+        echo "$filename - size " . filesize($filename) . "<br/>";
+        unlink($filename);
+    }
+    echo "done";
 }
 ?>
 
@@ -91,6 +98,12 @@ Clone setting from another ECHO_STATS:
 <input type="submit" value="Download">
 <input type="hidden" name="pwd" value="<?=$_POST["pwd"]?>">
 <br/>Waring: It will replace all the setting data here.
+</form>
+
+<form method="POST">
+<input type="submit" value="Delete Cache">
+<input type="hidden" name="pwd" value="<?=$_POST["pwd"]?>">
+<input type="hidden" name="deleteCache" value="true">
 </form>
 
 
