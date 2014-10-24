@@ -174,4 +174,33 @@
 		return $GJ_stats;
 	}
 	
+	
+	
+	//fetch API for TIOJ
+	function getTIOJstats($prom,$TIOJID){
+		$TIOJ_stats = '';
+		$response=file_get_contents("http://tioj.ck.tp.edu.tw/users/".$TIOJID);
+		if(!$response) return false;
+		if(!(strrpos($response,"DataException")===false)) return false;
+		
+		foreach ($prom as $q){
+			$start=strpos($response,"/problems/".$q."/submissions")-25;
+			$end  =strpos($response,"/problems/".$q."/submissions")-6;
+			$html =substr($response,$start,$end-$start);
+			//print '<td>';
+			
+			if(strpos($html,'text-success')){
+				$TIOJ_stats .= 9;
+			} else if(strpos($html,'text-warning')){
+				$TIOJ_stats .= 8;
+			} else if(strpos($html,'text-muted')) {
+				$TIOJ_stats .= 0;
+			} else {
+				//THROW ERROR
+			}
+		}
+
+		return $TIOJ_stats;
+	}
+	
 ?>
