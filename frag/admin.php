@@ -33,7 +33,7 @@ if(isset($_POST[$files[0]])){
 	foreach($files as $file){
 		$content = $_POST[$file];
 		if($file == "probs"){
-			$ojs = array("TOJ","ZJ","UVa");
+			$ojs = array("TOJ","ZJ","UVa","GJ");
 			foreach($ojs as $oj)
 				$content = preg_replace("/$oj/i", $oj, $content);
 			$content = str_replace(" ", "\t", $content);
