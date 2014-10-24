@@ -50,6 +50,7 @@
 	function getTOJstats($probs, $uid){
 		$TOJstats = '';
 		
+		//Get AC list
 		$data = array(
 				'reqtype' => 'AC',
 				'acct_id' => $uid
@@ -67,9 +68,30 @@
 		//echo $uid.'TOJ: ';
 	
 		$AClist = json_decode($response)->ac;
+		
+		//Get NA list
+		$data = array(
+				'reqtype' => 'NA',
+				'acct_id' => $uid
+			);
+			
+		$context['http'] = array (
+			'timeout'   => 60,
+			'method'	=> 'POST',
+			'content'   => http_build_query($data, '', '&'),
+		);
+		
+		$response = file_get_contents('http://210.70.137.215/oj/be/api', false, stream_context_create($context));
+		if($response === false) return false;
+		//echo $uid.'TOJ: ';
+	
+		$NAlist = json_decode($response)->na;
+		
 		foreach($probs as $p){
 			if (in_array($p, $AClist)){
 				$TOJstats .= 9;
+			} else if (in_array($p, $NAlist)) {
+				$TOJstats .= 8;
 			} else {
 				$TOJstats .= 0;  
 			}
