@@ -34,7 +34,7 @@ if(isset($_POST[$files[0]])){
 	foreach($files as $file){
 		$content = $_POST[$file];
 		if($file == "probs"){
-			$ojs = array("TOJ","ZJ","UVa","GJ");
+			$ojs = array("TOJ","ZJ","UVa","GJ","TIOJ");
 			foreach($ojs as $oj)
 				$content = preg_replace("/$oj/i", $oj, $content);
 			$content = str_replace(" ", "\t", $content);
@@ -66,6 +66,10 @@ if(isset($_POST[$files[0]])){
         echo "$filename - size " . filesize($filename) . "<br/>";
         unlink($filename);
     }
+    echo "done";
+}else if(isset($_POST["deleteWorkFlag"])){
+    echo "Delete Work Flag:<br/>";
+    unlink("../cache/work_flag");
     echo "done";
 }
 ?>
@@ -104,6 +108,12 @@ Clone setting from another ECHO_STATS:
 <input type="submit" value="Delete Cache">
 <input type="hidden" name="pwd" value="<?=$_POST["pwd"]?>">
 <input type="hidden" name="deleteCache" value="true">
+</form>
+
+<form method="POST">
+<input type="submit" value="Delete Work Flag">
+<input type="hidden" name="pwd" value="<?=$_POST["pwd"]?>">
+<input type="hidden" name="deleteWorkFlag" value="true">
 </form>
 
 
