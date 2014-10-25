@@ -45,8 +45,8 @@ if(isset($_POST[$files[0]])){
 	echo "done ".time()."<br/>";
 }else if(isset($_POST["url"])){
     $url = $_POST["url"];
-    $url = explode("#", $url)[0];
-    $url = explode("index.php", $url)[0];
+    $url = explode("#", $url); $url = $url[0];
+    $url = explode("index.php", $url); $url = $url[0];
     if(substr($url, -1)!="/")
         $url .= "/";
     $url .= "config/";
