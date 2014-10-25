@@ -1,7 +1,7 @@
 ECHO_STATS
 =====
 
-Experimental tracking tool for Online Judge solution stastistics.
+Experimental tracking tool for Online Judge solution statistics.
 It supports 5 OJ systems now: [TOJ](http://toj.tfcis.org/oj/info/), [ZJ](http://zerojudge.tw/), [UVa](http://uva.onlinejudge.org/), [GJ](http://www.tcgs.tc.edu.tw:1218/), [TIOJ](http://tioj.ck.tp.edu.tw/).
 
 ###To install
