@@ -21,7 +21,7 @@
                 <!--<a title = "homepage" href = "" class = 'icon' style = "margin: 0 4px">&#xe817;</a>-->
                 <!--<a title = "facebook" href = "" class = 'icon' style = "margin: 0 4px">&#xe845;</a>-->
                 <a title = "twitter" href = "http://twitter.com/_JohnLallo" class = 'icon' style = "margin: 0 4px" target="_blank">&#xe844;</a> 
-                <a title = "nuff97@gmail.com" class = 'icon' style = "margin: 0 4px" onclick="prompt('請複製以下文字','nuff97@gmail.com');">&#xe850;</a>
+                <a title = "nuff97@gmail.com" href="" class = 'icon' style = "margin: 0 4px" onclick="prompt('請複製以下文字','nuff97@gmail.com');return false;">&#xe850;</a>
                 <a title = "tumblr" href = "http://nuffthemighty.tumblr.com" class = 'icon' style = "margin: 0 4px" target="_blank">&#xe843;</a> 
                 <a title = "github"href = "http://github.com/john-lallo" class = 'icon' style = "margin: 0 4px" target="_blank">&#xe809;</a>
                 </div>
@@ -44,8 +44,8 @@
                 <a title = "homepage" href = "http://sites.google.com/site/domenprg/" class = 'icon' style = "margin: 0 4px" target="_blank">&#xe817;</a>
                 <a title = "facebook" href = "https://www.facebook.com/DomenSu111" class = 'icon' style = "margin: 0 4px" target="_blank">&#xe845;</a>
                 <!--<a title = "twitter" href = "" class = 'icon' style = "margin: 0 4px">&#xe844;</a>-->
-                <a title = "domen111@tfcis.org" class = 'icon' style = "margin: 0 4px" onclick="prompt('請複製以下文字','domen111@tfcis.org');">&#xe850;</a>
-                <a title = "domen.public@gmail.com" class = 'icon' style = "margin: 0 4px" onclick="prompt('請複製以下文字','domen.public@gmail.com');">&#xe850;</a>
+                <a title = "domen111@tfcis.org" href="" class = 'icon' style = "margin: 0 4px" onclick="prompt('請複製以下文字','domen111@tfcis.org');return false;">&#xe850;</a>
+                <a title = "domen.public@gmail.com" href="" class = 'icon' style = "margin: 0 4px" onclick="prompt('請複製以下文字','domen.public@gmail.com');return false;">&#xe850;</a>
                 <!--<a title = "tumblr" href = "" class = 'icon' style = "margin: 0 4px">&#xe843;</a> -->
                 <a title = "github"href = "http://github.com/domen111" class = 'icon' style = "margin: 0 4px" target="_blank">&#xe809;</a>
                 </div>
