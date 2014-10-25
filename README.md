@@ -13,6 +13,7 @@ It supports 5 OJ systems now: [TOJ](http://toj.tfcis.org/oj/info/), [ZJ](http://
 Loading index.php after installation should automatically fetch related data.
 
 ###Config Files
+You can refer to config/XXX.dat.example
 #####groups.dat
 ```
 [Group ID]
