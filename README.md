@@ -14,5 +14,23 @@ Loading index.php after installation should automatically fetch related data.
 
 ###Config Files
 #####groups.dat
+```
+[Group ID]
+[Group Name]
+[User TOJ ID csv]
+[Problem ID csv (from probs.dat)];
+...
+```
 #####names.dat
+```
+[User Name] (tab) [TOJ ID] (tab) [UVa ID] (tab) [ZJ account] (tab) [GJ account] (tab) [TIOJ account]
+...
+```
 #####probs.dat
+```
+(Problem 0) [OJ name] (tab) [Problem ID]
+(Problem 1) [OJ name] (tab) [Problem ID]
+(Problem 2) [OJ name] (tab) [Problem ID]
+...
+```
+If you type space instead of tab in "probs", it will change it to space automatically.
