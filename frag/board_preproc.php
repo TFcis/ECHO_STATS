@@ -112,7 +112,8 @@
 			if($dt%60>1)$status_string .="s";
 			$status_string .=" ";
 		}
-		$status_string .="ago.<br>";
+		if($dt==0)$status_string .="Just now.<br>";
+		else $status_string .="ago.<br>";
 		
 		
 		if (file_exists('../cache/work_flag')){
