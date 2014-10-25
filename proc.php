@@ -7,6 +7,7 @@
 <body style = "padding-left: 16px;">
 	<pre style = "margin: 0;">
     <?php
+		require_once("./func/EOL.php");
     	
     	echo '<br>: STATS PROCESSOR OPERATION LOG<br><br>';
     	
@@ -76,7 +77,7 @@
         
         //load tracked accounts
         $raw_names = file_get_contents('./config/names.dat');
-		$raw_names = str_replace(array("\r\n","\r","\n"),PHP_EOL,$raw_names);
+		$raw_names = handleEOL($raw_names);
 
         if($raw_names === false){
             echo 'FATAL ERROR: failed to fetch data from names.dat<br><br>';
@@ -117,7 +118,7 @@
         
         //load task data
         $raw_probs = file_get_contents('./config/probs.dat');
-		$raw_probs = str_replace(array("\r\n","\r","\n"),PHP_EOL,$raw_probs);
+		$raw_probs = handleEOL($raw_probs);
 
         if($raw_probs === false){
             echo 'FATAL ERROR: failed to fetch data from probs.dat<br><br>';
