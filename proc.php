@@ -248,7 +248,6 @@
 				echo $ZJreturn;
 				echo '...done!<br>';
 			}
-			echo '...data fetching complete!<br>';
 			
 			echo '...fetching data from: Green Judge...';
 			if($name['GJid']!="NULL")
@@ -263,7 +262,6 @@
 				echo $GJreturn;
 				echo '...done!<br>';
 			}
-			echo '...data fetching complete!<br>';
 			
 			echo '...fetching data from: TIOJ Infor Online Judge...';
 			if($name['TIOJid']!="NULL")
@@ -278,6 +276,7 @@
 				echo $TIOJreturn;
 				echo '...done!<br>';
 			}
+			
 			echo '...data fetching complete!<br>';
 			
 			echo '...organizing returned data...<br>';
