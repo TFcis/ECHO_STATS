@@ -32,3 +32,4 @@ function getTIOJUrl($probid){
 function getTZJUrl($probid){
     return "http://judge.tnfsh.tn.edu.tw:8080/ShowProblem?problemid=$probid";
 }
+?>

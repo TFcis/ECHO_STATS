@@ -2,6 +2,7 @@
     //preproc: fetch data from files
     require_once('board_preproc.php');
     require_once('../func/prob_link.php');
+	require_once('../func/prob_chal.php');
     if($_POST['forceupdate']){
         $status_string = 'force update request sent.';
     }
@@ -84,6 +85,8 @@
     		//................END SORT
     		
     		
+			
+			
     		
     		//foreach($group['names'] as $n){
     		foreach($rank as $n => $s){
@@ -99,10 +102,11 @@
     					$res = $name_data[$name_map[$n]]['stats'][$p];
     					if($res == 9){
     						//AC
-    						echo '<td class = "AC">&#x25cf;</td>';	
+    						echo '<td class = "AC">'.getChalLink($prob_data[$p]['judge'],$prob_data[$p]['index'],$name_data[$name_map[$n]],9).'</td>';	
+							//'.$prob_data[$p]['judge'].$prob_data[$p]['index'].$n.'
     					} else if ($res == 8){
     						//tried
-    						echo '<td class = "WA">&#x25cf;</td>';	
+    						echo '<td class = "WA">'.getChalLink($prob_data[$p]['judge'],$prob_data[$p]['index'],$name_data[$name_map[$n]],8).'</td>';
     					} else if ($res == 0) {
     						//N/A
     						echo '<td class = "NA">&#x25cf;</td>';	

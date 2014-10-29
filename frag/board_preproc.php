@@ -18,8 +18,9 @@
 			'TOJid'	=>	$tmp_name[1],
 			'UVAid'	=>	$tmp_name[2],
 			'ZJid'	=>	$tmp_name[3],
-			'GZid'	=>	$tmp_name[4],
+			'GJid'	=>	$tmp_name[4],
 			'TIOJid'	=>	$tmp_name[5],
+			'TZJid'	=>	$tmp_name[6],
 			'stats' =>  -1,
 		);
 		
