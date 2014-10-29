@@ -2,7 +2,7 @@
     //preproc: fetch data from files
     require_once('board_preproc.php');
     require_once('../func/prob_link.php');
-	require_once('../func/prob_chal.php');
+	require_once('../func/chal_link.php');
     if($_POST['forceupdate']){
         $status_string = 'force update request sent.';
     }
