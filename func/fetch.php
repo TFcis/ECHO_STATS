@@ -203,4 +203,31 @@
 		return $TIOJ_stats;
 	}
 	
+	
+	//fetch API for TZJ
+	function getTZJstats($prom,$TZJID){
+		$TZJ_stats = '';
+		$response=file_get_contents("http://judge.tnfsh.tn.edu.tw:8080/ShowUserStatistic?account=".$TZJID);
+		if(!$response) return false;
+		if(!(strrpos($response,"DataException")===false)) return false;
+		
+		foreach ($prom as $q){
+			$start=strpos($response,"?problemid=".$q);
+			$end  =strpos($response,">".$q."</a>");
+			$html =substr($response,$start,$end-$start);
+			//print '<td>';
+			
+			if(strpos($html,'id="acstyle"')){
+				$TZJ_stats .= 9;
+			} else if(strpos($html,'color: #666666; font-weight: bold;')){
+				$TZJ_stats .= 8;
+			} else if(strpos($html,'color:#666666')) {
+				$TZJ_stats .= 0;
+			} else {
+				//THROW ERROR
+			}
+		}
+
+		return $TZJ_stats;
+	}
 ?>

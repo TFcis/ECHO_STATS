@@ -96,7 +96,8 @@
 					'UVAid'	=>	$tmp_name[2],
 					'ZJid'	=>	$tmp_name[3],
 					'GJid'	=>	$tmp_name[4],
-					'TIOJid'	=>	$tmp_name[5]
+					'TIOJid'	=>	$tmp_name[5],
+					'TZJid'	=>	$tmp_name[6]
 				);
             }
             //unset($tmp_name);
@@ -159,6 +160,7 @@
         $sortedProbset['ZJ'] = array();
 		$sortedProbset['GJ'] = array();
 		$sortedProbset['TIOJ'] = array();
+		$sortedProbset['TZJ'] = array();
         
 		echo '...organizing problemset...<br>';
         foreach($prob_data as $p){
@@ -205,6 +207,7 @@
 			$returned['ZJ'] = 0;
 			$returned['GJ'] = 0;
 			$returned['TIOJ'] = 0;
+			$returned['TZJ'] = 0;
 			
 			//fetch data
 			echo '...fetching data from: UVa Online Judge...';
@@ -215,7 +218,7 @@
 			if($returned['UVa'] === false){
 				echo '<br>ERROR: Invalid query or request timed out. Updates for UVa prblemset aborted for '.$name['name'].'.<br><br>';
 			} else if($returned['UVa'] === 0) {
-			    echo '<br>'.$name['name'].' have no UVa account.<br><br>';
+			    echo $name['name'].' have no UVa account.<br>';
 			} else {
 				//echo $UVAreturn;
 				echo '...done!<br>';
@@ -229,7 +232,7 @@
 			if($returned['TOJ'] === false){
 				echo '<br>ERROR: Invalid query or request timed out. Updates for TOJ prblemset aborted for '.$name['name'].'.<br><br>';
 			} else if($returned['TOJ'] === 0) {
-			    echo '<br>'.$name['name'].' have no TOJ account.<br><br>';
+			    echo $name['name'].' have no TOJ account.<br>';
 			} else {
 				//echo $TOJreturn;
 				echo '...done!<br>';
@@ -242,8 +245,8 @@
 			    $returned['ZJ'] = 0;
 			if($returned['ZJ'] === false){
 				echo '<br>ERROR: Invalid query or request timed out. Updates for ZJ prblemset aborted for '.$name['name'].'.<br><br>';
-			} else if($returned['TOJ'] === 0) {
-			    echo '<br>'.$name['name'].' have no ZJ account.<br><br>';
+			} else if($returned['ZJ'] === 0) {
+			    echo $name['name'].' have no ZJ account.<br>';
 			} else {
 				echo $ZJreturn;
 				echo '...done!<br>';
@@ -256,8 +259,8 @@
 			    $returned['GJ'] = 0;
 			if($returned['GJ'] === false){
 				echo '<br>ERROR: Invalid query or request timed out. Updates for GJ prblemset aborted for '.$name['name'].'.<br><br>';
-			} else if($returned['TOJ'] === 0) {
-			    echo '<br>'.$name['name'].' have no GJ account.<br><br>';
+			} else if($returned['GJ'] === 0) {
+			    echo $name['name'].' have no GJ account.<br>';
 			} else {
 				echo $GJreturn;
 				echo '...done!<br>';
@@ -270,10 +273,24 @@
 			    $returned['TIOJ'] = 0;
 			if($returned['TIOJ'] === false){
 				echo '<br>ERROR: Invalid query or request timed out. Updates for TIOJ prblemset aborted for '.$name['name'].'.<br><br>';
-			} else if($returned['TOJ'] === 0) {
-			    echo '<br>'.$name['name'].' have no TIOJ account.<br><br>';
+			} else if($returned['TIOJ'] === 0) {
+			    echo $name['name'].' have no TIOJ account.<br>';
 			} else {
 				echo $TIOJreturn;
+				echo '...done!<br>';
+			}
+			
+			echo '...fetching data from: Tnfsh online Judge System...';
+			if($name['TZJid']!="NULL")
+			    $returned['TZJ'] = getTZJstats($sortedProbset['TZJ'], $name['TZJid']);
+			else
+			    $returned['TZJ'] = 0;
+			if($returned['TZJ'] === false){
+				echo '<br>ERROR: Invalid query or request timed out. Updates for TZJ prblemset aborted for '.$name['name'].'.<br><br>';
+			} else if($returned['TZJ'] === 0) {
+			    echo $name['name'].' have no TZJ account.<br>';
+			} else {
+				echo $TZJreturn;
 				echo '...done!<br>';
 			}
 			
@@ -286,6 +303,7 @@
 			$tmp_prog['ZJ'] = 0;
 			$tmp_prog['GJ'] = 0;
 			$tmp_prog['TIOJ'] = 0;
+			$tmp_prog['TZJ'] = 0;
 			
 			$finalstats = '';
 			foreach($prob_data as $p){
