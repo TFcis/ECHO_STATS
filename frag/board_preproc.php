@@ -83,7 +83,7 @@
 
     //check for update triggers etc.
     $status_string = '';
-	$interval_limit = 300;
+	$interval_limit = 3600;
 	
 
 		$prev_updt = 0;
