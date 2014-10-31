@@ -28,7 +28,7 @@ if(!isset($_POST["pwd"])){
 function echoAdminPage(){  ?>
 
 <?php
-$files = array("groups","names","probs");
+$files = array("groups","names","probs","inform");
 if(isset($_POST[$files[0]])){
     echo "edit ";
 	foreach($files as $file){

@@ -121,6 +121,9 @@
     	?>
     	</table>
     	</div>
+		<pre style="font-size: 20px;">
+<?=$group["inform"]?>
+		</pre>
 	
     </div>
 <?php

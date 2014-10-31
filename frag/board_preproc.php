@@ -79,6 +79,15 @@
 			'probs' => explode(',', $tmp_g[3]),
 		);
 	}
+	
+	//load inform data
+	$raw_inform = @file_get_contents('../config/inform.dat');
+	$raw_inform = handleEOL($raw_inform);
+	$inform = explode('<======>'.PHP_EOL, $raw_inform);
+	
+	for($i = 0; $i < count($inform); ++$i){
+		$groups[$i]["inform"] = $inform[$i];
+	}
 
 
     //check for update triggers etc.
