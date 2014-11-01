@@ -2,7 +2,7 @@ ECHO_STATS
 =====
 
 Experimental tracking tool for Online Judge solution statistics.
-It supports 5 OJ systems now: [TOJ](http://toj.tfcis.org/oj/info/), [ZJ](http://zerojudge.tw/), [UVa](http://uva.onlinejudge.org/), [GJ](http://www.tcgs.tc.edu.tw:1218/), [TIOJ](http://tioj.ck.tp.edu.tw/).
+It supports 6 OJ systems now: [TOJ](http://toj.tfcis.org/oj/info/), [ZJ](http://zerojudge.tw/), [UVa](http://uva.onlinejudge.org/), [GJ](http://www.tcgs.tc.edu.tw:1218/), [TIOJ](http://tioj.ck.tp.edu.tw/), [TZJ](http://judge.tnfsh.tn.edu.tw:8080/).
 
 ###To install
 
@@ -24,7 +24,7 @@ You can refer to config/XXX.dat.example
 ```
 #####names.dat
 ```
-[User Name] (tab) [TOJ ID] (tab) [UVa ID] (tab) [ZJ account] (tab) [GJ account] (tab) [TIOJ account]
+[User Name] (tab) [TOJ ID] (tab) [UVa ID] (tab) [ZJ account] (tab) [GJ account] (tab) [TIOJ account] (tab) [TZJ account]
 ...
 ```
 #####probs.dat
