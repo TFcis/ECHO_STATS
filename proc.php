@@ -216,7 +216,7 @@
 			else
 			    $returned['UVa'] = 0;
 			if($returned['UVa'] === false){
-				echo '<br>ERROR: Invalid query or request timed out. Updates for UVa prblemset aborted for '.$name['name'].'.<br><br>';
+				echo '<br>ERROR: Invalid query or request timed out. Updates for UVa prblemset aborted for '.$name['name'].'.<br>';
 			} else if($returned['UVa'] === 0) {
 			    echo $name['name'].' have no UVa account.<br>';
 			} else {
@@ -230,7 +230,7 @@
 			else
 			    $returned['UVa'] = 0;
 			if($returned['TOJ'] === false){
-				echo '<br>ERROR: Invalid query or request timed out. Updates for TOJ prblemset aborted for '.$name['name'].'.<br><br>';
+				echo '<br>ERROR: Invalid query or request timed out. Updates for TOJ prblemset aborted for '.$name['name'].'.<br>';
 			} else if($returned['TOJ'] === 0) {
 			    echo $name['name'].' have no TOJ account.<br>';
 			} else {
@@ -244,7 +244,7 @@
 			else
 			    $returned['ZJ'] = 0;
 			if($returned['ZJ'] === false){
-				echo '<br>ERROR: Invalid query or request timed out. Updates for ZJ prblemset aborted for '.$name['name'].'.<br><br>';
+				echo '<br>ERROR: Invalid query or request timed out. Updates for ZJ prblemset aborted for '.$name['name'].'.<br>';
 			} else if($returned['ZJ'] === 0) {
 			    echo $name['name'].' have no ZJ account.<br>';
 			} else {
@@ -258,7 +258,7 @@
 			else
 			    $returned['GJ'] = 0;
 			if($returned['GJ'] === false){
-				echo '<br>ERROR: Invalid query or request timed out. Updates for GJ prblemset aborted for '.$name['name'].'.<br><br>';
+				echo '<br>ERROR: Invalid query or request timed out. Updates for GJ prblemset aborted for '.$name['name'].'.<br>';
 			} else if($returned['GJ'] === 0) {
 			    echo $name['name'].' have no GJ account.<br>';
 			} else {
@@ -272,7 +272,7 @@
 			else
 			    $returned['TIOJ'] = 0;
 			if($returned['TIOJ'] === false){
-				echo '<br>ERROR: Invalid query or request timed out. Updates for TIOJ prblemset aborted for '.$name['name'].'.<br><br>';
+				echo '<br>ERROR: Invalid query or request timed out. Updates for TIOJ prblemset aborted for '.$name['name'].'.<br>';
 			} else if($returned['TIOJ'] === 0) {
 			    echo $name['name'].' have no TIOJ account.<br>';
 			} else {
@@ -286,7 +286,7 @@
 			else
 			    $returned['TZJ'] = 0;
 			if($returned['TZJ'] === false){
-				echo '<br>ERROR: Invalid query or request timed out. Updates for TZJ prblemset aborted for '.$name['name'].'.<br><br>';
+				echo '<br>ERROR: Invalid query or request timed out. Updates for TZJ prblemset aborted for '.$name['name'].'.<br>';
 			} else if($returned['TZJ'] === 0) {
 			    echo $name['name'].' have no TZJ account.<br>';
 			} else {
