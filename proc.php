@@ -223,7 +223,7 @@
 				$returned['UVa'] = getUVAstats($sortedProbset['UVa'], $name['UVAid']);
 			}
 			if($returned['UVa'] === false){
-				echo 'ERROR: Invalid query or request timed out. Updates for UVa prblemset aborted for '.$name['name'].'.';
+				echo '<br>ERROR: Invalid query or request timed out. Updates for UVa prblemset aborted for '.$name['name'].'.';
 			} else {
 				//echo $UVAreturn;
 				echo '...done!';
@@ -240,7 +240,7 @@
 				$returned['TOJ'] = getTOJstats($sortedProbset['TOJ'], $name['TOJid']);
 			}
 			if($returned['TOJ'] === false){
-				echo 'ERROR: Invalid query or request timed out. Updates for TOJ prblemset aborted for '.$name['name'].'.';
+				echo '<br>ERROR: Invalid query or request timed out. Updates for TOJ prblemset aborted for '.$name['name'].'.';
 			} else {
 				//echo $TOJreturn;
 				echo '...done!';
@@ -257,7 +257,7 @@
 				$returned['ZJ'] = getZJstats($sortedProbset['ZJ'], $name['ZJid']);
 			}
 			if($returned['ZJ'] === false){
-				echo 'ERROR: Invalid query or request timed out. Updates for ZJ prblemset aborted for '.$name['name'].'.';
+				echo '<br>ERROR: Invalid query or request timed out. Updates for ZJ prblemset aborted for '.$name['name'].'.';
 			} else {
 				//echo $ZJreturn;
 				echo '...done!';
@@ -274,7 +274,7 @@
 				$returned['GJ'] = getGJstats($sortedProbset['GJ'], $name['GJid']);
 			}
 			if($returned['GJ'] === false){
-				echo 'ERROR: Invalid query or request timed out. Updates for GJ prblemset aborted for '.$name['name'].'.';
+				echo '<br>ERROR: Invalid query or request timed out. Updates for GJ prblemset aborted for '.$name['name'].'.';
 			} else {
 				//echo $GJreturn;
 				echo '...done!';
@@ -291,7 +291,7 @@
 				$returned['TIOJ'] = getTIOJstats($sortedProbset['TIOJ'], $name['TIOJid']);
 			}
 			if($returned['TIOJ'] === false){
-				echo 'ERROR: Invalid query or request timed out. Updates for TIOJ prblemset aborted for '.$name['name'].'.';
+				echo '<br>ERROR: Invalid query or request timed out. Updates for TIOJ prblemset aborted for '.$name['name'].'.';
 			} else {
 				//echo $TIOJreturn;
 				echo '...done!';
@@ -308,7 +308,7 @@
 				$returned['TZJ'] = getTZJstats($sortedProbset['TZJ'], $name['TZJid']);
 			}
 			if($returned['TZJ'] === false){
-				echo 'ERROR: Invalid query or request timed out. Updates for TZJ prblemset aborted for '.$name['name'].'.';
+				echo '<br>ERROR: Invalid query or request timed out. Updates for TZJ prblemset aborted for '.$name['name'].'.';
 			} else {
 				//echo $TZJreturn;
 				echo '...done!';
