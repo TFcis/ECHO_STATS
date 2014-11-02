@@ -84,6 +84,7 @@
 	$raw_inform = @file_get_contents('../config/inform.dat');
 	$raw_inform = handleEOL($raw_inform);
 	$inform = explode('<======>'.PHP_EOL, $raw_inform);
+	$inform = array_slice($inform,1);
 	
 	for($i = 0; $i < count($inform); ++$i){
 		$groups[$i]["inform"] = $inform[$i];

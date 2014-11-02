@@ -37,6 +37,8 @@ You can refer to config/XXX.dat.example
 If you type space instead of tab in "probs", it will change it to space automatically.
 #####inform.dat
 ```
+[Global Information]
+<======>
 [Group 0 Information (supports html)]
 <======>
 [Group 1 Information (supports html)]

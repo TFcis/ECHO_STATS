@@ -46,6 +46,14 @@
                 A <i>JUDGEMENTAL</i> STATISTICS ENGINE
 			<br></div>
 			
+			<div style = "color: #AAAAAA;">
+                <?php
+                	$inform = @file_get_contents('./config/inform.dat');
+					$inform = explode('<======>', $inform);
+					echo $inform[0];
+                ?>
+			</div>
+			
 			<br>
 			
 			<div style = "color: #999999">
