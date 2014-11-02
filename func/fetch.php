@@ -118,18 +118,11 @@
 		if(!(strrpos($response,"DataException")===false)) return false;
 		
 		//處理HTML
-		$response=str_replace("\r\n","",$response);
-		$response=str_replace("\t","",$response);
-		$response=str_replace(" ","",$response);
-		$response=str_replace("\"","",$response);
-		$response=str_replace("</a>","",$response);
-		$response=str_replace(">","",$response);
-		$response=str_replace("&account=".$ZJID,"",$response);
+		$response=str_replace(array("\r\n","\t"," ","\"","</a>",">","&account=".$ZJID,),"",$response);
 		$response=str_replace("style=color:#666666;font-weight:bold;title=","8",$response);//WA
 		$response=str_replace("style=color:#666666title=","0",$response);//NA
 		$response=str_replace("id=acstyleclass=acstyletitle=","9",$response);//AC
-		$response=str_replace("<ahref=./Submissions?problemid=","\\",$response);
-		$response=str_replace("<ahref=./ShowProblem?problemid=","\\",$response);
+		$response=str_replace(array("<ahref=./Submissions?problemid=","<ahref=./ShowProblem?problemid=",),"\\",$response);
 
 		//建立表格
 		$Stats_array=array();
@@ -180,18 +173,11 @@
 		if(!(strrpos($response,"DataException")===false)) return false;
 		
 		//處理HTML
-		$response=str_replace("\r\n","",$response);
-		$response=str_replace("\t","",$response);
-		$response=str_replace(" ","",$response);
-		$response=str_replace("\"","",$response);
-		$response=str_replace("</a>","",$response);
-		$response=str_replace(">","",$response);
-		$response=str_replace("&account=".$GJID,"",$response);
+		$response=str_replace(array("\r\n","\t"," ","\"","</a>",">","&account=".$GJID,),"",$response);
 		$response=str_replace("style=color:#666666;font-weight:bold;title=","8",$response);//WA
 		$response=str_replace("style=color:#666666title=","0",$response);//NA
 		$response=str_replace("id=acstyletitle=","9",$response);//AC
-		$response=str_replace("<ahref=./RealtimeStatus?problemid=","\\",$response);
-		$response=str_replace("<ahref=./ShowProblem?problemid=","\\",$response);
+		$response=str_replace(array("<ahref=./RealtimeStatus?problemid=","<ahref=./ShowProblem?problemid="),"\\",$response);
 
 		//建立表格
 		$Stats_array=array();
@@ -262,13 +248,7 @@
 		if(!(strrpos($response,"DataException")===false)) return false;
 		
 		//處理HTML
-		$response=str_replace("\r\n","",$response);
-		$response=str_replace("\t","",$response);
-		$response=str_replace(" ","",$response);
-		$response=str_replace("\"","",$response);
-		$response=str_replace("</a>","",$response);
-		$response=str_replace(">","",$response);
-		$response=str_replace("&account=".$TZJID,"",$response);
+		$response=str_replace(array("\r\n","\t"," ","\"","</a>",">","&account=".$TZJID,),"",$response);
 		$response=str_replace("style=color:#666666;font-weight:bold;title=","8",$response);//WA
 		$response=str_replace("style=color:#666666title=","0",$response);//NA
 		$response=str_replace("id=acstyletitle=","9",$response);//AC
