@@ -252,8 +252,7 @@
 		$response=str_replace("style=color:#666666;font-weight:bold;title=","8",$response);//WA
 		$response=str_replace("style=color:#666666title=","0",$response);//NA
 		$response=str_replace("id=acstyletitle=","9",$response);//AC
-		$response=str_replace("<ahref=./RealtimeStatus?problemid=","\\",$response);
-		$response=str_replace("<ahref=./ShowProblem?problemid=","\\",$response);
+		$response=str_replace(array("<ahref=./RealtimeStatus?problemid=","<ahref=./ShowProblem?problemid="),"\\",$response);
 
 		//建立表格
 		$Stats_array=array();
