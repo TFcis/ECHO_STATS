@@ -215,99 +215,105 @@
 			//fetch data
 			$judgestart=microtime(true);
 			echo '...fetching data from: UVa Online Judge...';
-			if($name['UVAid']!="NULL")
-			    $returned['UVa'] = getUVAstats($sortedProbset['UVa'], $name['UVAid']);
-			else
-			    $returned['UVa'] = 0;
+			if($name['UVAid']=="NULL"){
+				echo $name['name'].' have no UVa account.';
+			} else if(count($sortedProbset['UVa'])==0){
+			    echo 'There is no UVa problem.';
+			} else {
+				$returned['UVa'] = getUVAstats($sortedProbset['UVa'], $name['UVAid']);
+			}
 			if($returned['UVa'] === false){
 				echo 'ERROR: Invalid query or request timed out. Updates for UVa prblemset aborted for '.$name['name'].'.';
-			} else if($returned['UVa'] === 0) {
-			    echo $name['name'].' have no UVa account.';
 			} else {
 				//echo $UVAreturn;
 				echo '...done!';
 			}
-			echo 'It takes '.(1000*(microtime(true)-$judgestart)).' milliseconds.<br>';
+			echo ' It takes '.(1000*(microtime(true)-$judgestart)).' milliseconds.<br>';
 			
 			$judgestart=microtime(true);
 			echo '...fetching data from: TNFSH Online Judge...';
-			if($name['TOJid']!="NULL")
-			    $returned['TOJ'] = getTOJstats($sortedProbset['TOJ'], $name['TOJid']);
-			else
-			    $returned['UVa'] = 0;
+			if($name['TOJid']=="NULL"){
+				echo $name['name'].' have no TOJ account.';
+			} else if(count($sortedProbset['TOJ'])==0){
+			    echo 'There is no TOJ problem.';
+			} else {
+				$returned['TOJ'] = getTOJstats($sortedProbset['TOJ'], $name['TOJid']);
+			}
 			if($returned['TOJ'] === false){
 				echo 'ERROR: Invalid query or request timed out. Updates for TOJ prblemset aborted for '.$name['name'].'.';
-			} else if($returned['TOJ'] === 0) {
-			    echo $name['name'].' have no TOJ account.';
 			} else {
 				//echo $TOJreturn;
 				echo '...done!';
 			}
-			echo 'It takes '.(1000*(microtime(true)-$judgestart)).' milliseconds.<br>';
+			echo ' It takes '.(1000*(microtime(true)-$judgestart)).' milliseconds.<br>';
 			
 			$judgestart=microtime(true);
 			echo '...fetching data from: ZeroJudge...';
-			if($name['ZJid']!="NULL")
-			    $returned['ZJ'] = getZJstats($sortedProbset['ZJ'], $name['ZJid']);
-			else
-			    $returned['ZJ'] = 0;
+			if($name['ZJid']=="NULL"){
+				echo $name['name'].' have no ZJ account.';
+			} else if(count($sortedProbset['ZJ'])==0){
+			    echo 'There is no ZJ problem.';
+			} else {
+				$returned['ZJ'] = getZJstats($sortedProbset['ZJ'], $name['ZJid']);
+			}
 			if($returned['ZJ'] === false){
 				echo 'ERROR: Invalid query or request timed out. Updates for ZJ prblemset aborted for '.$name['name'].'.';
-			} else if($returned['ZJ'] === 0) {
-			    echo $name['name'].' have no ZJ account.';
 			} else {
-				echo $ZJreturn;
+				//echo $ZJreturn;
 				echo '...done!';
 			}
-			echo 'It takes '.(1000*(microtime(true)-$judgestart)).' milliseconds.<br>';
+			echo ' It takes '.(1000*(microtime(true)-$judgestart)).' milliseconds.<br>';
 			
 			$judgestart=microtime(true);
 			echo '...fetching data from: Green Judge...';
-			if($name['GJid']!="NULL")
-			    $returned['GJ'] = getGJstats($sortedProbset['GJ'], $name['GJid']);
-			else
-			    $returned['GJ'] = 0;
+			if($name['GJid']=="NULL"){
+				echo $name['name'].' have no GJ account.';
+			} else if(count($sortedProbset['GJ'])==0){
+			    echo 'There is no GJ problem.';
+			} else {
+				$returned['GJ'] = getGJstats($sortedProbset['GJ'], $name['GJid']);
+			}
 			if($returned['GJ'] === false){
 				echo 'ERROR: Invalid query or request timed out. Updates for GJ prblemset aborted for '.$name['name'].'.';
-			} else if($returned['GJ'] === 0) {
-			    echo $name['name'].' have no GJ account.';
 			} else {
-				echo $GJreturn;
+				//echo $GJreturn;
 				echo '...done!';
 			}
-			echo 'It takes '.(1000*(microtime(true)-$judgestart)).' milliseconds.<br>';
+			echo ' It takes '.(1000*(microtime(true)-$judgestart)).' milliseconds.<br>';
 			
 			$judgestart=microtime(true);
 			echo '...fetching data from: TIOJ Infor Online Judge...';
-			if($name['TIOJid']!="NULL")
-			    $returned['TIOJ'] = getTIOJstats($sortedProbset['TIOJ'], $name['TIOJid']);
-			else
-			    $returned['TIOJ'] = 0;
+			if($name['TIOJid']=="NULL"){
+				echo $name['name'].' have no TIOJ account.';
+			} else if(count($sortedProbset['TIOJ'])==0){
+			    echo 'There is no TIOJ problem.';
+			} else {
+				$returned['TIOJ'] = getTIOJstats($sortedProbset['TIOJ'], $name['TIOJid']);
+			}
 			if($returned['TIOJ'] === false){
 				echo 'ERROR: Invalid query or request timed out. Updates for TIOJ prblemset aborted for '.$name['name'].'.';
-			} else if($returned['TIOJ'] === 0) {
-			    echo $name['name'].' have no TIOJ account.';
 			} else {
-				echo $TIOJreturn;
+				//echo $TIOJreturn;
 				echo '...done!';
 			}
-			echo 'It takes '.(1000*(microtime(true)-$judgestart)).' milliseconds.<br>';
+			echo ' It takes '.(1000*(microtime(true)-$judgestart)).' milliseconds.<br>';
 			
 			$judgestart=microtime(true);
 			echo '...fetching data from: Tnfsh online Judge System...';
-			if($name['TZJid']!="NULL")
-			    $returned['TZJ'] = getTZJstats($sortedProbset['TZJ'], $name['TZJid']);
-			else
-			    $returned['TZJ'] = 0;
+			if($name['TZJid']=="NULL"){
+				echo $name['name'].' have no TZJ account.';
+			} else if(count($sortedProbset['TZJ'])==0){
+			    echo 'There is no TZJ problem.';
+			} else {
+				$returned['TZJ'] = getTZJstats($sortedProbset['TZJ'], $name['TZJid']);
+			}
 			if($returned['TZJ'] === false){
 				echo 'ERROR: Invalid query or request timed out. Updates for TZJ prblemset aborted for '.$name['name'].'.';
-			} else if($returned['TZJ'] === 0) {
-			    echo $name['name'].' have no TZJ account.';
 			} else {
-				echo $TZJreturn;
+				//echo $TZJreturn;
 				echo '...done!';
 			}
-			echo 'It takes '.(1000*(microtime(true)-$judgestart)).' milliseconds.<br>';
+			echo ' It takes '.(1000*(microtime(true)-$judgestart)).' milliseconds.<br>';
 			
 			echo '...data fetching complete!<br>';
 			
@@ -330,7 +336,7 @@
 				}
 				++$tmp_prog[$p['judge']];
 			}
-			echo '...done!<br><br>';
+			echo '...done!<br>';
 			//echo $finalstats;
 			
 			//check for cache
