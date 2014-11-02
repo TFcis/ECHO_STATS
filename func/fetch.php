@@ -117,8 +117,33 @@
 		if(!$response) return false;
 		if(!(strrpos($response,"DataException")===false)) return false;
 		
+		//處理HTML
+		$response=str_replace("\r\n","",$response);
+		$response=str_replace("\t","",$response);
+		$response=str_replace(" ","",$response);
+		$response=str_replace("\"","",$response);
+		$response=str_replace("</a>","",$response);
+		$response=str_replace(">","",$response);
+		$response=str_replace("&account=".$ZJID,"",$response);
+		$response=str_replace("style=color:#666666;font-weight:bold;title=","8",$response);//WA
+		$response=str_replace("style=color:#666666title=","0",$response);//NA
+		$response=str_replace("id=acstyleclass=acstyletitle=","9",$response);//AC
+		$response=str_replace("<ahref=./Submissions?problemid=","\\",$response);
+		$response=str_replace("<ahref=./ShowProblem?problemid=","\\",$response);
+
+		//建立表格
+		$Stats_array=array();
+		for($i=strpos($response,"\\");$i<=strlen($response);$i++){
+			if($response[$i]=="\\"){
+				$Stats_array[substr($response,$i+1,4)]=substr($response,$i+5,1);//$response[$i+5];
+				$i+=9;
+			}
+		}
+		
 		foreach ($prom as $q){
-			$start=strpos($response,"?problemid=".$q);
+			$ZJ_stats .= $Stats_array[$q];
+		
+			/*$start=strpos($response,"?problemid=".$q);
 			$end  =strpos($response,">".$q."</a>");
 			$html =substr($response,$start,$end-$start);
 			//print '<td>';
@@ -131,7 +156,7 @@
 				$ZJ_stats .= 0;
 			} else {
 				//THROW ERROR
-			}
+			}*/
 		}
 
 		return $ZJ_stats;
@@ -154,8 +179,33 @@
 		if(!$response) return false;
 		if(!(strrpos($response,"DataException")===false)) return false;
 		
+		//處理HTML
+		$response=str_replace("\r\n","",$response);
+		$response=str_replace("\t","",$response);
+		$response=str_replace(" ","",$response);
+		$response=str_replace("\"","",$response);
+		$response=str_replace("</a>","",$response);
+		$response=str_replace(">","",$response);
+		$response=str_replace("&account=".$GJID,"",$response);
+		$response=str_replace("style=color:#666666;font-weight:bold;title=","8",$response);//WA
+		$response=str_replace("style=color:#666666title=","0",$response);//NA
+		$response=str_replace("id=acstyletitle=","9",$response);//AC
+		$response=str_replace("<ahref=./RealtimeStatus?problemid=","\\",$response);
+		$response=str_replace("<ahref=./ShowProblem?problemid=","\\",$response);
+
+		//建立表格
+		$Stats_array=array();
+		for($i=strpos($response,"\\");$i<=strlen($response);$i++){
+			if($response[$i]=="\\"){
+				$Stats_array[substr($response,$i+1,4)]=substr($response,$i+5,1);//$response[$i+5];
+				$i+=9;
+			}
+		}
+		
 		foreach ($prom as $q){
-			$start=strpos($response,"?problemid=".$q);
+			$GJ_stats .= $Stats_array[$q];
+		
+			/*$start=strpos($response,"?problemid=".$q);
 			$end  =strpos($response,">".$q."</a>");
 			$html =substr($response,$start,$end-$start);
 			//print '<td>';
@@ -168,7 +218,7 @@
 				$GJ_stats .= 0;
 			} else {
 				//THROW ERROR
-			}
+			}*/
 		}
 
 		return $GJ_stats;
@@ -211,8 +261,33 @@
 		if(!$response) return false;
 		if(!(strrpos($response,"DataException")===false)) return false;
 		
+		//處理HTML
+		$response=str_replace("\r\n","",$response);
+		$response=str_replace("\t","",$response);
+		$response=str_replace(" ","",$response);
+		$response=str_replace("\"","",$response);
+		$response=str_replace("</a>","",$response);
+		$response=str_replace(">","",$response);
+		$response=str_replace("&account=".$TZJID,"",$response);
+		$response=str_replace("style=color:#666666;font-weight:bold;title=","8",$response);//WA
+		$response=str_replace("style=color:#666666title=","0",$response);//NA
+		$response=str_replace("id=acstyletitle=","9",$response);//AC
+		$response=str_replace("<ahref=./RealtimeStatus?problemid=","\\",$response);
+		$response=str_replace("<ahref=./ShowProblem?problemid=","\\",$response);
+
+		//建立表格
+		$Stats_array=array();
+		for($i=strpos($response,"\\");$i<=strlen($response);$i++){
+			if($response[$i]=="\\"){
+				$Stats_array[substr($response,$i+1,4)]=substr($response,$i+5,1);//$response[$i+5];
+				$i+=9;
+			}
+		}
+		
 		foreach ($prom as $q){
-			$start=strpos($response,"?problemid=".$q);
+			$TZJ_stats .= $Stats_array[$q];
+		
+			/*$start=strpos($response,"?problemid=".$q);
 			$end  =strpos($response,">".$q."</a>");
 			$html =substr($response,$start,$end-$start);
 			//print '<td>';
@@ -225,7 +300,7 @@
 				$TZJ_stats .= 0;
 			} else {
 				//THROW ERROR
-			}
+			}*/
 		}
 
 		return $TZJ_stats;
