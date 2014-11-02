@@ -10,6 +10,7 @@
 		require_once("./func/EOL.php");
     	
     	echo '<br>: STATS PROCESSOR OPERATION LOG<br><br>';
+		$starttime=microtime(true);
     	
     	echo '...setting up update environment & flags...<br>';
   		if(!file_exists('./config/')){
@@ -199,6 +200,8 @@
         
         //loop through namelist and update caches
         foreach($name_data as $name){
+			$personstart=microtime(true);
+		
 			echo '...updating stats for '.$name['name'].'(Tid '.$name['TOJid'].')...<br>';
 			
 			$returned = array();
@@ -210,89 +213,101 @@
 			$returned['TZJ'] = 0;
 			
 			//fetch data
+			$judgestart=microtime(true);
 			echo '...fetching data from: UVa Online Judge...';
 			if($name['UVAid']!="NULL")
 			    $returned['UVa'] = getUVAstats($sortedProbset['UVa'], $name['UVAid']);
 			else
 			    $returned['UVa'] = 0;
 			if($returned['UVa'] === false){
-				echo '<br>ERROR: Invalid query or request timed out. Updates for UVa prblemset aborted for '.$name['name'].'.<br>';
+				echo 'ERROR: Invalid query or request timed out. Updates for UVa prblemset aborted for '.$name['name'].'.';
 			} else if($returned['UVa'] === 0) {
-			    echo $name['name'].' have no UVa account.<br>';
+			    echo $name['name'].' have no UVa account.';
 			} else {
 				//echo $UVAreturn;
-				echo '...done!<br>';
+				echo '...done!';
 			}
+			echo 'It takes '.(1000*(microtime(true)-$judgestart)).' milliseconds.<br>';
 			
+			$judgestart=microtime(true);
 			echo '...fetching data from: TNFSH Online Judge...';
 			if($name['TOJid']!="NULL")
 			    $returned['TOJ'] = getTOJstats($sortedProbset['TOJ'], $name['TOJid']);
 			else
 			    $returned['UVa'] = 0;
 			if($returned['TOJ'] === false){
-				echo '<br>ERROR: Invalid query or request timed out. Updates for TOJ prblemset aborted for '.$name['name'].'.<br>';
+				echo 'ERROR: Invalid query or request timed out. Updates for TOJ prblemset aborted for '.$name['name'].'.';
 			} else if($returned['TOJ'] === 0) {
-			    echo $name['name'].' have no TOJ account.<br>';
+			    echo $name['name'].' have no TOJ account.';
 			} else {
 				//echo $TOJreturn;
-				echo '...done!<br>';
+				echo '...done!';
 			}
+			echo 'It takes '.(1000*(microtime(true)-$judgestart)).' milliseconds.<br>';
 			
+			$judgestart=microtime(true);
 			echo '...fetching data from: ZeroJudge...';
 			if($name['ZJid']!="NULL")
 			    $returned['ZJ'] = getZJstats($sortedProbset['ZJ'], $name['ZJid']);
 			else
 			    $returned['ZJ'] = 0;
 			if($returned['ZJ'] === false){
-				echo '<br>ERROR: Invalid query or request timed out. Updates for ZJ prblemset aborted for '.$name['name'].'.<br>';
+				echo 'ERROR: Invalid query or request timed out. Updates for ZJ prblemset aborted for '.$name['name'].'.';
 			} else if($returned['ZJ'] === 0) {
-			    echo $name['name'].' have no ZJ account.<br>';
+			    echo $name['name'].' have no ZJ account.';
 			} else {
 				echo $ZJreturn;
-				echo '...done!<br>';
+				echo '...done!';
 			}
+			echo 'It takes '.(1000*(microtime(true)-$judgestart)).' milliseconds.<br>';
 			
+			$judgestart=microtime(true);
 			echo '...fetching data from: Green Judge...';
 			if($name['GJid']!="NULL")
 			    $returned['GJ'] = getGJstats($sortedProbset['GJ'], $name['GJid']);
 			else
 			    $returned['GJ'] = 0;
 			if($returned['GJ'] === false){
-				echo '<br>ERROR: Invalid query or request timed out. Updates for GJ prblemset aborted for '.$name['name'].'.<br>';
+				echo 'ERROR: Invalid query or request timed out. Updates for GJ prblemset aborted for '.$name['name'].'.';
 			} else if($returned['GJ'] === 0) {
-			    echo $name['name'].' have no GJ account.<br>';
+			    echo $name['name'].' have no GJ account.';
 			} else {
 				echo $GJreturn;
-				echo '...done!<br>';
+				echo '...done!';
 			}
+			echo 'It takes '.(1000*(microtime(true)-$judgestart)).' milliseconds.<br>';
 			
+			$judgestart=microtime(true);
 			echo '...fetching data from: TIOJ Infor Online Judge...';
 			if($name['TIOJid']!="NULL")
 			    $returned['TIOJ'] = getTIOJstats($sortedProbset['TIOJ'], $name['TIOJid']);
 			else
 			    $returned['TIOJ'] = 0;
 			if($returned['TIOJ'] === false){
-				echo '<br>ERROR: Invalid query or request timed out. Updates for TIOJ prblemset aborted for '.$name['name'].'.<br>';
+				echo 'ERROR: Invalid query or request timed out. Updates for TIOJ prblemset aborted for '.$name['name'].'.';
 			} else if($returned['TIOJ'] === 0) {
-			    echo $name['name'].' have no TIOJ account.<br>';
+			    echo $name['name'].' have no TIOJ account.';
 			} else {
 				echo $TIOJreturn;
-				echo '...done!<br>';
+				echo '...done!';
 			}
+			echo 'It takes '.(1000*(microtime(true)-$judgestart)).' milliseconds.<br>';
 			
+			$judgestart=microtime(true);
 			echo '...fetching data from: Tnfsh online Judge System...';
 			if($name['TZJid']!="NULL")
 			    $returned['TZJ'] = getTZJstats($sortedProbset['TZJ'], $name['TZJid']);
 			else
 			    $returned['TZJ'] = 0;
 			if($returned['TZJ'] === false){
-				echo '<br>ERROR: Invalid query or request timed out. Updates for TZJ prblemset aborted for '.$name['name'].'.<br>';
+				echo 'ERROR: Invalid query or request timed out. Updates for TZJ prblemset aborted for '.$name['name'].'.';
 			} else if($returned['TZJ'] === 0) {
-			    echo $name['name'].' have no TZJ account.<br>';
+			    echo $name['name'].' have no TZJ account.';
 			} else {
 				echo $TZJreturn;
-				echo '...done!<br>';
+				echo '...done!';
 			}
+			echo 'It takes '.(1000*(microtime(true)-$judgestart)).' milliseconds.<br>';
 			
 			echo '...data fetching complete!<br>';
 			
@@ -337,14 +352,14 @@
 			
 			echo '...logging data to cache...<br>';
 			if(!fwrite($file, $finalstats)){
-				echo 'ERROR: failed to write to file. Please manually grant read/write authorization to ./cache.<br><br>';
+				echo 'ERROR: failed to write to file. Please manually grant read/write authorization to ./cache.<br>';
 			} else {
-				echo '...data for '.$name['name'].' up to date.<br><br>';
+				echo '...data for '.$name['name'].' up to date.<br>';
 			}
 			
 			fclose($file);
-
-
+			
+			echo 'It takes '.(microtime(true)-$personstart).' seconds.<br><br>';
         }
 		echo '...update complete!<br><br>';
 
@@ -370,7 +385,9 @@
         unlink('./cache/work_flag');
     
     	echo '...done!<br><br>';
-    	
+		
+		echo 'It takes '.(microtime(true)-$starttime).' seconds.<br><br>';
+		
     	echo '<br>: END STATS PROCESSOR OPERATION LOG<br><br>';
     
     ?>
