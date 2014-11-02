@@ -126,7 +126,8 @@
 
 		//建立表格
 		$Stats_array=array();
-		for($i=strpos($response,"\\");$i<=strlen($response);$i++){
+		$length=strlen($response)
+		for($i=strpos($response,"\\");$i<=$length;$i++){
 			if($response[$i]=="\\"){
 				$Stats_array[substr($response,$i+1,4)]=substr($response,$i+5,1);//$response[$i+5];
 				$i+=9;
@@ -181,7 +182,8 @@
 
 		//建立表格
 		$Stats_array=array();
-		for($i=strpos($response,"\\");$i<=strlen($response);$i++){
+		$length=strlen($response)
+		for($i=strpos($response,"\\");$i<=$length;$i++){
 			if($response[$i]=="\\"){
 				$Stats_array[substr($response,$i+1,4)]=substr($response,$i+5,1);//$response[$i+5];
 				$i+=9;
@@ -228,7 +230,8 @@
 
 		//建立表格
 		$Stats_array=array();
-		for($i=strpos($response,"*");$i<=strlen($response);$i++){
+		$length=strlen($response)
+		for($i=strpos($response,"*");$i<=$length;$i++){
 			if($response[$i]=="*"){
 				$Stats_array[substr($response,$i+2,4)]=substr($response,$i+1,1);//$response[$i+5];
 				$i+=10;
@@ -274,7 +277,8 @@
 
 		//建立表格
 		$Stats_array=array();
-		for($i=strpos($response,"\\");$i<=strlen($response);$i++){
+		$length=strlen($response)
+		for($i=strpos($response,"\\");$i<=$length;$i++){
 			if($response[$i]=="\\"){
 				$Stats_array[substr($response,$i+1,4)]=substr($response,$i+5,1);//$response[$i+5];
 				$i+=9;
