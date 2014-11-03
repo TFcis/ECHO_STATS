@@ -1,8 +1,4 @@
 <?php
-	require_once("curl_get_contents.php");
-	$reload_times_limit=3;
-	$load_time_limit=1;
-	
 	//fetch API for UVa
 	function getUVAstats($probs, $uid){
 		$UVAstats = '';
@@ -122,16 +118,17 @@
 	
     //fetch API for ZJ
 	function getZJstats($prom,$ZJID){
-		global $reload_times_limit;
-		global $load_time_limit;
 		$ZJ_stats = '';
+		/*
 		$response=false;
-		$reloadtimes=1;
-		$funstart=microtime(true);
-		while($response==false&&$reloadtimes<=$reload_times_limit){
+		$reloadtimes=0;
+		while($response==false&&$reloadtimes<=3){
 			$reloadtimes++;
-			$response=curl_get_contents("http://zerojudge.tw/UserStatistic?account=".$ZJID,$load_time_limit);
+			$response=file_get_contents("http://zerojudge.tw/UserStatistic?account=".$ZJID);
 		}
+		*/
+		$funstart=microtime(true);
+		$response=file_get_contents("http://zerojudge.tw/UserStatistic?account=".$ZJID);
 		if(!$response) return false;
 		if(!(strrpos($response,"DataException")===false)) return false;
 		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
@@ -185,16 +182,17 @@
 	
 	//fetch API for TCGSJ
 	function getGJstats($prom,$GJID){
-		global $reload_times_limit;
-		global $load_time_limit;
 		$TCGSJ_stats = '';
+		/*
 		$response=false;
-		$reloadtimes=1;
-		$funstart=microtime(true);
-		while($response==false&&$reloadtimes<=$reload_times_limit){
+		$reloadtimes=0;
+		while($response==false&&$reloadtimes<=3){
 			$reloadtimes++;
-			$response=curl_get_contents("http://www.tcgs.tc.edu.tw:1218/ShowUserStatistic?account=".$GJID,$load_time_limit);
+			$response=file_get_contents("http://www.tcgs.tc.edu.tw:1218/ShowUserStatistic?account=".$GJID);
 		}
+		*/
+		$funstart=microtime(true);
+		$response=file_get_contents("http://www.tcgs.tc.edu.tw:1218/ShowUserStatistic?account=".$GJID);
 		if(!$response) return false;
 		if(!(strrpos($response,"DataException")===false)) return false;
 		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
@@ -248,16 +246,9 @@
 	
 	//fetch API for TIOJ
 	function getTIOJstats($prom,$TIOJID){
-		global $reload_times_limit;
-		global $load_time_limit;
 		$TIOJ_stats = '';
-		$response=false;
-		$reloadtimes=1;
 		$funstart=microtime(true);
-		while($response==false&&$reloadtimes<=$reload_times_limit){
-			$reloadtimes++;
-			$response=curl_get_contents("http://tioj.ck.tp.edu.tw/users/".$TIOJID,$load_time_limit);
-		}
+		$response=file_get_contents("http://tioj.ck.tp.edu.tw/users/".$TIOJID);
 		if(!$response) return false;
 		if(!(strrpos($response,"DataException")===false)) return false;
 		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
@@ -310,16 +301,9 @@
 	
 	//fetch API for TZJ
 	function getTZJstats($prom,$TZJID){
-		global $reload_times_limit;
-		global $load_time_limit;
 		$TZJ_stats = '';
-		$response=false;
-		$reloadtimes=1;
 		$funstart=microtime(true);
-		while($response==false&&$reloadtimes<=$reload_times_limit){
-			$reloadtimes++;
-			$response=curl_get_contents("http://judge.tnfsh.tn.edu.tw:8080/ShowUserStatistic?account=".$TZJID,$load_time_limit);
-		}
+		$response=file_get_contents("http://judge.tnfsh.tn.edu.tw:8080/ShowUserStatistic?account=".$TZJID);
 		if(!$response) return false;
 		if(!(strrpos($response,"DataException")===false)) return false;
 		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
