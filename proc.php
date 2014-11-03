@@ -212,108 +212,105 @@
 			$returned['TIOJ'] = 0;
 			$returned['TZJ'] = 0;
 			
+			echo '<table class=MsoTableGrid border=1 cellpadding=3 style="border-collapse:collapse;border:none"><tr><td>Judge</td><td>file_get_contents</td><td>處理HTML</td><td>建立表格</td><td>建立結果</td><td>Total</td></tr>';
 			//fetch data
+			echo '<tr><td>UVa</td>';
 			$judgestart=microtime(true);
-			echo '...fetching data from: UVa Online Judge...';
 			if($name['UVAid']=="NULL"){
-				echo $name['name'].' have no UVa account.';
+				echo '<td colspan="4">No UVa account.</td>';
 			} else if(count($sortedProbset['UVa'])==0){
-			    echo 'There is no UVa problem.';
+			    echo '<td colspan="4">There is no UVa problem.</td>';
 			} else {
 				$returned['UVa'] = getUVAstats($sortedProbset['UVa'], $name['UVAid']);
 			}
 			if($returned['UVa'] === false){
-				echo '<br>ERROR: Invalid query or request timed out. Updates for UVa prblemset aborted for '.$name['name'].'.';
+				echo '<td colspan="4">ERROR: Invalid query or request timed out.</td>';
 			} else {
 				//echo $UVAreturn;
-				echo '...done!';
 			}
-			echo ' It takes '.(1000*(microtime(true)-$judgestart)).' milliseconds.<br>';
+			echo '<td>'.(1000*(microtime(true)-$judgestart)).'</td></tr>';
 			
+			echo '<tr><td>TOJ</td>';
 			$judgestart=microtime(true);
-			echo '...fetching data from: TNFSH Online Judge...';
 			if($name['TOJid']=="NULL"){
-				echo $name['name'].' have no TOJ account.';
+				echo '<td colspan="4">No TOJ account.</td>';
 			} else if(count($sortedProbset['TOJ'])==0){
-			    echo 'There is no TOJ problem.';
+			    echo '<td colspan="4">There is no TOJ problem.</td>';
 			} else {
 				$returned['TOJ'] = getTOJstats($sortedProbset['TOJ'], $name['TOJid']);
 			}
 			if($returned['TOJ'] === false){
-				echo '<br>ERROR: Invalid query or request timed out. Updates for TOJ prblemset aborted for '.$name['name'].'.';
+				echo '<td colspan="4">ERROR: Invalid query or request timed out.</td>';
 			} else {
 				//echo $TOJreturn;
-				echo '...done!';
 			}
-			echo ' It takes '.(1000*(microtime(true)-$judgestart)).' milliseconds.<br>';
+			echo '<td>'.(1000*(microtime(true)-$judgestart)).'</td></tr>';
 			
 			$judgestart=microtime(true);
-			echo '...fetching data from: ZeroJudge...';
+			echo '<tr><td>ZJ</td>';
 			if($name['ZJid']=="NULL"){
-				echo $name['name'].' have no ZJ account.';
+				echo '<td colspan="4">No ZJ account.</td>';
 			} else if(count($sortedProbset['ZJ'])==0){
-			    echo 'There is no ZJ problem.';
+			    echo '<td colspan="4">There is no ZJ problem.</td>';
 			} else {
 				$returned['ZJ'] = getZJstats($sortedProbset['ZJ'], $name['ZJid']);
 			}
 			if($returned['ZJ'] === false){
-				echo '<br>ERROR: Invalid query or request timed out. Updates for ZJ prblemset aborted for '.$name['name'].'.';
+				echo '<td colspan="4">ERROR: Invalid query or request timed out.</td>';
 			} else {
 				//echo $ZJreturn;
-				echo '...done!';
 			}
-			echo ' It takes '.(1000*(microtime(true)-$judgestart)).' milliseconds.<br>';
+			echo '<td>'.(1000*(microtime(true)-$judgestart)).'</td></tr>';
 			
 			$judgestart=microtime(true);
-			echo '...fetching data from: Green Judge...';
+			echo '<tr><td>GJ</td>';
 			if($name['GJid']=="NULL"){
-				echo $name['name'].' have no GJ account.';
+				echo '<td colspan="4">No GJ account.</td>';
 			} else if(count($sortedProbset['GJ'])==0){
-			    echo 'There is no GJ problem.';
+			    echo '<td colspan="4">There is no GJ problem.</td>';
 			} else {
 				$returned['GJ'] = getGJstats($sortedProbset['GJ'], $name['GJid']);
 			}
 			if($returned['GJ'] === false){
-				echo '<br>ERROR: Invalid query or request timed out. Updates for GJ prblemset aborted for '.$name['name'].'.';
+				echo '<td colspan="4">ERROR: Invalid query or request timed out.</td>';
 			} else {
 				//echo $GJreturn;
-				echo '...done!';
 			}
-			echo ' It takes '.(1000*(microtime(true)-$judgestart)).' milliseconds.<br>';
+			echo '<td>'.(1000*(microtime(true)-$judgestart)).'</td></tr>';
 			
 			$judgestart=microtime(true);
-			echo '...fetching data from: TIOJ Infor Online Judge...';
+			echo '<tr><td>TIOJ</td>';
 			if($name['TIOJid']=="NULL"){
-				echo $name['name'].' have no TIOJ account.';
+				echo '<td colspan="4">No TIOJ account.</td>';
 			} else if(count($sortedProbset['TIOJ'])==0){
-			    echo 'There is no TIOJ problem.';
+				echo '<td colspan="4">There is no TIOJ problem.</td>';
 			} else {
 				$returned['TIOJ'] = getTIOJstats($sortedProbset['TIOJ'], $name['TIOJid']);
 			}
 			if($returned['TIOJ'] === false){
-				echo '<br>ERROR: Invalid query or request timed out. Updates for TIOJ prblemset aborted for '.$name['name'].'.';
+				echo '<td colspan="4">ERROR: Invalid query or request timed out.</td>';
 			} else {
 				//echo $TIOJreturn;
-				echo '...done!';
 			}
-			echo ' It takes '.(1000*(microtime(true)-$judgestart)).' milliseconds.<br>';
+			echo '<td>'.(1000*(microtime(true)-$judgestart)).'</td></tr>';
 			
 			$judgestart=microtime(true);
-			echo '...fetching data from: Tnfsh online Judge System...';
+			echo '<tr><td>TZJ</td>';
 			if($name['TZJid']=="NULL"){
-				echo $name['name'].' have no TZJ account.';
+				echo '<td colspan="4">No TZJ account.</td>';
 			} else if(count($sortedProbset['TZJ'])==0){
-			    echo 'There is no TZJ problem.';
+			    echo '<td colspan="4">There is no TZJ problem.</td>';
 			} else {
 				$returned['TZJ'] = getTZJstats($sortedProbset['TZJ'], $name['TZJid']);
 			}
 			if($returned['TZJ'] === false){
-				echo '<br>ERROR: Invalid query or request timed out. Updates for TZJ prblemset aborted for '.$name['name'].'.';
+				echo '<td colspan="4">ERROR: Invalid query or request timed out.</td>';
 			} else {
 				//echo $TZJreturn;
-				echo '...done!';
 			}
-			echo ' It takes '.(1000*(microtime(true)-$judgestart)).' milliseconds.<br>';
+			echo '<td>'.(1000*(microtime(true)-$judgestart)).'</td></tr>';
+			
+			echo '</table>';
 			
 			echo '...data fetching complete!<br>';
 			

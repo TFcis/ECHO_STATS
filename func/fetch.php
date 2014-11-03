@@ -3,8 +3,12 @@
 	function getUVAstats($probs, $uid){
 		$UVAstats = '';
 		
+		$funstart=microtime(true);
 		$data = file_get_contents("http://uhunt.felix-halim.net/api/subs-nums/$uid/".implode(',', $probs)."/0");
 		if($data === false){ return false; }
+		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td><td>N/A</td><td>N/A</td>';
+		
+		$funstart=microtime(true);
 		
 		$data = json_decode($data, true);
 		$data = $data[$uid]['subs'];
@@ -26,6 +30,7 @@
 			else
 				$UVAstats .= $verdict[$prob];
 		}
+		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
 		
 		//echo $UVAstats.'<br>';
 		return $UVAstats;
@@ -46,7 +51,6 @@
 	
 	
     //fetch API for TOJ
-    //TODO: Add support for WA
 	function getTOJstats($probs, $uid){
 		$TOJstats = '';
 		
@@ -63,10 +67,13 @@
 			'content'   => http_build_query($data, '', '&'),
 		);
 		
+		$funstart=microtime(true);
 		$response = file_get_contents('http://210.70.137.215/oj/be/api', false, stream_context_create($context));
 		if($response === false) return false;
 		//echo $uid.'TOJ: ';
-	
+		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td><td>N/A</td><td>N/A</td>';
+		
+		$funstart=microtime(true);
 		$AClist = json_decode($response)->ac;
 		
 		//Get NA list
@@ -80,11 +87,17 @@
 			'method'	=> 'POST',
 			'content'   => http_build_query($data, '', '&'),
 		);
+		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td><td>N/A</td></tr>';
 		
+		echo '<tr><td></td>';
+		
+		$funstart=microtime(true);
 		$response = file_get_contents('http://210.70.137.215/oj/be/api', false, stream_context_create($context));
 		if($response === false) return false;
 		//echo $uid.'TOJ: ';
-	
+		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td><td>N/A</td><td>N/A</td>';
+		
+		$funstart=microtime(true);
 		$NAlist = json_decode($response)->na;
 		
 		foreach($probs as $p){
@@ -96,7 +109,8 @@
 				$TOJstats .= 0;  
 			}
 		}
-	
+		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
+		
 		return $TOJstats;
 	}
 			
@@ -115,9 +129,9 @@
 		*/
 		$funstart=microtime(true);
 		$response=file_get_contents("http://zerojudge.tw/UserStatistic?account=".$ZJID);
-		echo '<br> "file_get_contents" takes '.(1000*(microtime(true)-$funstart)).' milliseconds.';
 		if(!$response) return false;
 		if(!(strrpos($response,"DataException")===false)) return false;
+		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
 		
 		//處理HTML
 		$funstart=microtime(true);
@@ -126,7 +140,7 @@
 		$response=str_replace("style=color:#666666title=","0",$response);//NA
 		$response=str_replace("id=acstyleclass=acstyletitle=","9",$response);//AC
 		$response=str_replace(array("<ahref=./Submissions?problemid=","<ahref=./ShowProblem?problemid=",),"\\",$response);
-		echo '<br> "處理HTML" takes '.(1000*(microtime(true)-$funstart)).' milliseconds.';
+		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
 		
 		//建立表格
 		$funstart=microtime(true);
@@ -138,7 +152,7 @@
 				$i+=9;
 			}
 		}
-		echo '<br> "建立表格" takes '.(1000*(microtime(true)-$funstart)).' milliseconds.';
+		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
 		
 		$funstart=microtime(true);
 		foreach ($prom as $q){
@@ -159,7 +173,7 @@
 				//THROW ERROR
 			}*/
 		}
-		echo '<br> "建立結果" takes '.(1000*(microtime(true)-$funstart)).' milliseconds.';
+		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
 		
 		return $ZJ_stats;
 	}
@@ -177,18 +191,23 @@
 			$response=file_get_contents("http://www.tcgs.tc.edu.tw:1218/ShowUserStatistic?account=".$GJID);
 		}
 		*/
+		$funstart=microtime(true);
 		$response=file_get_contents("http://www.tcgs.tc.edu.tw:1218/ShowUserStatistic?account=".$GJID);
 		if(!$response) return false;
 		if(!(strrpos($response,"DataException")===false)) return false;
+		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
 		
 		//處理HTML
+		$funstart=microtime(true);
 		$response=str_replace(array("\r\n","\t"," ","\"","</a>",">","&account=".$GJID,),"",$response);
 		$response=str_replace("style=color:#666666;font-weight:bold;title=","8",$response);//WA
 		$response=str_replace("style=color:#666666title=","0",$response);//NA
 		$response=str_replace("id=acstyletitle=","9",$response);//AC
 		$response=str_replace(array("<ahref=./RealtimeStatus?problemid=","<ahref=./ShowProblem?problemid="),"\\",$response);
-
+		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
+		
 		//建立表格
+		$funstart=microtime(true);
 		$Stats_array=array();
 		$length=strlen($response);
 		for($i=strpos($response,"\\");$i<=$length;$i++){
@@ -197,7 +216,9 @@
 				$i+=9;
 			}
 		}
+		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
 		
+		$funstart=microtime(true);
 		foreach ($prom as $q){
 			$GJ_stats .= $Stats_array[$q];
 		
@@ -216,6 +237,7 @@
 				//THROW ERROR
 			}*/
 		}
+		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
 
 		return $GJ_stats;
 	}
@@ -225,18 +247,23 @@
 	//fetch API for TIOJ
 	function getTIOJstats($prom,$TIOJID){
 		$TIOJ_stats = '';
+		$funstart=microtime(true);
 		$response=file_get_contents("http://tioj.ck.tp.edu.tw/users/".$TIOJID);
 		if(!$response) return false;
 		if(!(strrpos($response,"DataException")===false)) return false;
+		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
 		
 		//處理HTML
+		$funstart=microtime(true);
 		$response=str_replace(array("\r\n","\t"," ","\"","<td>","</td>","<tr>","</tr>","</a>",">","href=/problems/","/submissions?filter_user_id="),"",$response);
 		$response=str_replace("text-warning","8",$response);//WA
 		$response=str_replace("text-muted","0",$response);//NA
 		$response=str_replace("text-success","9",$response);//AC
 		$response=str_replace("<aclass=","*",$response);
+		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
 
 		//建立表格
+		$funstart=microtime(true);
 		$Stats_array=array();
 		$length=strlen($response);
 		for($i=strpos($response,"*");$i<=$length;$i++){
@@ -245,7 +272,9 @@
 				$i+=10;
 			}
 		}
+		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
 		
+		$funstart=microtime(true);
 		foreach ($prom as $q){
 			$TIOJ_stats .= $Stats_array[$q];
 		
@@ -264,6 +293,7 @@
 				//THROW ERROR
 			}*/
 		}
+		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
 
 		return $TIOJ_stats;
 	}
@@ -272,18 +302,23 @@
 	//fetch API for TZJ
 	function getTZJstats($prom,$TZJID){
 		$TZJ_stats = '';
+		$funstart=microtime(true);
 		$response=file_get_contents("http://judge.tnfsh.tn.edu.tw:8080/ShowUserStatistic?account=".$TZJID);
 		if(!$response) return false;
 		if(!(strrpos($response,"DataException")===false)) return false;
+		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
 		
 		//處理HTML
+		$funstart=microtime(true);
 		$response=str_replace(array("\r\n","\t"," ","\"","</a>",">","&account=".$TZJID,),"",$response);
 		$response=str_replace("style=color:#666666;font-weight:bold;title=","8",$response);//WA
 		$response=str_replace("style=color:#666666title=","0",$response);//NA
 		$response=str_replace("id=acstyletitle=","9",$response);//AC
 		$response=str_replace(array("<ahref=./RealtimeStatus?problemid=","<ahref=./ShowProblem?problemid="),"\\",$response);
+		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
 
 		//建立表格
+		$funstart=microtime(true);
 		$Stats_array=array();
 		$length=strlen($response);
 		for($i=strpos($response,"\\");$i<=$length;$i++){
@@ -292,7 +327,9 @@
 				$i+=9;
 			}
 		}
+		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
 		
+		$funstart=microtime(true);
 		foreach ($prom as $q){
 			$TZJ_stats .= $Stats_array[$q];
 		
@@ -311,6 +348,7 @@
 				//THROW ERROR
 			}*/
 		}
+		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
 
 		return $TZJ_stats;
 	}
