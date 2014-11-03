@@ -1,7 +1,7 @@
 <?php
 	require_once("curl_get_contents.php");
 	$reload_times_limit=3;
-	$load_time_limit=1;
+	$load_time_limit=2;
 	
 	//fetch API for UVa
 	function getUVAstats($probs, $uid){
