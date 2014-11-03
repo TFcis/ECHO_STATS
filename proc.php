@@ -23,7 +23,7 @@
   			exit();
   		}
   		
-		if($_SERVER['QUERY_STRING']=='bpf')echo '...Bypass work_flag.<br><br>';
+		if($_SERVER['QUERY_STRING']=='if')echo '...Ignore work_flag.<br><br>';
   		else if(file_exists('./cache/work_flag')){
   			echo '...other update tasks pending. Abort.<br><br>';
   			exit();
