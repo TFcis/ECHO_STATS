@@ -113,18 +113,23 @@
 			$response=file_get_contents("http://zerojudge.tw/UserStatistic?account=".$ZJID);
 		}
 		*/
+		$funstart=microtime(true);
 		$response=file_get_contents("http://zerojudge.tw/UserStatistic?account=".$ZJID);
+		echo '<br> "file_get_contents" takes '.(1000*(microtime(true)-$funstart)).' milliseconds.';
 		if(!$response) return false;
 		if(!(strrpos($response,"DataException")===false)) return false;
 		
 		//處理HTML
+		$funstart=microtime(true);
 		$response=str_replace(array("\r\n","\t"," ","\"","</a>",">","&account=".$ZJID,),"",$response);
 		$response=str_replace("style=color:#666666;font-weight:bold;title=","8",$response);//WA
 		$response=str_replace("style=color:#666666title=","0",$response);//NA
 		$response=str_replace("id=acstyleclass=acstyletitle=","9",$response);//AC
 		$response=str_replace(array("<ahref=./Submissions?problemid=","<ahref=./ShowProblem?problemid=",),"\\",$response);
-
+		echo '<br> "處理HTML" takes '.(1000*(microtime(true)-$funstart)).' milliseconds.';
+		
 		//建立表格
+		$funstart=microtime(true);
 		$Stats_array=array();
 		$length=strlen($response);
 		for($i=strpos($response,"\\");$i<=$length;$i++){
@@ -133,7 +138,9 @@
 				$i+=9;
 			}
 		}
+		echo '<br> "建立表格" takes '.(1000*(microtime(true)-$funstart)).' milliseconds.';
 		
+		$funstart=microtime(true);
 		foreach ($prom as $q){
 			$ZJ_stats .= $Stats_array[$q];
 		
@@ -152,7 +159,8 @@
 				//THROW ERROR
 			}*/
 		}
-
+		echo '<br> "建立結果" takes '.(1000*(microtime(true)-$funstart)).' milliseconds.';
+		
 		return $ZJ_stats;
 	}
 	
