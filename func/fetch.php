@@ -127,14 +127,18 @@
 		$ZJ_stats = '';
 		$response=false;
 		$reloadtimes=0;
-		$funstart=microtime(true);
+		$loadtime=array();
 		while($response==false&&$reloadtimes<$reload_times_limit){
-			$reloadtimes++;
+			$funstart=microtime(true);
 			$response=curl_get_contents("http://zerojudge.tw/UserStatistic?account=".$ZJID,$load_time_limit);
+			$loadtime[$reloadtimes]=number_format(1000*(microtime(true)-$funstart),2);
+			$reloadtimes++;
 		}
 		if(!$response) return false;
 		if(!(strrpos($response,"DataException")===false)) return false;
-		echo '<td>'.(1000*(microtime(true)-$funstart)).'('.$reloadtimes.')</td>';
+		echo '<td>'.$loadtime[0];
+		for($i=1;$i<$reloadtimes;$i++)echo '/'.$loadtime[0];
+		echo '</td>';
 		
 		//處理HTML
 		$funstart=microtime(true);
@@ -190,14 +194,18 @@
 		$TCGSJ_stats = '';
 		$response=false;
 		$reloadtimes=0;
-		$funstart=microtime(true);
+		$loadtime=array();
 		while($response==false&&$reloadtimes<$reload_times_limit){
-			$reloadtimes++;
+			$funstart=microtime(true);
 			$response=curl_get_contents("http://www.tcgs.tc.edu.tw:1218/ShowUserStatistic?account=".$GJID,$load_time_limit);
+			$loadtime[$reloadtimes]=number_format(1000*(microtime(true)-$funstart),2);
+			$reloadtimes++;
 		}
 		if(!$response) return false;
 		if(!(strrpos($response,"DataException")===false)) return false;
-		echo '<td>'.(1000*(microtime(true)-$funstart)).'('.$reloadtimes.')</td>';
+		echo '<td>'.$loadtime[0];
+		for($i=1;$i<$reloadtimes;$i++)echo '/'.$loadtime[0];
+		echo '</td>';
 		
 		//處理HTML
 		$funstart=microtime(true);
@@ -253,14 +261,18 @@
 		$TIOJ_stats = '';
 		$response=false;
 		$reloadtimes=0;
-		$funstart=microtime(true);
+		$loadtime=array();
 		while($response==false&&$reloadtimes<$reload_times_limit){
-			$reloadtimes++;
+			$funstart=microtime(true);
 			$response=curl_get_contents("http://tioj.ck.tp.edu.tw/users/".$TIOJID,$load_time_limit);
+			$loadtime[$reloadtimes]=number_format(1000*(microtime(true)-$funstart),2);
+			$reloadtimes++;
 		}
 		if(!$response) return false;
 		if(!(strrpos($response,"DataException")===false)) return false;
-		echo '<td>'.(1000*(microtime(true)-$funstart)).'('.$reloadtimes.')</td>';
+		echo '<td>'.$loadtime[0];
+		for($i=1;$i<$reloadtimes;$i++)echo '/'.$loadtime[0];
+		echo '</td>';
 		
 		//處理HTML
 		$funstart=microtime(true);
@@ -315,14 +327,18 @@
 		$TZJ_stats = '';
 		$response=false;
 		$reloadtimes=0;
-		$funstart=microtime(true);
+		$loadtime=array();
 		while($response==false&&$reloadtimes<$reload_times_limit){
-			$reloadtimes++;
+			$funstart=microtime(true);
 			$response=curl_get_contents("http://judge.tnfsh.tn.edu.tw:8080/ShowUserStatistic?account=".$TZJID,$load_time_limit);
+			$loadtime[$reloadtimes]=number_format(1000*(microtime(true)-$funstart),2);
+			$reloadtimes++;
 		}
 		if(!$response) return false;
 		if(!(strrpos($response,"DataException")===false)) return false;
-		echo '<td>'.(1000*(microtime(true)-$funstart)).'('.$reloadtimes.')</td>';
+		echo '<td>'.$loadtime[0];
+		for($i=1;$i<$reloadtimes;$i++)echo '/'.$loadtime[0];
+		echo '</td>';
 		
 		//處理HTML
 		$funstart=microtime(true);
