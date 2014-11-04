@@ -92,7 +92,7 @@
     		foreach($rank as $n => $s){
     		    $n = (int)$n;
     		    //echo $n.' '.$s.';';
-    			echo '<tr><td class = "name_tag"><a onclick="loadPage('.$name_data[$name_map[$n]]['TOJid'].')">'.$name_data[$name_map[$n]]['name'].'</a></td>';
+    			echo '<tr><td class = "name_tag"><a title="TOJ '.$name_data[$name_map[$n]]['TOJid'].'&#10ZJ '.$name_data[$name_map[$n]]['ZJid'].'&#10TZJ '.$name_data[$name_map[$n]]['TZJid'].'&#10GJ '.$name_data[$name_map[$n]]['GJid'].'&#10TIOJ '.$name_data[$name_map[$n]]['TIOJid'].'&#10UVa '.$name_data[$name_map[$n]]['UVAid'].'" onclick="loadPage('.$name_data[$name_map[$n]]['TOJid'].')">'.$name_data[$name_map[$n]]['name'].'</a></td>';
     			echo '<td class = "sol_tag">'.' ('.$sol[$n].'/'.round($sol[$n]/count($group['probs'])*100,0).'%)</td>';	
     			if ($name_data[$name_map[$n]]['stats'] == -1){
     				echo '<td class = "pend">pending...</td>';
