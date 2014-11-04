@@ -70,7 +70,7 @@
         <div style =  "text-align: right">
             <hr>
             <div><a onclick = "loadPage(0)">refresh</a></div>
-            <div><a onclick = "loadPage(1)">force update</a></div>
+            <div><a onclick = "loadPage(-1)">force update</a></div>
         </div>
         
     </div>

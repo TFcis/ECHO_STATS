@@ -13,12 +13,12 @@
 
 <script>
 	var halt = <?php echo ($halt ? 'true' : 'false'); ?> ;
-	var forceupdate = <?php echo ($_POST['forceupdate'] ? 'true' : 'false'); ?> ;
+	var forceupdate = <?php echo $_POST['forceupdate']; ?> ;
 	if(forceupdate) halt = false;
 	
-	//console.log(halt);	
-	
-	if(!halt){ $.get('proc.php'); }
+	//console.log(halt);
+	if(forceupdate==-1){ $.get('proc.php'); }
+	else if(!halt){ $.get('proc.php?'+forceupdate); }
 </script>
 
 
@@ -92,7 +92,7 @@
     		foreach($rank as $n => $s){
     		    $n = (int)$n;
     		    //echo $n.' '.$s.';';
-    			echo '<tr><td class = "name_tag">'.$name_data[$name_map[$n]]['name'].'</td>';
+    			echo '<tr><td class = "name_tag"><a onclick="loadPage('.$name_data[$name_map[$n]]['TOJid'].')">'.$name_data[$name_map[$n]]['name'].'</a></td>';
     			echo '<td class = "sol_tag">'.' ('.$sol[$n].'/'.round($sol[$n]/count($group['probs'])*100,0).'%)</td>';	
     			if ($name_data[$name_map[$n]]['stats'] == -1){
     				echo '<td class = "pend">pending...</td>';
