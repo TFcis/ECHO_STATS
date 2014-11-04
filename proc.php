@@ -23,7 +23,9 @@
   			exit();
   		}
   		
-		if($_SERVER['QUERY_STRING']=='if')echo '...Ignore work_flag.<br><br>';
+		$search=$_SERVER['QUERY_STRING'];
+		if($search=='if')echo '...Ignore work_flag.<br><br>';
+		else if(is_numeric($search))echo '...Update for Tid '.$search.'.<br><br>';
   		else if(file_exists('./cache/work_flag')){
   			echo '...other update tasks pending. Abort.<br><br>';
   			exit();
@@ -201,6 +203,7 @@
         
         //loop through namelist and update caches
         foreach($name_data as $name){
+			if(is_numeric($search)&&$search!=$name['TOJid'])continue;
 			$personstart=microtime(true);
 		
 			echo '...updating stats for '.$name['name'].'(Tid '.$name['TOJid'].')...<br>';
@@ -215,7 +218,7 @@
 			
 			echo '<table class=MsoTableGrid border=1 cellpadding=3 style="border-collapse:collapse;border:none"><tr><td>Judge</td><td>Read file</td><td>Process HTML</td><td>Create table</td><td>Create result</td><td>Total</td></tr>';
 			//fetch data
-			echo '<tr><td>UVa</td>';
+			echo '<tr><td>UVa('.$name['UVAid'].')</td>';
 			$judgestart=microtime(true);
 			if($name['UVAid']=="NULL"){
 				echo '<td colspan="4">No UVa account.</td>';
@@ -231,7 +234,7 @@
 			}
 			echo '<td>'.(1000*(microtime(true)-$judgestart)).'</td></tr>';
 			
-			echo '<tr><td>TOJ</td>';
+			echo '<tr><td>TOJ('.$name['TOJid'].')</td>';
 			$judgestart=microtime(true);
 			if($name['TOJid']=="NULL"){
 				echo '<td colspan="4">No TOJ account.</td>';
@@ -248,7 +251,7 @@
 			echo '<td>'.(1000*(microtime(true)-$judgestart)).'</td></tr>';
 			
 			$judgestart=microtime(true);
-			echo '<tr><td>ZJ</td>';
+			echo '<tr><td>ZJ('.$name['ZJid'].')</td>';
 			if($name['ZJid']=="NULL"){
 				echo '<td colspan="4">No ZJ account.</td>';
 			} else if(count($sortedProbset['ZJ'])==0){
@@ -264,7 +267,7 @@
 			echo '<td>'.(1000*(microtime(true)-$judgestart)).'</td></tr>';
 			
 			$judgestart=microtime(true);
-			echo '<tr><td>GJ</td>';
+			echo '<tr><td>GJ('.$name['GJid'].')</td>';
 			if($name['GJid']=="NULL"){
 				echo '<td colspan="4">No GJ account.</td>';
 			} else if(count($sortedProbset['GJ'])==0){
@@ -280,7 +283,7 @@
 			echo '<td>'.(1000*(microtime(true)-$judgestart)).'</td></tr>';
 			
 			$judgestart=microtime(true);
-			echo '<tr><td>TIOJ</td>';
+			echo '<tr><td>TIOJ('.$name['TIOJid'].')</td>';
 			if($name['TIOJid']=="NULL"){
 				echo '<td colspan="4">No TIOJ account.</td>';
 			} else if(count($sortedProbset['TIOJ'])==0){
@@ -296,7 +299,7 @@
 			echo '<td>'.(1000*(microtime(true)-$judgestart)).'</td></tr>';
 			
 			$judgestart=microtime(true);
-			echo '<tr><td>TZJ</td>';
+			echo '<tr><td>TZJ('.$name['TZJid'].')</td>';
 			if($name['TZJid']=="NULL"){
 				echo '<td colspan="4">No TZJ account.</td>';
 			} else if(count($sortedProbset['TZJ'])==0){
