@@ -213,7 +213,7 @@
 			$returned['TIOJ'] = 0;
 			$returned['TZJ'] = 0;
 			
-			echo '<table class=MsoTableGrid border=1 cellpadding=3 style="border-collapse:collapse;border:none"><tr><td>Judge</td><td>Read file</td><td>Process HTML</td><td>Create table</td><td>Create Result</td><td>Total</td></tr>';
+			echo '<table class=MsoTableGrid border=1 cellpadding=3 style="border-collapse:collapse;border:none"><tr><td>Judge</td><td>Read file</td><td>Process HTML</td><td>Create table</td><td>Create result</td><td>Total</td></tr>';
 			//fetch data
 			echo '<tr><td>UVa</td>';
 			$judgestart=microtime(true);
