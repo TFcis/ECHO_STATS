@@ -9,7 +9,7 @@
 
 <?php
 if(md5($_COOKIE["ECHOSTATSCOOKIE"]."stats")=="33de5de39a0d42085bbf72073f789f5c")echoAdminPage();
-if(!isset($_POST["pwd"])){
+else if(!isset($_POST["pwd"])){
 	echoLoginPage();
 }else{
 	if( md5(md5($_POST["pwd"])."stats") == "33de5de39a0d42085bbf72073f789f5c" ){
