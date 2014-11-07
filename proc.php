@@ -363,34 +363,27 @@
 			} else {
 				echo '...data for '.$name['name'].' up to date.<br>';
 			}
-			
 			fclose($file);
-			
 			echo 'It takes '.(microtime(true)-$personstart).' seconds.<br><br>';
         }
 		echo '...update complete!<br><br>';
-
-		echo '...logging update time & details...<br>';
-        
-        $prev_updt = fopen('./cache/prev_updt', 'w');
-  		if(!$prev_updt){
-  			echo 'NOTICE: failed to record update time. Next page request will trigger an update regardless of the interval limit.<br>';
-  			exit();
-  			
-  		} else {
-  			fwrite($prev_updt, time());
-  			
+		
+		if(!is_numeric($search)){
+			echo '...logging update time & details...<br>';
+			$prev_updt = fopen('./cache/prev_updt', 'w');
+			if(!$prev_updt){
+				echo 'NOTICE: failed to record update time. Next page request will trigger an update regardless of the interval limit.<br>';
+				exit();
+			} else {
+				fwrite($prev_updt, time());
+			}
+			echo '...done!<br><br>';
+			fclose($prev_updt);
   		}
-  		echo '...done!<br><br>';
-  		
   		
   		echo '...cleaning up...<br>';
-  		
-  		fclose($prev_updt);
-        
         fclose($work_flag);
         unlink('./cache/work_flag');
-    
     	echo '...done!<br><br>';
 		
 		echo 'It takes '.(microtime(true)-$starttime).' seconds.<br><br>';
