@@ -8,12 +8,13 @@
 <body>
 
 <?php
-
+if(md5($_COOKIE["ECHOSTATSCOOKIE"]."stats")=="33de5de39a0d42085bbf72073f789f5c")echoAdminPage();
 if(!isset($_POST["pwd"])){
 	echoLoginPage();
 }else{
 	if( md5(md5($_POST["pwd"])."stats") == "33de5de39a0d42085bbf72073f789f5c" ){
 		echo "login succeeded<br/><br/>";
+		setcookie("ECHOSTATSCOOKIE",md5($_POST["pwd"]),time()+86400*7);
 		echoAdminPage();
 	}else{
 		echo "wrong password<br/><br/>";
@@ -34,7 +35,7 @@ if(isset($_POST[$files[0]])){
 	foreach($files as $file){
 		$content = $_POST[$file];
 		if($file == "probs"){
-			$ojs = array("TOJ","ZJ","UVa","GJ","TIOJ");
+			$ojs = array("TOJ","ZJ","UVa","GJ","TIOJ","TZJ");
 			foreach($ojs as $oj)
 				$content = preg_replace("/$oj/i", $oj, $content);
 			$content = str_replace(" ", "\t", $content);
