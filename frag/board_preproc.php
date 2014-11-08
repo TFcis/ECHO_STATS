@@ -135,6 +135,7 @@
     		    $halt = true;
     			//$status_string .= "time interval limit($dt)<br>";
     		} else {
+				$halt = false;
     			//$status_string .= 'update triggered.<br>';
     		}
 		}
