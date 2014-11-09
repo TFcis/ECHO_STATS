@@ -24,20 +24,34 @@
   		}
   		
 		$search=$_SERVER['QUERY_STRING'];
-		if($search=='if')echo '...Ignore work_flag.<br><br>';
-		else if(is_numeric($search))echo '...Update for Tid '.$search.'.<br><br>';
-  		else if(file_exists('./cache/work_flag')){
-  			echo '...other update tasks pending. Abort.<br><br>';
-  			exit();
-  		}
-  		
-  		$work_flag = fopen('./cache/work_flag', 'w');
-  		if(!$work_flag){
-  			echo 'FATAL ERROR: failed to create flag file. Check existence of ./config and grant write permission.<br><br>';
-  			exit();
-  		}
-  		
-		echo '...done!<br><br>';
+		$ignore_work_flag=false;
+		echo '...Update for';
+		if($search=='if'){
+			echo ' all...Ignore work_flag';
+			$ignore_work_flag='if';
+		} else if($search){
+			$update_array=explode(",",$search);
+			foreach($update_array as $id){
+				if(is_numeric($id)){
+					echo ' '.$id;
+					$ignore_work_flag='num';
+				}
+			}
+		}
+		if($ignore_work_flag==false){
+			if(file_exists('./cache/work_flag')){
+				echo '...other update tasks pending. Abort.<br><br>';
+				exit();
+			} else {
+				$work_flag = fopen('./cache/work_flag', 'w');
+				echo ' all';
+				if(!$work_flag){
+					echo 'FATAL ERROR: failed to create flag file. Check existence of ./config and grant write permission.<br><br>';
+					exit();
+				}
+			}
+		}
+		echo '.<br><br>...done!<br><br>';
 
 
         echo '...initializing config files...<br>';
@@ -207,7 +221,7 @@
         
         //loop through namelist and update caches
         foreach($name_data as $name){
-			if(is_numeric($search)&&$search!=$name['TOJid'])continue;
+			if($ignore_work_flag=='num'&&!in_array($name['TOJid'],$update_array))continue;
 			$personstart=microtime(true);
 		
 			echo '...updating stats for '.$name['name'].'(Tid '.$name['TOJid'].')...<br>';
