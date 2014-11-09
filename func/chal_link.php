@@ -12,6 +12,8 @@ function getChalLink($judge,$probid,$acctid,$res){
         $url = getTIOJChalUrl($probid,$acctid["TIOJid"]);
 	else if($judge=="TZJ")
         $url = getTZJChalUrl($probid,$acctid["TZJid"]);
+	else if($judge=="POJ")
+        $url = getPOJChalUrl($probid,$acctid["POJid"]);
     if($judge=="UVa")return "&#x25cf;";
 	else if($res==9)return "<a href='$url' target='_blank' style='color:#00cc00'>&#x25cf;</a>";
 	else if($res==8)return "<a href='$url' target='_blank' style='color:#cc0000'>&#x25cf;</a>";
@@ -33,5 +35,8 @@ function getTIOJChalUrl($probid,$acctid){
 }
 function getTZJChalUrl($probid,$acctid){
     return "http://judge.tnfsh.tn.edu.tw:8080/RealtimeStatus?problemid=".$probid."&account=".$acctid;
+}
+function getPOJChalUrl($probid,$acctid){
+    return "http://poj.org/status?problem_id=".$probid."&user_id=".$acctid;
 }
 ?>

@@ -21,6 +21,7 @@
 			'GJid'	=>	$tmp_name[4],
 			'TIOJid'	=>	$tmp_name[5],
 			'TZJid'	=>	$tmp_name[6],
+			'POJid'	=>	$tmp_name[7],
 			'stats' =>  -1,
 		);
 		

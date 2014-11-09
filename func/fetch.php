@@ -142,7 +142,7 @@
 		
 		//處理HTML
 		$funstart=microtime(true);
-		$response=str_replace(array("\r\n","\t"," ","\"","</a>",">","&account=".$ZJID,),"",$response);
+		$response=str_replace(array("\r\n","\t"," ","\"","</a>",">","&account=".$ZJID),"",$response);
 		$response=str_replace("style=color:#666666;font-weight:bold;title=","8",$response);//WA
 		$response=str_replace("style=color:#666666title=","0",$response);//NA
 		$response=str_replace("id=acstyleclass=acstyletitle=","9",$response);//AC
@@ -209,7 +209,7 @@
 		
 		//處理HTML
 		$funstart=microtime(true);
-		$response=str_replace(array("\r\n","\t"," ","\"","</a>",">","&account=".$GJID,),"",$response);
+		$response=str_replace(array("\r\n","\t"," ","\"","</a>",">","&account=".$GJID),"",$response);
 		$response=str_replace("style=color:#666666;font-weight:bold;title=","8",$response);//WA
 		$response=str_replace("style=color:#666666title=","0",$response);//NA
 		$response=str_replace("id=acstyletitle=","9",$response);//AC
@@ -342,7 +342,7 @@
 		
 		//處理HTML
 		$funstart=microtime(true);
-		$response=str_replace(array("\r\n","\t"," ","\"","</a>",">","&account=".$TZJID,),"",$response);
+		$response=str_replace(array("\r\n","\t"," ","\"","</a>",">","&account=".$TZJID),"",$response);
 		$response=str_replace("style=color:#666666;font-weight:bold;title=","8",$response);//WA
 		$response=str_replace("style=color:#666666title=","0",$response);//NA
 		$response=str_replace("id=acstyletitle=","9",$response);//AC
@@ -383,5 +383,84 @@
 		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
 
 		return $TZJ_stats;
+	}
+	
+	
+	//fetch API for POJ
+	function getPOJstats($prom,$POJID){
+		global $reload_times_limit;
+		global $load_time_limit;
+		$POJ_stats = '';
+		$response=false;
+		$reloadtimes=0;
+		$loadtime=array();
+		while($response==false&&$reloadtimes<$reload_times_limit){
+			$funstart=microtime(true);
+			$response=curl_get_contents("http://poj.org/usercmp?uid1=".$POJID."&uid2=".$POJID,$load_time_limit);
+			$loadtime[$reloadtimes]=number_format(1000*(microtime(true)-$funstart),2);
+			$reloadtimes++;
+		}
+		if(!$response) return false;
+		if(!(strrpos($response,"DataException")===false)) return false;
+		echo '<td>'.$loadtime[0];
+		for($i=1;$i<$reloadtimes;$i++)echo '/'.$loadtime[0];
+		echo '</td>';
+		
+		//處理HTML
+		$funstart=microtime(true);
+		$response=str_replace(array("\r\n","\t"," ","\"","</a>",">",$POJID,"<ahref=userstatus?user_id="),"",$response);
+		$response=str_replace(array("<ahref=problem?id="),"\\",$response);
+		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
+
+		//建立表格
+		$funstart=microtime(true);
+		$Stats_array=array();
+		//AC
+		$start=strpos($response,"Problemsbothandaccepted");
+		$end=strpos($response,"Problemsonlytriedbutfailed");
+		$response_temp=substr($response,$start,$end-$start);
+		$length=strlen($response_temp);
+		for($i=0;$i<=$length;$i++){
+			if($response_temp[$i]=="\\"){
+				$Stats_array[substr($response_temp,$i+1,4)]=9;
+				$i+=8;
+			}
+		}
+		//WA
+		$start=strpos($response,"Problemsbothandtriedbutfailed");
+		$end=strpos($response,"imgheight");
+		$response_temp=substr($response,$start,$end-$start);
+		$length=strlen($response_temp);
+		for($i=0;$i<=$length;$i++){
+			if($response_temp[$i]=="\\"){
+				$Stats_array[substr($response_temp,$i+1,4)]=8;
+				$i+=8;
+			}
+		}
+		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
+		
+		$funstart=microtime(true);
+		foreach ($prom as $q){
+			if($Stats_array[$q]==8||$Stats_array[$q]==9)$POJ_stats .= $Stats_array[$q];
+			else $POJ_stats .= 0;
+		
+			/*$start=strpos($response,"?problemid=".$q);
+			$end  =strpos($response,">".$q."</a>");
+			$html =substr($response,$start,$end-$start);
+			//print '<td>';
+			
+			if(strpos($html,'id="acstyle"')){
+				$POJ_stats .= 9;
+			} else if(strpos($html,'color: #666666; font-weight: bold;')){
+				$POJ_stats .= 8;
+			} else if(strpos($html,'color:#666666')) {
+				$POJ_stats .= 0;
+			} else {
+				//THROW ERROR
+			}*/
+		}
+		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
+
+		return $POJ_stats;
 	}
 ?>
