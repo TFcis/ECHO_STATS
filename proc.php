@@ -40,7 +40,7 @@
 		}
 		if($ignore_work_flag==false){
 			if(file_exists('./cache/work_flag')){
-				echo '...other update tasks pending. Abort.<br><br>';
+				echo ' all...other update tasks pending. Abort.';
 				exit();
 			} else {
 				$work_flag = fopen('./cache/work_flag', 'w');
