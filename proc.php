@@ -102,7 +102,8 @@
 					'GJid'	=>	$tmp_name[4],
 					'TIOJid'	=>	$tmp_name[5],
 					'TZJid'	=>	$tmp_name[6],
-					'POJid'	=>	$tmp_name[7]
+					'POJid'	=>	$tmp_name[7],
+					'HOJid'	=>	$tmp_name[8]
 				);
             }
             //unset($tmp_name);
@@ -167,6 +168,7 @@
 		$sortedProbset['TIOJ'] = array();
 		$sortedProbset['TZJ'] = array();
 		$sortedProbset['POJ'] = array();
+        $sortedProbset['HOJ'] = array();
         
 		echo '...organizing problemset...<br>';
         foreach($prob_data as $p){
@@ -218,6 +220,7 @@
 			$returned['TIOJ'] = 0;
 			$returned['TZJ'] = 0;
 			$returned['POJ'] = 0;
+			$returned['HOJ'] = 0;
 			
 			echo '<table class=MsoTableGrid border=1 cellpadding=3 style="border-collapse:collapse;border:none"><tr><td>Judge</td><td>Read file</td><td>Process HTML</td><td>Create table</td><td>Create result</td><td>Total</td></tr>';
 			//fetch data
@@ -333,6 +336,22 @@
 			}
 			echo '<td>'.(1000*(microtime(true)-$judgestart)).'</td></tr>';
 			
+			$judgestart=microtime(true);
+			echo '<tr><td>HOJ('.$name['HOJid'].')</td>';
+			if($name['HOJid']=="NULL"){
+				echo '<td colspan="4">No HOJ account.</td>';
+			} else if(count($sortedProbset['HOJ'])==0){
+			    echo '<td colspan="4">There is no HOJ problem.</td>';
+			} else {
+				$returned['HOJ'] = getHOJstats($sortedProbset['HOJ'], $name['HOJid']);
+			}
+			if($returned['HOJ'] === false){
+				echo '<td colspan="4">ERROR: Invalid query or request timed out.</td>';
+			} else {
+				//echo $HOJreturn;
+			}
+			echo '<td>'.(1000*(microtime(true)-$judgestart)).'</td></tr>';
+			
 			echo '</table>';
 			
 			echo '...data fetching complete!<br>';
@@ -346,6 +365,7 @@
 			$tmp_prog['TIOJ'] = 0;
 			$tmp_prog['TZJ'] = 0;
 			$tmp_prog['POJ'] = 0;
+			$tmp_prog['HOJ'] = 0;
 			
 			$finalstats = '';
 			foreach($prob_data as $p){

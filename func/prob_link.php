@@ -14,6 +14,8 @@ function getProbLink($judge,$probid){
         $url = getTZJUrl($probid);
 	else if($judge=="POJ")
         $url = getPOJUrl($probid);
+    else if($judge=="HOJ")
+        $url = getHOJUrl($probid);
     return "<a href='$url' target='_blank'>$judge<br/>$probid</a>";
 }
 function getUVaUrl($probid){
@@ -36,5 +38,8 @@ function getTZJUrl($probid){
 }
 function getPOJUrl($probid){
     return "http://poj.org/problem?id=$probid";
+}
+function getHOJUrl($probid){
+    return "http://hoj.twbbs.org/judge/problem/view/$probid";
 }
 ?>

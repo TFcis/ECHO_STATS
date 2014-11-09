@@ -92,7 +92,7 @@
     		foreach($rank as $n => $s){
     		    $n = (int)$n;
     		    //echo $n.' '.$s.';';
-    			echo '<tr><td class = "name_tag"><a title="TOJ&#9;'.$name_data[$name_map[$n]]['TOJid'].'&#10;ZJ&#9;'.$name_data[$name_map[$n]]['ZJid'].'&#10;TZJ&#9;'.$name_data[$name_map[$n]]['TZJid'].'&#10;GJ&#9;'.$name_data[$name_map[$n]]['GJid'].'&#10;TIOJ&#9;'.$name_data[$name_map[$n]]['TIOJid'].'&#10;UVa&#9;'.$name_data[$name_map[$n]]['UVAid'].'&#10;POJ&#9;'.$name_data[$name_map[$n]]['POJid'].'" onclick="loadPage('.$name_data[$name_map[$n]]['TOJid'].')">'.$name_data[$name_map[$n]]['name'].'</a></td>';
+    			echo '<tr><td class = "name_tag"><a title="TOJ&#9;'.$name_data[$name_map[$n]]['TOJid'].'&#10;ZJ&#9;'.$name_data[$name_map[$n]]['ZJid'].'&#10;TZJ&#9;'.$name_data[$name_map[$n]]['TZJid'].'&#10;GJ&#9;'.$name_data[$name_map[$n]]['GJid'].'&#10;TIOJ&#9;'.$name_data[$name_map[$n]]['TIOJid'].'&#10;UVa&#9;'.$name_data[$name_map[$n]]['UVAid'].'&#10;POJ&#9;'.$name_data[$name_map[$n]]['POJid'].'&#10;HOJ&#9;'.$name_data[$name_map[$n]]['HOJid'].'" onclick="loadPage('.$name_data[$name_map[$n]]['TOJid'].')">'.$name_data[$name_map[$n]]['name'].'</a></td>';
     			echo '<td class = "sol_tag">'.' ('.$sol[$n].'/'.round($sol[$n]/count($group['probs'])*100,0).'%)</td>';	
     			if ($name_data[$name_map[$n]]['stats'] == -1){
     				echo '<td class = "pend">pending...</td>';
@@ -110,8 +110,9 @@
     					} else if ($res == 0) {
     						//N/A
     						echo '<td class = "NA">&#x25cf;</td>';	
-    					}
-    
+    					} else {
+							echo '<td >ERR</td>';	
+						}
     				}
     			}
     			echo '</tr>';

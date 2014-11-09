@@ -14,7 +14,9 @@ function getChalLink($judge,$probid,$acctid,$res){
         $url = getTZJChalUrl($probid,$acctid["TZJid"]);
 	else if($judge=="POJ")
         $url = getPOJChalUrl($probid,$acctid["POJid"]);
-    if($judge=="UVa")return "&#x25cf;";
+	/*else if($judge=="HOJ")
+        $url = getHOJChalUrl($probid,$acctid["HOJid"]);*/
+    if($judge=="UVa"||$judge=="HOJ")return "&#x25cf;";
 	else if($res==9)return "<a href='$url' target='_blank' style='color:#00cc00'>&#x25cf;</a>";
 	else if($res==8)return "<a href='$url' target='_blank' style='color:#cc0000'>&#x25cf;</a>";
 }
@@ -38,5 +40,8 @@ function getTZJChalUrl($probid,$acctid){
 }
 function getPOJChalUrl($probid,$acctid){
     return "http://poj.org/status?problem_id=".$probid."&user_id=".$acctid;
+}
+function getHOJChalUrl($probid,$acctid){
+    return "http://hoj.twbbs.org/judge/judge/status?prob=".$probid."&user=".$acctid;
 }
 ?>

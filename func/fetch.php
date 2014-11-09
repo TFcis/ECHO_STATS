@@ -463,4 +463,71 @@
 
 		return $POJ_stats;
 	}
+	
+	
+	//fetch API for HOJ
+	function getHOJstats($prom,$HOJID){
+		global $reload_times_limit;
+		global $load_time_limit;
+		$HOJ_stats = '';
+		$response=false;
+		$reloadtimes=0;
+		$loadtime=array();
+		while($response==false&&$reloadtimes<$reload_times_limit){
+			$funstart=microtime(true);
+			$response=curl_get_contents("http://hoj.twbbs.org/judge/user/view/".$HOJID,$load_time_limit);
+			$loadtime[$reloadtimes]=number_format(1000*(microtime(true)-$funstart),2);
+			$reloadtimes++;
+		}
+		if(!$response) return false;
+		if(!(strrpos($response,"DataException")===false)) return false;
+		echo '<td>'.$loadtime[0];
+		for($i=1;$i<$reloadtimes;$i++)echo '/'.$loadtime[0];
+		echo '</td>';
+		
+		//處理HTML
+		$funstart=microtime(true);
+		$response=str_replace(array("\r\n","\t"," ","\"","</a>","<ahref=http://hoj.twbbs.org/judge/problem/view/","</strong></span>","/","<td>","<th>"),"",$response);
+		$response=str_replace("><spanclass=red><strong>","8",$response);//WA
+		$response=str_replace("><spanclass=blue><strong>","9",$response);//AC
+		$response=str_replace(">","0",$response);//NA
+		$response=str_replace(array("&nbsp;&nbsp;&nbsp;","<br0"),",",$response);
+		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
+		
+		//建立表格
+		$funstart=microtime(true);
+		$start=strpos($response,"Problems,")+9;
+		$end=strpos($response,"<tr0<table0");
+		$response_temp=substr($response,$start,$end-$start);
+		$response_array=explode(",",$response_temp);
+		$Stats_array=array();
+		foreach($response_array as $temp){
+			$length=(strlen($temp)-1)/2;
+			$Stats_array[substr($temp,0,$length)]=$temp[$length];
+		}
+		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
+		
+		$funstart=microtime(true);
+		foreach ($prom as $q){
+			$HOJ_stats .= $Stats_array[$q];
+		
+			/*$start=strpos($response,"?problemid=".$q);
+			$end  =strpos($response,">".$q."</a>");
+			$html =substr($response,$start,$end-$start);
+			//print '<td>';
+			
+			if(strpos($html,'id="acstyle"')){
+				$HOJ_stats .= 9;
+			} else if(strpos($html,'color: #666666; font-weight: bold;')){
+				$HOJ_stats .= 8;
+			} else if(strpos($html,'color:#666666')) {
+				$HOJ_stats .= 0;
+			} else {
+				//THROW ERROR
+			}*/
+		}
+		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
+
+		return $HOJ_stats;
+	}
 ?>
