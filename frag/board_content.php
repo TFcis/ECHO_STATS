@@ -12,13 +12,11 @@
 ?>
 
 <script>
-	var halt = <?php echo ($halt ? 'true' : 'false'); ?> ;
+	var autoupdate = <?php echo ($autoupdate ? 'true' : 'false'); ?> ;
 	var forceupdate = <?php echo $_POST['forceupdate']; ?> ;
-	if(forceupdate) halt = false;
 	
-	//console.log(halt);
-	if(forceupdate==-1||!halt){ $.get('proc.php'); }
-	else if(!halt){ $.get('proc.php?'+forceupdate); }
+	if(autoupdate||forceupdate==-1){ $.get('proc.php'); }
+	else if(forceupdate){ $.get('proc.php?'+forceupdate); }
 </script>
 
 

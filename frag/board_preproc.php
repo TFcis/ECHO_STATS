@@ -130,14 +130,14 @@
 		
 		
 		if (file_exists('../cache/work_flag')){
-				$halt = true;
-				$status_string .= 'update tasks pending...<br>';
+			$autoupdate = false;
+			$status_string .= 'update tasks pending...<br>';
 		} else {
     		if($dt < $interval_limit){
-    		    $halt = true;
+    		    $autoupdate = false;
     			//$status_string .= "time interval limit($dt)<br>";
     		} else {
-				$halt = false;
+				$autoupdate = true;
     			//$status_string .= 'update triggered.<br>';
     		}
 		}
