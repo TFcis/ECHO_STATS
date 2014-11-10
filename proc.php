@@ -435,10 +435,12 @@
 			fclose($prev_updt);
   		}
   		
+		if($ignore_work_flag==false){
   		echo '...cleaning up...<br>';
-        fclose($work_flag);
-        unlink('./cache/work_flag');
-    	echo '...done!<br><br>';
+			fclose($work_flag);
+			unlink('./cache/work_flag');
+			echo '...done!<br><br>';
+		}
 		
 		echo 'It takes '.(microtime(true)-$starttime).' seconds.<br><br>';
 		
