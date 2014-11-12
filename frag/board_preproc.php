@@ -97,49 +97,48 @@
     $status_string = '';
 	$interval_limit = 3600;
 	
-
-		$prev_updt = 0;
-		if(file_exists('../cache/prev_updt')){
-			$prev_updt = @file_get_contents('../cache/prev_updt');
-		}
-		
-		$dt = time() - $prev_updt;
-		$status_string .= "Last update: ";
-		if(floor($dt/86400)>0){
-			$status_string .=floor($dt/86400)." day";
-			if(floor($dt/86400)>1)$status_string .="s";
-			$status_string .=" ";
-		}
-		if(floor($dt%86400/3600)>0){
-			$status_string .=floor($dt%86400/3600)." hour";
-			if(floor($dt%86400/3600)>1)$status_string .="s";
-			$status_string .=" ";
-		}
-		if(floor($dt%3600/60)>0){
-			$status_string .=floor($dt%3600/60)." minute";
-			if(floor($dt%3600/60)>1)$status_string .="s";
-			$status_string .=" ";
-		}
-		if($dt%60>0){
-			$status_string .=($dt%60)." second";
-			if($dt%60>1)$status_string .="s";
-			$status_string .=" ";
-		}
-		if($dt==0)$status_string .="Just now.<br>";
-		else $status_string .="ago.<br>";
-		
-		
-		if (file_exists('../cache/work_flag')){
-			$autoupdate = false;
-			$status_string .= 'update tasks pending...<br>';
+	$prev_updt = 0;
+	if(file_exists('../cache/prev_updt')){
+		$prev_updt = @file_get_contents('../cache/prev_updt');
+	}
+	
+	$dt = time() - $prev_updt;
+	$status_string .= "Last update: ";
+	if(floor($dt/86400)>0){
+		$status_string .=floor($dt/86400)." day";
+		if(floor($dt/86400)>1)$status_string .="s";
+		$status_string .=" ";
+	}
+	if(floor($dt%86400/3600)>0){
+		$status_string .=floor($dt%86400/3600)." hour";
+		if(floor($dt%86400/3600)>1)$status_string .="s";
+		$status_string .=" ";
+	}
+	if(floor($dt%3600/60)>0){
+		$status_string .=floor($dt%3600/60)." minute";
+		if(floor($dt%3600/60)>1)$status_string .="s";
+		$status_string .=" ";
+	}
+	if($dt%60>0){
+		$status_string .=($dt%60)." second";
+		if($dt%60>1)$status_string .="s";
+		$status_string .=" ";
+	}
+	if($dt<=0)$status_string .="Just now.<br>";
+	else $status_string .="ago.<br>";
+	
+	
+	if (file_exists('../cache/work_flag')){
+		$autoupdate = false;
+		$status_string .= 'update tasks pending...<br>';
+	} else {
+		if($dt >= $interval_limit || $dt<0){
+			$autoupdate = true;
+			//$status_string .= "time interval limit($dt)<br>";
 		} else {
-    		if($dt < $interval_limit){
-    		    $autoupdate = false;
-    			//$status_string .= "time interval limit($dt)<br>";
-    		} else {
-				$autoupdate = true;
-    			//$status_string .= 'update triggered.<br>';
-    		}
+			$autoupdate = false;
+			//$status_string .= 'update triggered.<br>';
 		}
+	}
 ?>
 
