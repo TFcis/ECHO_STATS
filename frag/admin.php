@@ -44,6 +44,10 @@ if(isset($_POST[$files[0]])){
 			echo "Failed to write file: $file. Please check file permission.<br/>";
 	}
 	echo "done ".time()."<br/>";
+}else if(isset($_POST["prev_updt"])){
+	$content=$_POST["prev_updt"];
+	if(@file_put_contents("../cache/prev_updt",$content) === false)
+		echo "Failed to write file: $file. Please check file permission.<br/>";
 }else if(isset($_POST["url"])){
     $url = $_POST["url"];
     $url = explode("#", $url); $url = $url[0];
@@ -94,7 +98,6 @@ foreach($files as $file){
 <?php } ?>
 <input type="hidden" name="pwd" value="<?=$_POST["pwd"]?>">
 </form>
-
 <br/><br/>
 
 Clone setting from another ECHO_STATS:
@@ -117,10 +120,11 @@ Clone setting from another ECHO_STATS:
 <input type="hidden" name="deleteWorkFlag" value="true">
 </form>
 
+<form method="POST">
+prev_updt: <input name="prev_updt" class="cache" value="<?=htmlentities(@file_get_contents("../cache/prev_updt"))?>"> <input type="submit" value="Submit">
+</form>
 
 <?php } ?>
-
-
 
 <?php
 function echoLoginPage(){  ?>
