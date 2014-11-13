@@ -3,6 +3,7 @@
     require_once('board_preproc.php');
     require_once('../func/prob_link.php');
 	require_once('../func/chal_link.php');
+	require_once('../func/acct_link.php');
     if($_POST['forceupdate']){
         $status_string = 'force update request sent.';
     }
@@ -100,14 +101,14 @@
     			echo '<tr><td class = "name_tag"><a onclick="show('.$group['index'].','.$name_data[$name_map[$n]]['TOJid'].')">'.$name_data[$name_map[$n]]['name'].'</a>';
 				echo '<div id="group'.$group['index'].'tid'.$name_data[$name_map[$n]]['TOJid'].'" style="display:none; position: absolute; top: 25px; left: 20px; z-index: 1; text-align: left; border: 2px solid #CCC; background: #000;">';
 				echo '<a onclick="loadPage('.$name_data[$name_map[$n]]['TOJid'].')">update</a><br>';
-				if($name_data[$name_map[$n]]['TOJid']!="NULL")echo getAcctLink('TOJ'.$name_data[$name_map[$n]]).'<br>';
-				if($name_data[$name_map[$n]]['ZJid']!="NULL")echo getAcctLink('ZJ'.$name_data[$name_map[$n]].'<br>';
-				if($name_data[$name_map[$n]]['TZJid']!="NULL")echo getAcctLink('TZJ'.$name_data[$name_map[$n]].'<br>';
-				if($name_data[$name_map[$n]]['GJid']!="NULL")echo getAcctLink('GJ'.$name_data[$name_map[$n]].'<br>';
-				if($name_data[$name_map[$n]]['TIOJid']!="NULL")echo getAcctLink('TIOJ'.$name_data[$name_map[$n]].'<br>';
-				if($name_data[$name_map[$n]]['UVAid']!="NULL")echo getAcctLink('UVA'.$name_data[$name_map[$n]].'<br>';
-				if($name_data[$name_map[$n]]['POJid']!="NULL")echo getAcctLink('POJ'.$name_data[$name_map[$n]].'<br>';
-				if($name_data[$name_map[$n]]['HOJid']!="NULL")echo getAcctLink('HOJ'.$name_data[$name_map[$n]].'<br>';
+				if($name_data[$name_map[$n]]['TOJid']!="NULL")echo getAcctLink('TOJ',$name_data[$name_map[$n]]).'<br>';
+				if($name_data[$name_map[$n]]['ZJid']!="NULL")echo getAcctLink('ZJ',$name_data[$name_map[$n]]).'<br>';
+				if($name_data[$name_map[$n]]['TZJid']!="NULL")echo getAcctLink('TZJ',$name_data[$name_map[$n]]).'<br>';
+				if($name_data[$name_map[$n]]['GJid']!="NULL")echo getAcctLink('GJ',$name_data[$name_map[$n]]).'<br>';
+				if($name_data[$name_map[$n]]['TIOJid']!="NULL")echo getAcctLink('TIOJ',$name_data[$name_map[$n]]).'<br>';
+				if($name_data[$name_map[$n]]['UVAid']!="NULL")echo getAcctLink('UVA',$name_data[$name_map[$n]]).'<br>';
+				if($name_data[$name_map[$n]]['POJid']!="NULL")echo getAcctLink('POJ',$name_data[$name_map[$n]]).'<br>';
+				if($name_data[$name_map[$n]]['HOJid']!="NULL")echo getAcctLink('HOJ',$name_data[$name_map[$n]]).'<br>';
 				echo '</div></td>';
     			echo '<td class = "sol_tag">'.' ('.$sol[$n].'/'.round($sol[$n]/count($group['probs'])*100,0).'%)</td>';	
     			if ($name_data[$name_map[$n]]['stats'] == -1){
