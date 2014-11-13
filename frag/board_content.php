@@ -17,6 +17,13 @@
 	
 	if(autoupdate||forceupdate==-1){ $.get('proc.php'); }
 	else if(forceupdate){ $.get('proc.php?'+forceupdate); }
+	function show(group,tid){
+		if(document.all["group"+group+"tid"+tid].style.display=="none"){
+			document.all["group"+group+"tid"+tid].style.display="";
+		}else{
+			document.all["group"+group+"tid"+tid].style.display="none";
+		}
+	}
 </script>
 
 
@@ -89,8 +96,19 @@
     		//foreach($group['names'] as $n){
     		foreach($rank as $n => $s){
     		    $n = (int)$n;
-    		    //echo $n.' '.$s.';';
-    			echo '<tr><td class = "name_tag"><a title="TOJ&#9;'.$name_data[$name_map[$n]]['TOJid'].'&#10;ZJ&#9;'.$name_data[$name_map[$n]]['ZJid'].'&#10;TZJ&#9;'.$name_data[$name_map[$n]]['TZJid'].'&#10;GJ&#9;'.$name_data[$name_map[$n]]['GJid'].'&#10;TIOJ&#9;'.$name_data[$name_map[$n]]['TIOJid'].'&#10;UVa&#9;'.$name_data[$name_map[$n]]['UVAid'].'&#10;POJ&#9;'.$name_data[$name_map[$n]]['POJid'].'&#10;HOJ&#9;'.$name_data[$name_map[$n]]['HOJid'].'" onclick="loadPage('.$name_data[$name_map[$n]]['TOJid'].')">'.$name_data[$name_map[$n]]['name'].'</a></td>';
+    		    //echo $n.' '.$s.';
+    			echo '<tr><td class = "name_tag"><a onclick="show('.$group['index'].','.$name_data[$name_map[$n]]['TOJid'].')">'.$name_data[$name_map[$n]]['name'].'</a>';
+				echo '<div id="group'.$group['index'].'tid'.$name_data[$name_map[$n]]['TOJid'].'" style="display:none; position: absolute; top: 25px; left: 20px; z-index: 1; text-align: left; border: 2px solid #CCC; background: #000;">';
+				echo '<a onclick="loadPage('.$name_data[$name_map[$n]]['TOJid'].')">update</a><br>';
+				if($name_data[$name_map[$n]]['TOJid']!="NULL")echo getAcctLink('TOJ'.$name_data[$name_map[$n]]).'<br>';
+				if($name_data[$name_map[$n]]['ZJid']!="NULL")echo getAcctLink('ZJ'.$name_data[$name_map[$n]].'<br>';
+				if($name_data[$name_map[$n]]['TZJid']!="NULL")echo getAcctLink('TZJ'.$name_data[$name_map[$n]].'<br>';
+				if($name_data[$name_map[$n]]['GJid']!="NULL")echo getAcctLink('GJ'.$name_data[$name_map[$n]].'<br>';
+				if($name_data[$name_map[$n]]['TIOJid']!="NULL")echo getAcctLink('TIOJ'.$name_data[$name_map[$n]].'<br>';
+				if($name_data[$name_map[$n]]['UVAid']!="NULL")echo getAcctLink('UVA'.$name_data[$name_map[$n]].'<br>';
+				if($name_data[$name_map[$n]]['POJid']!="NULL")echo getAcctLink('POJ'.$name_data[$name_map[$n]].'<br>';
+				if($name_data[$name_map[$n]]['HOJid']!="NULL")echo getAcctLink('HOJ'.$name_data[$name_map[$n]].'<br>';
+				echo '</div></td>';
     			echo '<td class = "sol_tag">'.' ('.$sol[$n].'/'.round($sol[$n]/count($group['probs'])*100,0).'%)</td>';	
     			if ($name_data[$name_map[$n]]['stats'] == -1){
     				echo '<td class = "pend">pending...</td>';
