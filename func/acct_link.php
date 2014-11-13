@@ -19,7 +19,7 @@ function getAcctLink($judge,$acctid){
     return "<a href='".$url."' target='_blank'>".$judge."(".$acctid[$judge."id"].")</a>";
 }
 function getUVaAcctUrl($acctid){
-    return "http://uhunt.felix-halim.net/id/$probid";
+    return "http://uhunt.felix-halim.net/id/".$acctid;
 }
 function getZJAcctUrl($acctid){
     return "http://zerojudge.tw/UserStatistic?account=".$acctid;
