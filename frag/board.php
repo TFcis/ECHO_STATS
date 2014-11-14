@@ -75,7 +75,6 @@
 		
 		<?php
 			$judge_available=file_get_contents('../cache/judge_available');
-			echo $judge_available[0];
 			function availablecolor($n){
 				if($n=="0")echo "#77777";
 				else if($n=="1")echo "#cc0000";
