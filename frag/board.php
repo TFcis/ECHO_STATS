@@ -73,24 +73,34 @@
 		
         <br>
 		
+		<?php
+			$judge_available=file_get_contents('../cache/judge_available');
+			echo $judge_available[0];
+			function availablecolor($n){
+				if($n=="0")echo "#77777";
+				else if($n=="1")echo "#cc0000";
+				else if($n=="2")echo "#ffff00";
+				else if($n=="3")echo "#00cc00";
+			}
+		?>
 		<div>AVAILABLE:</div>
         <div style =  "text-align: right">
             <hr>
 			<div>
-			TOJ<a id="able_TOJ" href="http://toj.tfcis.org/oj/info/" target="_blank">&#x25cf;</a>
-			ZJ<a id="able_ZJ" href="http://zerojudge.tw/" target="_blank">&#x25cf;</a>
+			TOJ<a id="able_TOJ" href="http://toj.tfcis.org/oj/info/" target="_blank" style="color:<?php availablecolor($judge_available[0])?>;">&#x25cf;</a>
+			ZJ<a id="able_ZJ" href="http://zerojudge.tw/" target="_blank" style="color:<?php availablecolor($judge_available[1])?>;">&#x25cf;</a>
 			</div>
 			<div>
-			TZJ<a id="able_TZJ" href="http://judge.tnfsh.tn.edu.tw:8080/" target="_blank">&#x25cf;</a>
-			GJ<a id="able_GJ" href="http://www.tcgs.tc.edu.tw:1218/" target="_blank">&#x25cf;</a>
+			TZJ<a id="able_TZJ" href="http://judge.tnfsh.tn.edu.tw:8080/" target="_blank" style="color:<?php availablecolor($judge_available[2])?>;">&#x25cf;</a>
+			GJ<a id="able_GJ" href="http://www.tcgs.tc.edu.tw:1218/" target="_blank" style="color:<?php availablecolor($judge_available[3])?>;">&#x25cf;</a>
 			</div>
 			<div>
-			TIOJ<a id="able_TIOJ" href="http://tioj.ck.tp.edu.tw/" target="_blank">&#x25cf;</a>
-			UVA<a id="able_UVA" href="http://uva.onlinejudge.org/" target="_blank">&#x25cf;</a>
+			TIOJ<a id="able_TIOJ" href="http://tioj.ck.tp.edu.tw/" target="_blank" style="color:<?php availablecolor($judge_available[4])?>;">&#x25cf;</a>
+			UVA<a id="able_UVA" href="http://uva.onlinejudge.org/" target="_blank" style="color:<?php availablecolor($judge_available[5])?>;">&#x25cf;</a>
 			</div>
 			<div>
-			POJ<a id="able_POJ" href="http://poj.org/" target="_blank">&#x25cf;</a>
-			HOJ<a id="able_HOJ" href="http://hoj.twbbs.org/judge/" target="_blank">&#x25cf;</a>
+			POJ<a id="able_POJ" href="http://poj.org/" target="_blank" style="color:<?php availablecolor($judge_available[6])?>;">&#x25cf;</a>
+			HOJ<a id="able_HOJ" href="http://hoj.twbbs.org/judge/" target="_blank" style="color:<?php availablecolor($judge_available[7])?>;">&#x25cf;</a>
 			</div>
         </div>
         

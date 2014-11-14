@@ -418,14 +418,14 @@
 			else if($ok>0&&$fail>0)return "2";
 			else return "3";
 		}
-		$update_result+=updateresult($update_ok['TOJ'],$update_fail['TOJ']);
-		$update_result+=updateresult($update_ok['ZJ'],$update_fail['ZJ']);
-		$update_result+=updateresult($update_ok['TZJ'],$update_fail['TZJ']);
-		$update_result+=updateresult($update_ok['GJ'],$update_fail['GJ']);
-		$update_result+=updateresult($update_ok['TIOJ'],$update_fail['TIOJ']);
-		$update_result+=updateresult($update_ok['UVa'],$update_fail['UVa']);
-		$update_result+=updateresult($update_ok['POJ'],$update_fail['POJ']);
-		$update_result+=updateresult($update_ok['HOJ'],$update_fail['HOJ']);
+		$update_result.=updateresult($update_ok['TOJ'],$update_fail['TOJ']);
+		$update_result.=updateresult($update_ok['ZJ'],$update_fail['ZJ']);
+		$update_result.=updateresult($update_ok['TZJ'],$update_fail['TZJ']);
+		$update_result.=updateresult($update_ok['GJ'],$update_fail['GJ']);
+		$update_result.=updateresult($update_ok['TIOJ'],$update_fail['TIOJ']);
+		$update_result.=updateresult($update_ok['UVa'],$update_fail['UVa']);
+		$update_result.=updateresult($update_ok['POJ'],$update_fail['POJ']);
+		$update_result.=updateresult($update_ok['HOJ'],$update_fail['HOJ']);
 		
 		$filename = './cache/judge_available';
 		if(!file_exists($filename)){

@@ -47,7 +47,11 @@ if(isset($_POST[$files[0]])){
 }else if(isset($_POST["prev_updt"])){
 	$content=$_POST["prev_updt"];
 	if(@file_put_contents("../cache/prev_updt",$content) === false)
-		echo "Failed to write file: $file. Please check file permission.<br/>";
+		echo "Failed to write file: prev_updt. Please check file permission.<br/>";
+}else if(isset($_POST["judge_available"])){
+	$content=$_POST["judge_available"];
+	if(@file_put_contents("../cache/judge_available",$content) === false)
+		echo "Failed to write file: judge_available. Please check file permission.<br/>";
 }else if(isset($_POST["url"])){
     $url = $_POST["url"];
     $url = explode("#", $url); $url = $url[0];
@@ -122,6 +126,10 @@ Clone setting from another ECHO_STATS:
 
 <form method="POST">
 prev_updt: <input name="prev_updt" class="cache" value="<?=htmlentities(@file_get_contents("../cache/prev_updt"))?>"> <input type="submit" value="Submit">
+</form>
+
+<form method="POST">
+judge_available: <input name="judge_available" class="cache" value="<?=htmlentities(@file_get_contents("../cache/judge_available"))?>"> <input type="submit" value="Submit">
 </form>
 
 <?php } ?>
