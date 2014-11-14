@@ -411,41 +411,42 @@
         }
 		echo '...update complete!<br><br>';
 		
-		$update_result='';
-		function updateresult($ok,$fail){
-			if($ok==0&&$fail==0)return "0";
-			else if($ok==0&&$fail>0)return "1";
-			else if($ok>0&&$fail>0)return "2";
-			else return "3";
-		}
-		$update_result.=updateresult($update_ok['TOJ'],$update_fail['TOJ']);
-		$update_result.=updateresult($update_ok['ZJ'],$update_fail['ZJ']);
-		$update_result.=updateresult($update_ok['TZJ'],$update_fail['TZJ']);
-		$update_result.=updateresult($update_ok['GJ'],$update_fail['GJ']);
-		$update_result.=updateresult($update_ok['TIOJ'],$update_fail['TIOJ']);
-		$update_result.=updateresult($update_ok['UVa'],$update_fail['UVa']);
-		$update_result.=updateresult($update_ok['POJ'],$update_fail['POJ']);
-		$update_result.=updateresult($update_ok['HOJ'],$update_fail['HOJ']);
-		
-		$filename = './cache/judge_available';
-		if(!file_exists($filename)){
-			echo 'NOTICE: no '.$filename.'.<br>';
-			$file = fopen($filename, 'w');
-			if($file){
-				echo '...created '.$filename.'<br>';
-			} else {
-				echo 'FATAL ERROR: failed to create file. Please manually grant read/write authorization to ./cache.<br><br>';
+		if($ignore_work_flag==false||$ignore_work_flag=='if'){
+			$update_result='';
+			function updateresult($ok,$fail){
+				if($ok==0&&$fail==0)return "0";
+				else if($ok==0&&$fail>0)return "1";
+				else if($ok>0&&$fail>0)return "2";
+				else return "3";
 			}
-		} else {
-			$file = fopen($filename, 'w');
+			$update_result.=updateresult($update_ok['TOJ'],$update_fail['TOJ']);
+			$update_result.=updateresult($update_ok['ZJ'],$update_fail['ZJ']);
+			$update_result.=updateresult($update_ok['TZJ'],$update_fail['TZJ']);
+			$update_result.=updateresult($update_ok['GJ'],$update_fail['GJ']);
+			$update_result.=updateresult($update_ok['TIOJ'],$update_fail['TIOJ']);
+			$update_result.=updateresult($update_ok['UVa'],$update_fail['UVa']);
+			$update_result.=updateresult($update_ok['POJ'],$update_fail['POJ']);
+			$update_result.=updateresult($update_ok['HOJ'],$update_fail['HOJ']);
+			
+			$filename = './cache/judge_available';
+			if(!file_exists($filename)){
+				echo 'NOTICE: no '.$filename.'.<br>';
+				$file = fopen($filename, 'w');
+				if($file){
+					echo '...created '.$filename.'<br>';
+				} else {
+					echo 'FATAL ERROR: failed to create file. Please manually grant read/write authorization to ./cache.<br><br>';
+				}
+			} else {
+				$file = fopen($filename, 'w');
+			}
+			if(!fwrite($file, $update_result)){
+				echo 'ERROR: failed to write to file. Please manually grant read/write authorization to ./cache.<br>';
+			} else {
+				echo '...update_result up to date.<br>';
+			}
+			fclose($file);
 		}
-		if(!fwrite($file, $update_result)){
-			echo 'ERROR: failed to write to file. Please manually grant read/write authorization to ./cache.<br>';
-		} else {
-			echo '...update_result up to date.<br>';
-		}
-		fclose($file);
-	
 		
 		if(!is_numeric($search)){
 			echo '...logging update time & details...<br>';
@@ -461,7 +462,7 @@
   		}
   		
 		if($ignore_work_flag==false){
-  		echo '...cleaning up...<br>';
+			echo '...cleaning up...<br>';
 			fclose($work_flag);
 			unlink('./cache/work_flag');
 			echo '...done!<br><br>';
