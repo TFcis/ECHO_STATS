@@ -139,6 +139,9 @@
     	?>
     	</table>
     	</div>
+		<pre id="inform-<?=(int)$group['index']?>" style="font-size: 20px;">
+<?=$group["inform"]?>
+		</pre>
 		<script>
 			$(window).resize(windowSizeChange);
 			$("#table-<?=(int)$group['index']?>").width(800);
@@ -147,10 +150,6 @@
 				$("#table-<?=(int)$group['index']?>").width( $(window).width()-$("#frame").position().left - 150 );
 			}
 		</script>
-		<pre style="font-size: 20px;">
-<?=$group["inform"]?>
-		</pre>
-	
     </div>
 <?php
 	}
