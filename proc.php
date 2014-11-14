@@ -196,29 +196,11 @@
 	        	}
         	}
         }
-        
-        /*
-        echo '<br>';
-        echo 'TOJ problemset:<br>';
-        foreach($sortedProbset['TOJ'] as $prob){
-            echo '	TOJ '.$prob.'<br>';
-        }
-        echo '<br>';
-        echo 'UVa problemset:<br>';
-        foreach($sortedProbset['UVa'] as $prob){
-            echo '	UVa (pid)'.$prob.'<br>';
-        }
-        echo '<br>';
-        echo 'ZJ problemset:<br>';
-        foreach($sortedProbset['ZJ'] as $prob){
-            echo '	ZJ '.$prob.'<br>';
-        }
-        echo '<br>';
-        */
         echo '...done!<br><br>';
 
-        
-        
+		
+        $update_ok = array("UVa"=>0,"TOJ"=>0,"ZJ"=>0,"GJ"=>0,"TIOJ"=>0,"TZJ"=>0,"POJ"=>0,"HOJ"=>0);
+		$update_fail = array("UVa"=>0,"TOJ"=>0,"ZJ"=>0,"GJ"=>0,"TIOJ"=>0,"TZJ"=>0,"POJ"=>0,"HOJ"=>0);
         //loop through namelist and update caches
         foreach($name_data as $name){
 			if($ignore_work_flag=='num'&&!in_array($name['TOJid'],$update_array))continue;
@@ -235,7 +217,6 @@
 			$returned['TZJ'] = 0;
 			$returned['POJ'] = 0;
 			$returned['HOJ'] = 0;
-			
 			echo '<table class=MsoTableGrid border=1 cellpadding=3 style="border-collapse:collapse;border:none"><tr><td>Judge</td><td>Read file</td><td>Process HTML</td><td>Create table</td><td>Create result</td><td>Total</td></tr>';
 			//fetch data
 			echo '<tr><td>UVa('.$name['UVAid'].')</td>';
@@ -246,11 +227,12 @@
 			    echo '<td colspan="4">There is no UVa problem.</td>';
 			} else {
 				$returned['UVa'] = getUVAstats($sortedProbset['UVa'], $name['UVAid']);
-			}
-			if($returned['UVa'] === false){
-				echo '<td colspan="4">ERROR: Invalid query or request timed out.</td>';
-			} else {
-				//echo $UVAreturn;
+				if($returned['UVa'] === false){
+					$update_fail['UVa']++;
+					echo '<td colspan="4">ERROR: Invalid query or request timed out.</td>';
+				} else {
+					$update_ok['UVa']++;
+				}
 			}
 			echo '<td>'.(1000*(microtime(true)-$judgestart)).'</td></tr>';
 			
@@ -262,11 +244,12 @@
 			    echo '<td colspan="4">There is no TOJ problem.</td>';
 			} else {
 				$returned['TOJ'] = getTOJstats($sortedProbset['TOJ'], $name['TOJid']);
-			}
-			if($returned['TOJ'] === false){
-				echo '<td colspan="4">ERROR: Invalid query or request timed out.</td>';
-			} else {
-				//echo $TOJreturn;
+				if($returned['TOJ'] === false){
+					$update_fail['TOJ']++;
+					echo '<td colspan="4">ERROR: Invalid query or request timed out.</td>';
+				} else {
+					$update_ok['TOJ']++;
+				}
 			}
 			echo '<td>'.(1000*(microtime(true)-$judgestart)).'</td></tr>';
 			
@@ -278,11 +261,12 @@
 			    echo '<td colspan="4">There is no ZJ problem.</td>';
 			} else {
 				$returned['ZJ'] = getZJstats($sortedProbset['ZJ'], $name['ZJid']);
-			}
-			if($returned['ZJ'] === false){
-				echo '<td colspan="4">ERROR: Invalid query or request timed out.</td>';
-			} else {
-				//echo $ZJreturn;
+				if($returned['ZJ'] === false){
+					$update_fail['ZJ']++;
+					echo '<td colspan="4">ERROR: Invalid query or request timed out.</td>';
+				} else {
+					$update_ok['ZJ']++;
+				}
 			}
 			echo '<td>'.(1000*(microtime(true)-$judgestart)).'</td></tr>';
 			
@@ -294,11 +278,12 @@
 			    echo '<td colspan="4">There is no GJ problem.</td>';
 			} else {
 				$returned['GJ'] = getGJstats($sortedProbset['GJ'], $name['GJid']);
-			}
-			if($returned['GJ'] === false){
-				echo '<td colspan="4">ERROR: Invalid query or request timed out.</td>';
-			} else {
-				//echo $GJreturn;
+				if($returned['GJ'] === false){
+					$update_fail['GJ']++;
+					echo '<td colspan="4">ERROR: Invalid query or request timed out.</td>';
+				} else {
+					$update_ok['GJ']++;
+				}
 			}
 			echo '<td>'.(1000*(microtime(true)-$judgestart)).'</td></tr>';
 			
@@ -310,11 +295,12 @@
 				echo '<td colspan="4">There is no TIOJ problem.</td>';
 			} else {
 				$returned['TIOJ'] = getTIOJstats($sortedProbset['TIOJ'], $name['TIOJid']);
-			}
-			if($returned['TIOJ'] === false){
-				echo '<td colspan="4">ERROR: Invalid query or request timed out.</td>';
-			} else {
-				//echo $TIOJreturn;
+				if($returned['TIOJ'] === false){
+					$update_fail['TIOJ']++;
+					echo '<td colspan="4">ERROR: Invalid query or request timed out.</td>';
+				} else {
+					$update_ok['TIOJ']++;
+				}
 			}
 			echo '<td>'.(1000*(microtime(true)-$judgestart)).'</td></tr>';
 			
@@ -326,11 +312,12 @@
 			    echo '<td colspan="4">There is no TZJ problem.</td>';
 			} else {
 				$returned['TZJ'] = getTZJstats($sortedProbset['TZJ'], $name['TZJid']);
-			}
-			if($returned['TZJ'] === false){
-				echo '<td colspan="4">ERROR: Invalid query or request timed out.</td>';
-			} else {
-				//echo $TZJreturn;
+				if($returned['TZJ'] === false){
+					$update_fail['TZJ']++;
+					echo '<td colspan="4">ERROR: Invalid query or request timed out.</td>';
+				} else {
+					$update_ok['TZJ']++;
+				}
 			}
 			echo '<td>'.(1000*(microtime(true)-$judgestart)).'</td></tr>';
 			
@@ -342,11 +329,12 @@
 			    echo '<td colspan="4">There is no POJ problem.</td>';
 			} else {
 				$returned['POJ'] = getPOJstats($sortedProbset['POJ'], $name['POJid']);
-			}
-			if($returned['POJ'] === false){
-				echo '<td colspan="4">ERROR: Invalid query or request timed out.</td>';
-			} else {
-				//echo $POJreturn;
+				if($returned['POJ'] === false){
+					$update_fail['POJ']++;
+					echo '<td colspan="4">ERROR: Invalid query or request timed out.</td>';
+				} else {
+					$update_ok['POJ']++;
+				}
 			}
 			echo '<td>'.(1000*(microtime(true)-$judgestart)).'</td></tr>';
 			
@@ -358,11 +346,12 @@
 			    echo '<td colspan="4">There is no HOJ problem.</td>';
 			} else {
 				$returned['HOJ'] = getHOJstats($sortedProbset['HOJ'], $name['HOJid']);
-			}
-			if($returned['HOJ'] === false){
-				echo '<td colspan="4">ERROR: Invalid query or request timed out.</td>';
-			} else {
-				//echo $HOJreturn;
+				if($returned['HOJ'] === false){
+					$update_fail['HOJ']++;
+					echo '<td colspan="4">ERROR: Invalid query or request timed out.</td>';
+				} else {
+					$update_ok['HOJ']++;
+				}
 			}
 			echo '<td>'.(1000*(microtime(true)-$judgestart)).'</td></tr>';
 			
@@ -421,6 +410,42 @@
 			echo 'It takes '.(microtime(true)-$personstart).' seconds.<br><br>';
         }
 		echo '...update complete!<br><br>';
+		
+		$update_result='';
+		function updateresult($ok,$fail){
+			if($ok==0&&$fail==0)return "0";
+			else if($ok==0&&$fail>0)return "1";
+			else if($ok>0&&$fail>0)return "2";
+			else return "3";
+		}
+		$update_result+=updateresult($update_ok['TOJ'],$update_fail['TOJ']);
+		$update_result+=updateresult($update_ok['ZJ'],$update_fail['ZJ']);
+		$update_result+=updateresult($update_ok['TZJ'],$update_fail['TZJ']);
+		$update_result+=updateresult($update_ok['GJ'],$update_fail['GJ']);
+		$update_result+=updateresult($update_ok['TIOJ'],$update_fail['TIOJ']);
+		$update_result+=updateresult($update_ok['UVa'],$update_fail['UVa']);
+		$update_result+=updateresult($update_ok['POJ'],$update_fail['POJ']);
+		$update_result+=updateresult($update_ok['HOJ'],$update_fail['HOJ']);
+		
+		$filename = './cache/judge_available';
+		if(!file_exists($filename)){
+			echo 'NOTICE: no '.$filename.'.<br>';
+			$file = fopen($filename, 'w');
+			if($file){
+				echo '...created '.$filename.'<br>';
+			} else {
+				echo 'FATAL ERROR: failed to create file. Please manually grant read/write authorization to ./cache.<br><br>';
+			}
+		} else {
+			$file = fopen($filename, 'w');
+		}
+		if(!fwrite($file, $update_result)){
+			echo 'ERROR: failed to write to file. Please manually grant read/write authorization to ./cache.<br>';
+		} else {
+			echo '...update_result up to date.<br>';
+		}
+		fclose($file);
+	
 		
 		if(!is_numeric($search)){
 			echo '...logging update time & details...<br>';
