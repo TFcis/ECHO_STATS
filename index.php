@@ -88,5 +88,7 @@
 	<div id = "content">
         <!-- LOAD CONTENTS VIA jQ HERE -->
 	</div>
+	<script type='text/javascript' src='./func/edit_font_color.js'></script>
+	<script>dfs(document.body)</script>
 </body>
 </html>

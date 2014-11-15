@@ -160,3 +160,5 @@
     <?php echo $status_string; ?>
     <br>
 </div>
+<script type='text/javascript' src='./func/edit_font_color.js'></script>
+<script>dfs(document.all.frame)</script>

@@ -64,19 +64,33 @@
         
         <br>
         
-        <div>TOOLS:</div>
+        <div id="TOOLS">TOOLS:</div>
         <div style =  "text-align: right">
             <hr>
             <div><a onclick = "loadPage(0)">refresh</a></div>
             <div><a onclick = "loadPage(-1)">force update</a></div>
+			<div id="settingdiv"><a onclick = 'if(document.all.setting.style.display=="none"){document.all.setting.style.display="";}else{document.all.setting.style.display="none";}'>setting</a></div>
+			<div id="setting" style="display:none; position: absolute; top: 25px; left: 20px; z-index: 1; text-align: left; border: 2px solid #CCC; background: #000;">Setting font color:<br><input type="color" id="color" value="#ffffff"><br><a onclick="setcookie();">submit</a></div>
         </div>
+		<script>
+			$(window).resize(settingPositionChange);
+			settingPositionChange();
+			function settingPositionChange(){
+				setting.style.top=($("#TOOLS").position().top+100)+"px";
+				setting.style.left=($("#settingdiv").position().left+70)+"px";
+			}
+			function setcookie(){
+				document.cookie="color="+document.all.color.value;
+				location.reload();
+			}
+		</script>
 		
         <br>
 		
 		<?php
 			$judge_available=file_get_contents('../cache/judge_available');
 			function availablecolor($n){
-				if($n=="0")echo "#77777";
+				if($n=="0")echo "#777777";
 				else if($n=="1")echo "#cc0000";
 				else if($n=="2")echo "#ffff00";
 				else if($n=="3")echo "#00cc00";
