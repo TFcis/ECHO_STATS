@@ -89,6 +89,6 @@
         <!-- LOAD CONTENTS VIA jQ HERE -->
 	</div>
 	<script type='text/javascript' src='./func/edit_font_color.js'></script>
-	<script>dfs(document.body)</script>
+	<script>dfs(document.all.title);</script>
 </body>
 </html>
