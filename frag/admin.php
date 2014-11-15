@@ -132,6 +132,10 @@ prev_updt: <input name="prev_updt" class="cache" value="<?=htmlentities(@file_ge
 judge_available: <input name="judge_available" class="cache" value="<?=htmlentities(@file_get_contents("../cache/judge_available"))?>"> <input type="submit" value="Submit">
 </form>
 
+<form method="POST">
+work_flag: <input name="work_flag" class="cache" value="<?=htmlentities(@file_get_contents("../cache/work_flag"))?>"> <!--<input type="submit" value="Submit">-->
+</form>
+
 <?php } ?>
 
 <?php

@@ -49,9 +49,14 @@
 					echo 'FATAL ERROR: failed to create flag file. Check existence of ./config and grant write permission.<br><br>';
 					exit();
 				}
+				if(!fwrite($work_flag, time())){
+					echo 'ERROR: failed to write to file. Please manually grant read/write authorization to ./cache';
+				} else {
+					echo '...work_flag up to date';
+				}
 			}
 		}
-		echo '.<br><br>...done!<br><br>';
+		echo '.<br>...done!<br><br>';
 
 
         echo '...initializing config files...<br>';
