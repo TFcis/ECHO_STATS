@@ -1,5 +1,6 @@
 <?php
 	require_once("../func/EOL.php");
+	require_once("../func/how_long_ago.php");
 
     //echo 'preproc';
 	//turn of error reporting (for the sake of user-end satisfaction?)
@@ -104,26 +105,7 @@
 	
 	$dt = time() - $prev_updt;
 	$status_string .= "Last update: ";
-	if(floor($dt/86400)>0){
-		$status_string .=floor($dt/86400)." day";
-		if(floor($dt/86400)>1)$status_string .="s";
-		$status_string .=" ";
-	}
-	if(floor($dt%86400/3600)>0){
-		$status_string .=floor($dt%86400/3600)." hour";
-		if(floor($dt%86400/3600)>1)$status_string .="s";
-		$status_string .=" ";
-	}
-	if(floor($dt%3600/60)>0){
-		$status_string .=floor($dt%3600/60)." minute";
-		if(floor($dt%3600/60)>1)$status_string .="s";
-		$status_string .=" ";
-	}
-	if($dt%60>0){
-		$status_string .=($dt%60)." second";
-		if($dt%60>1)$status_string .="s";
-		$status_string .=" ";
-	}
+	$status_string .=how_long_ago($dt);
 	if($dt<=0)$status_string .="Just now.<br>";
 	else $status_string .="ago.<br>";
 	
