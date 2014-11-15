@@ -112,7 +112,13 @@
 	
 	if (file_exists('../cache/work_flag')){
 		$autoupdate = false;
-		$status_string .= 'update tasks pending...<br>';
+		$status_string .= 'update tasks pending...sent: ';
+		$update_sent=file_get_contents('../cache/work_flag');
+		$update_sent=time()-$update_sent;
+		$status_string .=how_long_ago($update_sent);
+		if($update_sent<=0)$status_string .="Just now.<br>";
+		else $status_string .="ago.<br>";
+		
 	} else {
 		if($dt >= $interval_limit || $dt<0){
 			$autoupdate = true;
