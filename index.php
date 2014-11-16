@@ -40,7 +40,7 @@
 	<center>
 		<div style = "">
 		
-			<h1><span style = "color: #999999">ECHO</span> STATS <span style = "color: #999999">;</h1>
+			<h1><span style = "color: #999999">ECHO</span> STATS <span style = "color: #999999">;</span></h1>
 			
 			<div style = "color: #666666;"><br>
                 A <i>JUDGEMENTAL</i> STATISTICS ENGINE
