@@ -18,7 +18,7 @@ function editcolor(c){
 	//c.style.background="#000";
 } 
 function dfs(v){
-	editcolor(v);
+	//editcolor(v);
 	for(var i=0;true;i++){
 		if(v.children[i]==undefined){
 			break;
