@@ -118,6 +118,7 @@
 		$status_string .=how_long_ago($update_sent);
 		if($update_sent<=0)$status_string .="Just now.<br>";
 		else $status_string .="ago.<br>";
+		if($update_sent>180)unlink('./cache/work_flag');
 		
 	} else {
 		if($dt >= $interval_limit || $dt<0){
