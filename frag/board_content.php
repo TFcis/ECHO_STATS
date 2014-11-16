@@ -156,7 +156,6 @@
 ?>
 
 <div style = "color: #666666; padding-left: 80px">
-    <br>
     <?php echo $status_string; ?>
     <br>
 </div>
