@@ -129,4 +129,5 @@
 <script>
 document.all.color.value=(getCookie("color")==""?"#ffffff":getCookie("color"));
 dfs(document.all.content);
+editcolor(document.all.content,color_R,color_G,color_B);
 </script>
