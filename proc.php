@@ -416,6 +416,8 @@
         }
 		echo '...update complete!<br><br>';
 		
+		echo '<table class=MsoTableGrid border=1 cellpadding=3 style="border-collapse:collapse;border:none"><tr><td>Judge</td><td>TOJ</td><td>ZJ</td><td>TZJ</td><td>GJ</td><td>TIOJ</td><td>UVa</td><td>POJ</td><td>HOJ</td></tr><tr><td>ok</td><td>'.$update_ok['TOJ'].'</td><td>'.$update_ok['ZJ'].'</td><td>'.$update_ok['TZJ'].'</td><td>'.$update_ok['GJ'].'</td><td>'.$update_ok['TIOJ'].'</td><td>'.$update_ok['UVa'].'</td><td>'.$update_ok['POJ'].'</td><td>'.$update_ok['HOJ'].'</td></tr><tr><td>fail</td><td>'.$update_fail['TOJ'].'</td><td>'.$update_fail['ZJ'].'</td><td>'.$update_fail['TZJ'].'</td><td>'.$update_fail['GJ'].'</td><td>'.$update_fail['TIOJ'].'</td><td>'.$update_fail['UVa'].'</td><td>'.$update_fail['POJ'].'</td><td>'.$update_fail['HOJ'].'</td></tr></table><br>';
+		
 		if($ignore_work_flag==false||$ignore_work_flag=='if'){
 			$update_result='';
 			function updateresult($ok,$fail){
