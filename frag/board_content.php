@@ -20,9 +20,9 @@
 	else if(forceupdate){ $.get('proc.php?'+forceupdate); }
 	function show(group,tid){
 		if(document.all["group"+group+"tid"+tid].style.display=="none"){
-			document.all["group"+group+"tid"+tid].style.display="";
+			$("#group"+group+"tid"+tid).show("slow");
 		}else{
-			document.all["group"+group+"tid"+tid].style.display="none";
+			$("#group"+group+"tid"+tid).hide("slow");
 		}
 	}
 </script>
