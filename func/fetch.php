@@ -115,7 +115,6 @@
 		while($response==false&&$reloadtimes<$reload_times_limit){
 			$funstart=microtime(true);
 			$response=curl_get_contents("http://zerojudge.tw/UserStatistic?account=".$ZJID,$load_time_limit);
-			echo '<!--'.$response.'-->';
 			$loadtime[$reloadtimes]=number_format(1000*(microtime(true)-$funstart),2);
 			$reloadtimes++;
 		}
