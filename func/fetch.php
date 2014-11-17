@@ -138,7 +138,7 @@
 		$Stats_array=array();
 		$start=strpos($response,"\\");
 		if($start===false){
-			echo '<td colspan="2">ERROE!</td>';
+			echo '<td colspan="2">ERROR!</td>';
 			return 0;
 		}
 		$length=strlen($response);
@@ -194,7 +194,7 @@
 		$Stats_array=array();
 		$start=strpos($response,"\\");
 		if($start===false){
-			echo '<td colspan="2">ERROE!</td>';
+			echo '<td colspan="2">ERROR!</td>';
 			return 0;
 		}
 		$length=strlen($response);
@@ -250,7 +250,7 @@
 		$Stats_array=array();
 		$start=strpos($response,"*");
 		if($start===false){
-			echo '<td colspan="2">ERROE!</td>';
+			echo '<td colspan="2">ERROR!</td>';
 			return 0;
 		}
 		$length=strlen($response);
@@ -306,7 +306,7 @@
 		$Stats_array=array();
 		$start=strpos($response,"\\");
 		if($start===false){
-			echo '<td colspan="2">ERROE!</td>';
+			echo '<td colspan="2">ERROR!</td>';
 			return 0;
 		}
 		$length=strlen($response);
