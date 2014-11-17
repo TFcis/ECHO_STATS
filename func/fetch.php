@@ -36,22 +36,17 @@
 		}
 		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
 		
-		//echo $UVAstats.'<br>';
 		return $UVAstats;
 	}
-	
-	//DUMMY VER.
 	$UVAdata = file_get_contents("http://uhunt.felix-halim.net/api/p/");
 	$UVAdata = json_decode($UVAdata, true);
 	function getUVaProbNum($probID){
-		//todo
 		global $UVAdata;
 		foreach($UVAdata as $prob){
 			if($prob[0]==$probID)
 				return $prob[1];
 		}
 	}
-	
 	
 	
     //fetch API for TOJ
@@ -63,47 +58,38 @@
 				'reqtype' => 'AC',
 				'acct_id' => $uid
 			);
-			
 		$context = array();
 		$context['http'] = array (
 			'timeout'   => 60,
 			'method'	=> 'POST',
 			'content'   => http_build_query($data, '', '&'),
 		);
-		
 		$funstart=microtime(true);
 		$response = file_get_contents('http://210.70.137.215/oj/be/api', false, stream_context_create($context));
 		if($response === false) return false;
-		//echo $uid.'TOJ: ';
 		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td><td>N/A</td><td>N/A</td>';
 		
+		//Get NA list
 		$funstart=microtime(true);
 		$AClist = json_decode($response)->ac;
-		
-		//Get NA list
 		$data = array(
 				'reqtype' => 'NA',
 				'acct_id' => $uid
 			);
-			
 		$context['http'] = array (
 			'timeout'   => 60,
 			'method'	=> 'POST',
 			'content'   => http_build_query($data, '', '&'),
 		);
 		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td><td>N/A</td></tr>';
-		
 		echo '<tr><td></td>';
-		
 		$funstart=microtime(true);
 		$response = file_get_contents('http://210.70.137.215/oj/be/api', false, stream_context_create($context));
 		if($response === false) return false;
-		//echo $uid.'TOJ: ';
 		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td><td>N/A</td><td>N/A</td>';
 		
 		$funstart=microtime(true);
 		$NAlist = json_decode($response)->na;
-		
 		foreach($probs as $p){
 			if (in_array($p, $AClist)){
 				$TOJstats .= 9;
@@ -114,10 +100,8 @@
 			}
 		}
 		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
-		
 		return $TOJstats;
 	}
-			
 	
 	
     //fetch API for ZJ
@@ -164,28 +148,12 @@
 		$funstart=microtime(true);
 		foreach ($prom as $q){
 			$ZJ_stats .= $Stats_array[$q];
-		
-			/*$start=strpos($response,"?problemid=".$q);
-			$end  =strpos($response,">".$q."</a>");
-			$html =substr($response,$start,$end-$start);
-			//print '<td>';
-			
-			if(strpos($html,'class="acstyle"')){
-				$ZJ_stats .= 9;
-			} else if(strpos($html,'color: #666666; font-weight: bold;')){
-				$ZJ_stats .= 8;
-			} else if(strpos($html,'color: #666666')) {
-				$ZJ_stats .= 0;
-			} else {
-				//THROW ERROR
-			}*/
 		}
 		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
 		
 		return $ZJ_stats;
 	}
-	
-	
+
 	
 	//fetch API for TCGSJ
 	function getGJstats($prom,$GJID){
@@ -231,27 +199,11 @@
 		$funstart=microtime(true);
 		foreach ($prom as $q){
 			$GJ_stats .= $Stats_array[$q];
-		
-			/*$start=strpos($response,"?problemid=".$q);
-			$end  =strpos($response,">".$q."</a>");
-			$html =substr($response,$start,$end-$start);
-			//print '<td>';
-			
-			if(strpos($html,'id="acstyle"')){
-				$GJ_stats .= 9;
-			} else if(strpos($html,'color: #666666; font-weight: bold;')){
-				$GJ_stats .= 8;
-			} else if(strpos($html,'color:#666666')) {
-				$GJ_stats .= 0;
-			} else {
-				//THROW ERROR
-			}*/
 		}
 		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
 
 		return $GJ_stats;
 	}
-	
 	
 	
 	//fetch API for TIOJ
@@ -298,24 +250,9 @@
 		$funstart=microtime(true);
 		foreach ($prom as $q){
 			$TIOJ_stats .= $Stats_array[$q];
-		
-			/*$start=strpos($response,"/problems/".$q."/submissions")-25;
-			$end  =strpos($response,"/problems/".$q."/submissions")-6;
-			$html =substr($response,$start,$end-$start);
-			//print '<td>';
-			
-			if(strpos($html,'text-success')){
-				$TIOJ_stats .= 9;
-			} else if(strpos($html,'text-warning')){
-				$TIOJ_stats .= 8;
-			} else if(strpos($html,'text-muted')) {
-				$TIOJ_stats .= 0;
-			} else {
-				//THROW ERROR
-			}*/
 		}
 		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
-
+		
 		return $TIOJ_stats;
 	}
 	
@@ -364,21 +301,6 @@
 		$funstart=microtime(true);
 		foreach ($prom as $q){
 			$TZJ_stats .= $Stats_array[$q];
-		
-			/*$start=strpos($response,"?problemid=".$q);
-			$end  =strpos($response,">".$q."</a>");
-			$html =substr($response,$start,$end-$start);
-			//print '<td>';
-			
-			if(strpos($html,'id="acstyle"')){
-				$TZJ_stats .= 9;
-			} else if(strpos($html,'color: #666666; font-weight: bold;')){
-				$TZJ_stats .= 8;
-			} else if(strpos($html,'color:#666666')) {
-				$TZJ_stats .= 0;
-			} else {
-				//THROW ERROR
-			}*/
 		}
 		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
 
@@ -443,21 +365,6 @@
 		foreach ($prom as $q){
 			if($Stats_array[$q]==8||$Stats_array[$q]==9)$POJ_stats .= $Stats_array[$q];
 			else $POJ_stats .= 0;
-		
-			/*$start=strpos($response,"?problemid=".$q);
-			$end  =strpos($response,">".$q."</a>");
-			$html =substr($response,$start,$end-$start);
-			//print '<td>';
-			
-			if(strpos($html,'id="acstyle"')){
-				$POJ_stats .= 9;
-			} else if(strpos($html,'color: #666666; font-weight: bold;')){
-				$POJ_stats .= 8;
-			} else if(strpos($html,'color:#666666')) {
-				$POJ_stats .= 0;
-			} else {
-				//THROW ERROR
-			}*/
 		}
 		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
 
@@ -510,21 +417,6 @@
 		$funstart=microtime(true);
 		foreach ($prom as $q){
 			$HOJ_stats .= $Stats_array[$q];
-		
-			/*$start=strpos($response,"?problemid=".$q);
-			$end  =strpos($response,">".$q."</a>");
-			$html =substr($response,$start,$end-$start);
-			//print '<td>';
-			
-			if(strpos($html,'id="acstyle"')){
-				$HOJ_stats .= 9;
-			} else if(strpos($html,'color: #666666; font-weight: bold;')){
-				$HOJ_stats .= 8;
-			} else if(strpos($html,'color:#666666')) {
-				$HOJ_stats .= 0;
-			} else {
-				//THROW ERROR
-			}*/
 		}
 		echo '<td>'.(1000*(microtime(true)-$funstart)).'</td>';
 
