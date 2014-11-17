@@ -266,7 +266,10 @@
 			    echo '<td colspan="4">There is no ZJ problem.</td>';
 			} else {
 				$returned['ZJ'] = getZJstats($sortedProbset['ZJ'], $name['ZJid']);
-				if($returned['ZJ'] === false){
+				if($returned['ZJ'] == -1){
+					$update_fail['ZJ']++;
+					echo '<td colspan="2">ERROR!</td>';
+				} else if($returned['ZJ'] === false){
 					$update_fail['ZJ']++;
 					echo '<td colspan="4">ERROR: Invalid query or request timed out.</td>';
 				} else {
@@ -283,7 +286,10 @@
 			    echo '<td colspan="4">There is no GJ problem.</td>';
 			} else {
 				$returned['GJ'] = getGJstats($sortedProbset['GJ'], $name['GJid']);
-				if($returned['GJ'] === false){
+				if($returned['GJ'] == -1){
+					$update_fail['GJ']++;
+					echo '<td colspan="2">ERROR!</td>';
+				} else if($returned['GJ'] === false){
 					$update_fail['GJ']++;
 					echo '<td colspan="4">ERROR: Invalid query or request timed out.</td>';
 				} else {
@@ -300,7 +306,10 @@
 				echo '<td colspan="4">There is no TIOJ problem.</td>';
 			} else {
 				$returned['TIOJ'] = getTIOJstats($sortedProbset['TIOJ'], $name['TIOJid']);
-				if($returned['TIOJ'] === false){
+				if($returned['TIOJ'] == -1){
+					$update_fail['TIOJ']++;
+					echo '<td colspan="2">ERROR!</td>';
+				} else if($returned['TIOJ'] === false){
 					$update_fail['TIOJ']++;
 					echo '<td colspan="4">ERROR: Invalid query or request timed out.</td>';
 				} else {
@@ -317,7 +326,10 @@
 			    echo '<td colspan="4">There is no TZJ problem.</td>';
 			} else {
 				$returned['TZJ'] = getTZJstats($sortedProbset['TZJ'], $name['TZJid']);
-				if($returned['TZJ'] === false){
+				if($returned['TZJ'] == -1){
+					$update_fail['TZJ']++;
+					echo '<td colspan="2">ERROR!</td>';
+				} else if($returned['TZJ'] === false){
 					$update_fail['TZJ']++;
 					echo '<td colspan="4">ERROR: Invalid query or request timed out.</td>';
 				} else {

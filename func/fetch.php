@@ -137,10 +137,7 @@
 		$funstart=microtime(true);
 		$Stats_array=array();
 		$start=strpos($response,"\\");
-		if($start===false){
-			echo '<td colspan="2">ERROR!</td>';
-			return 0;
-		}
+		if($start===false)return -1;
 		$length=strlen($response);
 		for($i=$start;$i<$length;$i++){
 			if($response[$i]=="\\"){
@@ -193,10 +190,7 @@
 		$funstart=microtime(true);
 		$Stats_array=array();
 		$start=strpos($response,"\\");
-		if($start===false){
-			echo '<td colspan="2">ERROR!</td>';
-			return 0;
-		}
+		if($start===false)return -1;
 		$length=strlen($response);
 		for($i=$start;$i<$length;$i++){
 			if($response[$i]=="\\"){
@@ -249,10 +243,7 @@
 		$funstart=microtime(true);
 		$Stats_array=array();
 		$start=strpos($response,"*");
-		if($start===false){
-			echo '<td colspan="2">ERROR!</td>';
-			return 0;
-		}
+		if($start===false)return -1;
 		$length=strlen($response);
 		for($i=$start;$i<$length;$i++){
 			if($response[$i]=="*"){
@@ -305,10 +296,7 @@
 		$funstart=microtime(true);
 		$Stats_array=array();
 		$start=strpos($response,"\\");
-		if($start===false){
-			echo '<td colspan="2">ERROR!</td>';
-			return 0;
-		}
+		if($start===false)return -1;
 		$length=strlen($response);
 		for($i=$start;$i<$length;$i++){
 			if($response[$i]=="\\"){
