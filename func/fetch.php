@@ -153,7 +153,7 @@
 		$funstart=microtime(true);
 		$Stats_array=array();
 		$length=strlen($response);
-		for($i=strpos($response,"\\");$i<=$length;$i++){
+		for($i=strpos($response,"\\");$i<$length;$i++){
 			if($response[$i]=="\\"){
 				$Stats_array[substr($response,$i+1,4)]=substr($response,$i+5,1);//$response[$i+5];
 				$i+=9;
@@ -220,7 +220,7 @@
 		$funstart=microtime(true);
 		$Stats_array=array();
 		$length=strlen($response);
-		for($i=strpos($response,"\\");$i<=$length;$i++){
+		for($i=strpos($response,"\\");$i<$length;$i++){
 			if($response[$i]=="\\"){
 				$Stats_array[substr($response,$i+1,4)]=substr($response,$i+5,1);//$response[$i+5];
 				$i+=9;
@@ -287,7 +287,7 @@
 		$funstart=microtime(true);
 		$Stats_array=array();
 		$length=strlen($response);
-		for($i=strpos($response,"*");$i<=$length;$i++){
+		for($i=strpos($response,"*");$i<$length;$i++){
 			if($response[$i]=="*"){
 				$Stats_array[substr($response,$i+2,4)]=substr($response,$i+1,1);//$response[$i+5];
 				$i+=10;
@@ -353,7 +353,7 @@
 		$funstart=microtime(true);
 		$Stats_array=array();
 		$length=strlen($response);
-		for($i=strpos($response,"\\");$i<=$length;$i++){
+		for($i=strpos($response,"\\");$i<$length;$i++){
 			if($response[$i]=="\\"){
 				$Stats_array[substr($response,$i+1,4)]=substr($response,$i+5,1);//$response[$i+5];
 				$i+=9;
@@ -420,7 +420,7 @@
 		$end=strpos($response,"Problemsonlytriedbutfailed");
 		$response_temp=substr($response,$start,$end-$start);
 		$length=strlen($response_temp);
-		for($i=0;$i<=$length;$i++){
+		for($i=0;$i<$length;$i++){
 			if($response_temp[$i]=="\\"){
 				$Stats_array[substr($response_temp,$i+1,4)]=9;
 				$i+=8;
@@ -431,7 +431,7 @@
 		$end=strpos($response,"imgheight");
 		$response_temp=substr($response,$start,$end-$start);
 		$length=strlen($response_temp);
-		for($i=0;$i<=$length;$i++){
+		for($i=0;$i<$length;$i++){
 			if($response_temp[$i]=="\\"){
 				$Stats_array[substr($response_temp,$i+1,4)]=8;
 				$i+=8;
