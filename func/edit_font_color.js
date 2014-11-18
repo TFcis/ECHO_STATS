@@ -19,6 +19,7 @@ function editcolor(c){
 } 
 function dfs(v){
 	//editcolor(v);
+	if(cookie_color=="")return 0;
 	for(var i=0;true;i++){
 		if(v.children[i]==undefined){
 			break;

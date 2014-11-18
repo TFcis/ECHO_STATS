@@ -70,7 +70,7 @@
             <div><a onclick = "loadPage(0)">refresh</a></div>
             <div><a onclick = "loadPage(-1)">force update</a></div>
 			<div id="settingdiv"><a onclick = 'if(document.all.setting.style.display=="none"){$("#setting").show("slow");}else{$("#setting").hide("slow");}'>setting</a></div>
-			<div id="setting" style="display:none; position: absolute; top: 25px; left: 20px; z-index: 1; text-align: left; border: 2px solid #CCC; background: #000;">Setting font color:<br><input type="color" id="color" value="#ffffff"><br><a onclick="setcookie();">submit</a></div>
+			<div id="setting" style="display:none; position: absolute; top: 25px; left: 20px; z-index: 1; text-align: left; border: 2px solid #CCC; background: #000;">Setting font color:<br><input type="color" id="color" value="#ffffff"><br><a onclick="setcookie();">submit</a><br><a onclick="unsetcookie();">unset</a></div>
         </div>
 		<script>
 			$(window).resize(settingPositionChange);
@@ -81,6 +81,10 @@
 			}
 			function setcookie(){
 				document.cookie="color="+document.all.color.value;
+				location.reload();
+			}
+			function unsetcookie(){
+				document.cookie="color=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
 				location.reload();
 			}
 		</script>
