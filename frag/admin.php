@@ -91,6 +91,11 @@ if(isset($_POST[$files[0]])){
 </style>
 
 <form method="POST">
+<a id="updatelink" href="../proc.php" target="_blank"></a>
+update: <input id="updateinput" name="update" class="cache"> <input type="button" value="Open" onclick="document.all.updatelink.href='../proc.php?'+document.all.updateinput.value;document.all.updatelink.click();document.all.updateinput.value='';">
+</form>
+
+<form method="POST">
 <input type="submit" value="Submit"><br/>
 <?php
 foreach($files as $file){
@@ -102,7 +107,6 @@ foreach($files as $file){
 <?php } ?>
 <input type="hidden" name="pwd" value="<?=$_POST["pwd"]?>">
 </form>
-<br/><br/>
 
 Clone setting from another ECHO_STATS:
 <form method="POST">
