@@ -115,7 +115,7 @@
 		while($response==false&&$reloadtimes<$reload_times_limit){
 			$funstart=microtime(true);
 			//$response=curl_get_contents("http://zerojudge.tw/UserStatistic?account=".$ZJID,$load_time_limit);
-			$response=curl_get_contents('http://zerojudge.tw/Login',$load_time_limit,array('account' => 'tester123123' , 'passwd' => '123123' ,'returnPage' => 'http://zerojudge.tw/UserStatistic?account='.$ZJID ));
+			$response=curl_get_contents('http://zerojudge.tw/Login',10000,array('account' => 'tester123123' , 'passwd' => '123123' ,'returnPage' => 'http://zerojudge.tw/UserStatistic?account='.$ZJID ));
 			$loadtime[$reloadtimes]=number_format(1000*(microtime(true)-$funstart),2);
 			$reloadtimes++;
 		}
