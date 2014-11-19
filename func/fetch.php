@@ -119,6 +119,7 @@
 			$loadtime[$reloadtimes]=number_format(1000*(microtime(true)-$funstart),2);
 			$reloadtimes++;
 		}
+		echo '<!--'.$response.'**>';
 		if(!$response) return false;
 		if(!(strrpos($response,"DataException")===false)) return false;
 		echo '<td>'.$loadtime[0];
