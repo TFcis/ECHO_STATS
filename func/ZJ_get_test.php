@@ -19,5 +19,4 @@
 	curl_setopt($resource, CURLOPT_COOKIEFILE, $cookie_jar);
     $content = curl_exec($resource);
 	echo $resource.'<br><br><br>';
-} 
 ?>
