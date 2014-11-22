@@ -112,7 +112,7 @@
 		global $load_time_limit;
 		if( $ZJloginflag === false )
         {
-            $this->httpRequest('zerojudge.tw/Login',array('account' => 'tester123123' , 'passwd' => '123123' ,'returnPage' => '' ));
+            httpRequest('zerojudge.tw/Login',array('account' => 'tester123123' , 'passwd' => '123123' ,'returnPage' => '' ));
             $ZJloginflag = true;
         }
 		
@@ -164,8 +164,10 @@
 		return $ZJ_stats;
 	}
 	
+	$cookiefile;
 	function httpRequest( $url , $post = null , $usepost =true )
     {
+		global $cookiefile;
         if( is_array($post) )
         {
             ksort( $post );
@@ -181,8 +183,8 @@
             curl_setopt( $ch , CURLOPT_POSTFIELDS , $post );
         }
         curl_setopt( $ch , CURLOPT_RETURNTRANSFER , true );
-        curl_setopt ($ch , CURLOPT_COOKIEFILE, $this->cookiefile->name() );
-        curl_setopt ($ch , CURLOPT_COOKIEJAR , $this->cookiefile->name() );
+        curl_setopt ($ch , CURLOPT_COOKIEFILE, $cookiefile );
+        curl_setopt ($ch , CURLOPT_COOKIEJAR , $cookiefile );
         
         $data = curl_exec($ch);
         curl_close($ch);
