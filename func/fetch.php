@@ -105,24 +105,16 @@
 	
 	
     //fetch API for ZJ
-	$ZJloginflag = false;
 	function getZJstats($prom,$ZJID){
-		global $ZJloginflag;
 		global $reload_times_limit;
 		global $load_time_limit;
-		if( $ZJloginflag === false )
-        {
-            httpRequest('zerojudge.tw/Login',array('account' => 'tester123123' , 'passwd' => '123123' ,'returnPage' => '' ));
-            $ZJloginflag = true;
-        }
-		
 		$ZJ_stats = '';
 		$response=false;
 		$reloadtimes=0;
 		$loadtime=array();
 		while($response==false&&$reloadtimes<$reload_times_limit){
 			$funstart=microtime(true);
-			$response=httpRequest("zerojudge.tw/UserStatistic?account=".$ZJID,false,false);
+			$response=curl_get_contents("http://zerojudge.tw/UserStatistic?account=".$ZJID,$load_time_limit);
 			$loadtime[$reloadtimes]=number_format(1000*(microtime(true)-$funstart),2);
 			$reloadtimes++;
 		}
@@ -163,37 +155,6 @@
 		
 		return $ZJ_stats;
 	}
-	
-	$cookiefile;
-	function httpRequest( $url , $post = null , $usepost =true )
-    {
-		global $cookiefile;
-        if( is_array($post) )
-        {
-            ksort( $post );
-            $post = http_build_query( $post );
-        }
-        
-        $ch = curl_init();
-        curl_setopt( $ch , CURLOPT_URL , $url );
-        curl_setopt( $ch , CURLOPT_ENCODING, "UTF-8" );
-        if($usepost)
-        {
-            curl_setopt( $ch , CURLOPT_POST, true );
-            curl_setopt( $ch , CURLOPT_POSTFIELDS , $post );
-        }
-        curl_setopt( $ch , CURLOPT_RETURNTRANSFER , true );
-        curl_setopt ($ch , CURLOPT_COOKIEFILE, $cookiefile );
-        curl_setopt ($ch , CURLOPT_COOKIEJAR , $cookiefile );
-        
-        $data = curl_exec($ch);
-        curl_close($ch);
-        if(!$data)
-        {
-            return false;
-        }
-        return $data;
-    }
 
 	
 	//fetch API for TCGSJ
