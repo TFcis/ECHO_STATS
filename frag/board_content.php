@@ -95,6 +95,7 @@
 			
     		
     		//foreach($group['names'] as $n){
+			$no=1;
     		foreach($rank as $n => $s){
     		    $n = (int)$n;
     		    //echo $n.' '.$s.';
@@ -110,7 +111,7 @@
 				if($name_data[$name_map[$n]]['POJid']!="NULL")echo getAcctLink('POJ',$name_data[$name_map[$n]]).'<br>';
 				if($name_data[$name_map[$n]]['HOJid']!="NULL")echo getAcctLink('HOJ',$name_data[$name_map[$n]]).'<br>';
 				echo '</div></td>';
-    			echo '<td class = "sol_tag">'.' ('.$sol[$n].'/'.round($sol[$n]/count($group['probs'])*100,0).'%)</td>';	
+    			echo '<td class = "sol_tag">'.' ('.$no++.'/'.$sol[$n].'/'.round($sol[$n]/count($group['probs'])*100,0).'%)</td>';	
     			if ($name_data[$name_map[$n]]['stats'] == -1){
     				echo '<td class = "pend">pending...</td>';
     			} else {
