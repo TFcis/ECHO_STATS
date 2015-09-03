@@ -26,11 +26,11 @@ function time_to_ago($time){
 
 function num_to_ordinal($num){
 	$ordinal_return=sprintf("%d",$num);
-	if($num/10==1)$ordinal_return+="th";
-	else if($num%10==1)$ordinal_return+="st";
-	else if($num%10==2)$ordinal_return+="nd";
-	else if($num%10==3)$ordinal_return+="rd";
-	else $ordinal_return+="th";
+	if($num/10==1)$ordinal_return.="th";
+	else if($num%10==1)$ordinal_return.="st";
+	else if($num%10==2)$ordinal_return.="nd";
+	else if($num%10==3)$ordinal_return.="rd";
+	else $ordinal_return.="th";
 	return $ordinal_return;
 }
 ?>

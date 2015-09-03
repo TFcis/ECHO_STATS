@@ -8,18 +8,18 @@
 <body>
 
 <?php
-if(md5($_COOKIE["ECHOSTATSCOOKIE"]."stats")=="33de5de39a0d42085bbf72073f789f5c")echoAdminPage();
+if(md5($_COOKIE["ECHOSTATSCOOKIE"]."stats")=="33de5de39a0d42085bbf72073f789f5c"){
+	echoAdminPage();
+}
 else if(!isset($_POST["pwd"])){
 	echoLoginPage();
+}else if( md5(md5($_POST["pwd"])."stats") == "33de5de39a0d42085bbf72073f789f5c" ){
+	echo "login succeeded<br/><br/>";
+	setcookie("ECHOSTATSCOOKIE",md5($_POST["pwd"]),time()+86400*7);
+	echoAdminPage();
 }else{
-	if( md5(md5($_POST["pwd"])."stats") == "33de5de39a0d42085bbf72073f789f5c" ){
-		echo "login succeeded<br/><br/>";
-		setcookie("ECHOSTATSCOOKIE",md5($_POST["pwd"]),time()+86400*7);
-		echoAdminPage();
-	}else{
-		echo "wrong password<br/><br/>";
-		echoLoginPage();
-	}
+	echo "wrong password<br/><br/>";
+	echoLoginPage();
 }
 
 ?>
