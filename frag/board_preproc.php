@@ -1,6 +1,6 @@
 <?php
 	require_once("../func/EOL.php");
-	require_once("../func/how_long_ago.php");
+	require_once("../func/transform.php");
 
     //echo 'preproc';
 	//turn of error reporting (for the sake of user-end satisfaction?)
@@ -105,7 +105,7 @@
 	
 	$dt = time() - $prev_updt;
 	$status_string .= "Last update: ";
-	$status_string .=how_long_ago($dt);
+	$status_string .=time_to_ago($dt);
 	if($dt<=0)$status_string .="Just now.<br>";
 	else $status_string .="ago.<br>";
 	
@@ -115,7 +115,7 @@
 		$status_string .= 'update tasks pending...sent: ';
 		$update_sent=file_get_contents('../cache/work_flag');
 		$update_sent=time()-$update_sent;
-		$status_string .=how_long_ago($update_sent);
+		$status_string .=time_to_ago($update_sent);
 		if($update_sent<=0)$status_string .="Just now.<br>";
 		else $status_string .="ago.<br>";
 		if($update_sent>180)unlink('../cache/work_flag');
